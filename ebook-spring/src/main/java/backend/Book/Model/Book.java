@@ -1,4 +1,4 @@
-package backend.Book;
+package backend.Book.Model;
 
 public class Book {
     private String bookname;

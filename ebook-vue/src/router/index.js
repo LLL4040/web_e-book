@@ -9,6 +9,7 @@ import Manage from '../components/Manage.vue';
 import ManageBooks from '../components/ManageBooks.vue';
 import ManageOrder from '../components/ManageOrder.vue';
 import Statistics from '../components/Statistics.vue';
+import Hello from '../components/HelloWorld.vue';
 
 Vue.use(Router);
 
@@ -17,6 +18,10 @@ export default new Router({
   routes: [{
     path: '*',
     redirect: '/home'
+  }, {
+    path: '/hello',
+    name: 'Hello',
+    component: Hello
   }, {
     path: '/home',
     name: 'Home',

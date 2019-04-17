@@ -1,6 +1,6 @@
-package backend.Book;
+package backend.Book.Service;
 
-import backend.Book.Book;
+import backend.Book.Model.Book;
 
 public interface BookService {
     /**

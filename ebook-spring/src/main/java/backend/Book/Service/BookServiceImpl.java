@@ -1,8 +1,8 @@
-package backend.Book;
+package backend.Book.Service;
 
-import backend.Book.Book;
-import backend.Book.BookMapper;
-import backend.Book.BookService;
+import backend.Book.DAO.BookMapper;
+import backend.Book.Model.Book;
+import backend.Book.Service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;

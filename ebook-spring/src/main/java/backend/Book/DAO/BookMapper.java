@@ -1,6 +1,6 @@
-package backend.Book;
+package backend.Book.DAO;
 
-import backend.Book.Book;
+import backend.Book.Model.Book;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -21,7 +21,6 @@ public class BookMapper implements RowMapper<Book>{
         Integer amount = resultSet.getInt("amount");
         Double price = resultSet.getDouble("price");
 //        把数据封装成User对象
-        Book book = new Book(bookname, author, cover, ISBN, amount, price);
-        return book;
+        return new Book(bookname, author, cover, ISBN, amount, price);
     }
 }
