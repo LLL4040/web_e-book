@@ -14,11 +14,6 @@
                 <a href="/manageorder">查看订单</a>
                 <a href="/statistics">统计</a>
             </div>
-            <div id="search">
-                <span>Search</span>
-                <input type="text" />
-                <input type="submit" />
-            </div>
         </div>
         <div id="content">
                 <div id="content_bottom">
@@ -82,7 +77,7 @@ export default {
       dialogFormVisible: false,
       bookForm: {
         id: 1,
-        cover: require('../assets/software.jpg'),
+        cover: require('../../static/software.jpg'),
         title: '软件工程原理',
         author: 'xxx',
         price: 10,
@@ -90,28 +85,28 @@ export default {
       },
       bookData: [{
         id: 1,
-        cover: require('../assets/datastructure.jpg'),
+        cover: require('../../static/datastructure.jpg'),
         title: '数据结构',
         author: 'xxx',
         price: 10,
         stock: 0
       }, {
         id: 2,
-        cover: require('../assets/software.jpg'),
+        cover: require('../../static/software.jpg'),
         title: '软件工程原理',
         author: 'xxx',
         price: 10,
         stock: 0
       }, {
         id: 3,
-        cover: require('../assets/database.jpg'),
+        cover: require('../../static/database.jpg'),
         title: '数据库系统概念',
         author: 'xxx',
         price: 10,
         stock: 0
       }, {
         id: 4,
-        cover: require('../assets/ics.jpg'),
+        cover: require('../../static/ics.jpg'),
         title: '深入理解计算机系统',
         author: 'xxx',
         price: 10,

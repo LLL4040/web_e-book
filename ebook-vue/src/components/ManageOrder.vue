@@ -14,11 +14,6 @@
                 <a class="now" href="#">查看订单</a>
                 <a href="/statistics">统计</a>
             </div>
-            <div id="search">
-                <span>Search</span>
-                <input type="text" />
-                <input type="submit" />
-            </div>
         </div>
         <div id="content">
                 <div id="content_bottom">
@@ -79,12 +74,12 @@ export default {
           number: 3,
           totalAmount: '41.00',
           items: [{
-            cover: require('../assets/datastructure.jpg'),
+            cover: require('../../static/datastructure.jpg'),
             title: '数据结构',
             number: 1,
             amount: '100.00'
           }, {
-            cover: require('../assets/software.jpg'),
+            cover: require('../../static/software.jpg'),
             title: '软件工程原理',
             number: 2,
             amount: '100.00'
@@ -95,12 +90,12 @@ export default {
           number: 2,
           totalAmount: 200.00,
           items: [{
-            cover: require('../assets/database.jpg'),
+            cover: require('../../static/database.jpg'),
             title: '数据库系统概念',
             number: 1,
             amount: '100.00'
           }, {
-            cover: require('../assets/ics.jpg'),
+            cover: require('../../static/ics.jpg'),
             title: '深入理解计算机系统',
             number: 2,
             amount: '100.00'

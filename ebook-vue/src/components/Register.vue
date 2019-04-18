@@ -13,11 +13,6 @@
                 <a href="/usercart">购物车</a>
                 <a href="/userorder">我的订单</a>
             </div>
-            <div id="search">
-                <span>Search</span>
-                <input type="text" />
-                <input type="submit" />
-            </div>
         </div>
         <div id="content">
                 <div id="content_bottom">

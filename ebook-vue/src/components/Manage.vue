@@ -14,11 +14,6 @@
                 <a href="/manageorder">查看订单</a>
                 <a href="/statistics">统计</a>
             </div>
-            <div id="search">
-                <span>Search</span>
-                <input type="text" />
-                <input type="submit" />
-            </div>
         </div>
         <div id="content">
                 <div id="content_bottom">

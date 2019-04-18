@@ -8,17 +8,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.LinkedList;
+
 @Controller
 @RequestMapping("/api")
 public class BookController {
     @Autowired
     BookService bs;
 
-    @RequestMapping(value = "/re", method = RequestMethod.GET)
+    @RequestMapping(value = "/books", method = RequestMethod.GET)
     @ResponseBody
-    public Book pass(){
-        Book book = bs.searchByISBN("1234567890123");
+    public LinkedList<Book> pass(){
+        LinkedList<Book> books = bs.searchAll();
         System.out.println("执行完成");
-        return book;
+        return books;
     }
 }

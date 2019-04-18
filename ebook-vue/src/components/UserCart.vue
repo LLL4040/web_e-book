@@ -13,11 +13,6 @@
                 <a class="now" href="/usercart">购物车</a>
                 <a href="/userorder">我的订单</a>
             </div>
-            <div id="search">
-                <span>Search</span>
-                <input type="text" />
-                <input type="submit" />
-            </div>
         </div>
         <div id="content">
             <div id="content_bottom">
@@ -74,13 +69,13 @@ export default {
       activeIndex: 'shoppingcart',
       shoppingCartItems: [{
         id: 1,
-        cover: require('../assets/datastructure.jpg'),
+        cover: require('../../static/datastructure.jpg'),
         title: '数据结构',
         number: 1,
         price: 100
       }, {
         id: 2,
-        cover: require('../assets/software.jpg'),
+        cover: require('../../static/software.jpg'),
         title: '软件工程原理',
         number: 2,
         price: 100
