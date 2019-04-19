@@ -21,7 +21,7 @@
           <el-table-column align="center" prop="isbn" label="ISBN"></el-table-column>
           <el-table-column align="center" prop="cover" label="封面">
             <template slot-scope="scope">
-              <img :src="scope.row.cover" style="width: 80px">
+              <img :src="scope.row.cover" style="width: 80px; height: 120px">
             </template>
           </el-table-column>
           <el-table-column align="center" prop="bookname" label="书名"></el-table-column>
@@ -33,7 +33,15 @@
               <el-input v-model="search" size="mini" placeholder="输入关键字搜索"/>
             </template>
             <template slot-scope="scope">
-              <el-button size="mini" @click="handleDetail()">详情</el-button>
+              <el-popover placement="right" width="500" trigger="click">
+                <el-table :data="books" height="250">
+                  <el-table-column width="500" prop="contentInfo" label="内容简介"></el-table-column>
+                </el-table>
+                <el-table :data="books" height="250">
+                  <el-table-column width="500" prop="authorInfo" label="作者简介"></el-table-column>
+                </el-table>
+                <el-button size="mini" slot="reference">详情</el-button>
+              </el-popover>
               <el-button size="mini" type="danger" @click="handleAdd(scope.$index, scope.row)">加购</el-button>
             </template>
           </el-table-column>
@@ -43,6 +51,7 @@
                      layout="total, sizes, prev, pager, next, jumper" :total="bookNumber"></el-pagination>
       <div class="clear"></div>
     </div>
+    <p>{{ books }}</p>
   </div>
 </template>
 
@@ -57,7 +66,7 @@
         bookCurrentPage: 1,
         bookPageSize: 10,
         books: [],
-        search: ''
+        search: '',
       }
     },
     mounted () {
@@ -69,9 +78,6 @@
         })
     },
     methods: {
-      handleDetail() {
-        this.$router.push('/one');
-      },
       handleAdd(index, row) {
         this.$alert(row);
       }
@@ -80,11 +86,11 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.cover {
-  width: 150px;
-}
-.el-menu-item {
-  font-size: 18px;
-}
+<style>
+  .el-table .cell {
+    white-space: pre-wrap;
+  }
+  .el-menu-item {
+    font-size: 18px;
+  }
 </style>

@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e405f18-442f-4281-9b2f-8811aa12c26b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Book/Controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Book/Controller/BookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Book/Service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Book/Service/BookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Book/Service/BookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Book/Service/BookServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ebook-vue/src/assets/database.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ebook-vue/src/assets/datastructure.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ebook-vue/src/assets/ics.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ebook-vue/src/assets/software.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ebook-vue/src/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../ebook-vue/src/components/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ebook-vue/src/components/Manage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../ebook-vue/src/components/Manage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ebook-vue/src/components/ManageBooks.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../ebook-vue/src/components/ManageBooks.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ebook-vue/src/components/ManageOrder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../ebook-vue/src/components/ManageOrder.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ebook-vue/src/components/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../ebook-vue/src/components/Register.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ebook-vue/src/components/Statistics.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../ebook-vue/src/components/Statistics.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Book/DAO/BookMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Book/DAO/BookMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Book/Model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Book/Model/Book.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ebook-vue/src/components/UserBooks.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../ebook-vue/src/components/UserBooks.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ebook-vue/src/components/UserCart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../ebook-vue/src/components/UserCart.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ebook-vue/src/components/UserOrder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../ebook-vue/src/components/UserOrder.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -50,13 +36,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/Book/Model/Book.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="32">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state relative-caret-position="345">
+              <caret line="84" column="26" lean-forward="true" selection-start-line="84" selection-start-column="26" selection-end-line="84" selection-end-column="26" />
+              <folding>
+                <element signature="e#1779#1780#0" expanded="true" />
+                <element signature="e#1812#1813#0" expanded="true" />
+                <element signature="e#1850#1851#0" expanded="true" />
+                <element signature="e#1884#1885#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/Book/Controller/BookController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="288">
@@ -71,8 +63,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/Book/Service/BookService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="25" column="33" lean-forward="true" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+            <state relative-caret-position="400">
+              <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -83,8 +75,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/Book/Service/BookServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="35" column="41" lean-forward="true" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
+            <state relative-caret-position="347">
+              <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -92,11 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/Book/DAO/BookMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+            <state relative-caret-position="368">
+              <caret line="23" column="62" lean-forward="true" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -146,10 +138,11 @@
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/backend/config/CORSConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/Book/BookController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/backend/Book/DAO/BookMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/Book/Service/BookService.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/Book/Service/BookServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/Book/Controller/BookController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/backend/Book/Model/Book.java" />
+        <option value="$PROJECT_DIR$/src/main/java/backend/Book/DAO/BookMapper.java" />
       </list>
     </option>
   </component>
@@ -246,11 +239,12 @@
       <workItem from="1555469739749" duration="591000" />
       <workItem from="1555588880750" duration="2117000" />
       <workItem from="1555592457097" duration="3517000" />
+      <workItem from="1555654436940" duration="2203000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23258000" />
+    <option name="totallyTimeSpent" value="25461000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="735" extended-state="6" />
@@ -275,7 +269,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32941177" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3283582" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="Version Control" order="14" />
@@ -322,13 +316,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/Book/Model/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/Application.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -340,20 +327,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/Book/Service/BookServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/Book/Controller/BookController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="35" column="41" lean-forward="true" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/Book/DAO/BookMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+        <state relative-caret-position="288">
+          <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -362,18 +339,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/Book/Service/BookService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="25" column="33" lean-forward="true" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+        <state relative-caret-position="400">
+          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/Book/Controller/BookController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/Book/Service/BookServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+        <state relative-caret-position="347">
+          <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/Book/Model/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="84" column="26" lean-forward="true" selection-start-line="84" selection-start-column="26" selection-end-line="84" selection-end-column="26" />
+          <folding>
+            <element signature="e#1779#1780#0" expanded="true" />
+            <element signature="e#1812#1813#0" expanded="true" />
+            <element signature="e#1850#1851#0" expanded="true" />
+            <element signature="e#1884#1885#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/Book/DAO/BookMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="23" column="62" lean-forward="true" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

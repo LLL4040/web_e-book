@@ -16,12 +16,14 @@ CREATE TABLE IF NOT EXISTS users (
 
 /* 每本书的信息 */
 CREATE TABLE IF NOT EXISTS books (
-    `bookname` VARCHAR(50) NOT NULL,
-    `author` VARCHAR(50) NOT NULL,
+    `bookname` VARCHAR(100) NOT NULL,
+    `author` VARCHAR(100) NOT NULL,
     `cover` VARCHAR(100) NOT NULL,
     `ISBN` VARCHAR(13) NOT NULL,
     `amount` INT UNSIGNED NOT NULL,
     `price` DECIMAL(10 , 2 ) NOT NULL,
+    `contentInfo` VARCHAR(5000) NOT NULL,
+    `authorInfo` VARCHAR(5000) NOT NULL,
     PRIMARY KEY (`ISBN`)
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8MB4;
 

@@ -20,7 +20,9 @@ public class BookMapper implements RowMapper<Book>{
         String ISBN = resultSet.getString("ISBN");
         Integer amount = resultSet.getInt("amount");
         Double price = resultSet.getDouble("price");
+        String contentInfo = resultSet.getString("contentInfo");
+        String authorInfo = resultSet.getString("authorInfo");
 //        把数据封装成User对象
-        return new Book(bookname, author, cover, ISBN, amount, price);
+        return new Book(bookname, author, cover, ISBN, amount, price, contentInfo, authorInfo);
     }
 }
