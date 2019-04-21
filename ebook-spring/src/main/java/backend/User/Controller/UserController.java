@@ -1,7 +1,7 @@
-package backend.Book.Controller;
+package backend.User.Controller;
 
-import backend.Book.Service.BookService;
-import backend.Book.Model.Book;
+import backend.User.Model.User;
+import backend.User.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,13 +12,13 @@ import java.util.LinkedList;
 
 @Controller
 @RequestMapping("/api")
-public class BookController {
+public class UserController {
     @Autowired
-    BookService bs;
+    UserService us;
 
-    @RequestMapping(value = "/books", method = RequestMethod.GET)
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
     @ResponseBody
-    public LinkedList<Book> pass(){
-        return bs.searchAll();
+    public LinkedList<User> pass() {
+        return us.searchAll();
     }
 }

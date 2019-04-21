@@ -8,7 +8,7 @@ use ebook;
 CREATE TABLE IF NOT EXISTS users (
     `username` VARCHAR(50) NOT NULL,
     `password` VARCHAR(50) NOT NULL,
-    `email` VARCHAR(20) NOT NULL,
+    `email` VARCHAR(50) NOT NULL,
     `status` INT DEFAULT 1,
     `identity` INT DEFAULT 0,
     PRIMARY KEY (`username`)

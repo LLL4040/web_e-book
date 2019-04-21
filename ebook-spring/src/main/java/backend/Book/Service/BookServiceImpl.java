@@ -2,7 +2,6 @@ package backend.Book.Service;
 
 import backend.Book.DAO.BookMapper;
 import backend.Book.Model.Book;
-import backend.Book.Service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -12,13 +11,12 @@ import java.util.List;
 
 @Service
 public class BookServiceImpl implements BookService {
-
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     @Override
     public void insert(Book book) {
-        jdbcTemplate.update("insert into books (bookname, author, cover, ISBN, amount, price) values (?, ?, ?, ?, ?, ?)",
+        jdbcTemplate.update("insert into books values (?, ?, ?, ?, ?, ?)",
                 book.getBookname(), book.getAuthor(), book.getCover(), book.getISBN(), book.getAmount(), book.getPrice());
     }
 

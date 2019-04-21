@@ -21,7 +21,7 @@ public interface BookService {
     Book searchByISBN(String ISBN);
 
     /**
-     *  查找所有的书籍
+     * 查找所有的书籍
      */
     LinkedList<Book> searchAll();
 

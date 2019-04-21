@@ -10,10 +10,6 @@ public class Book {
     private String contentInfo;
     private String authorInfo;
 
-    public Book(){
-
-    }
-
     public Book(String bookname, String author, String cover, String ISBN, Integer amount, Double price, String contentInfo, String authorInfo){
         this.bookname = bookname;
         this.author = author;
