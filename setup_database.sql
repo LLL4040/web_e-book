@@ -1,4 +1,4 @@
-drop database ebook;
+/*drop database ebook;*/
 create database if not exists ebook;
 use ebook;
 
