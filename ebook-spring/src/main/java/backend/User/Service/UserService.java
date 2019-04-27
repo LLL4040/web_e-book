@@ -6,9 +6,14 @@ import java.util.LinkedList;
 
 public interface UserService {
     /**
-     * 新增一个用户
+     * 新增一个用户（注册）
      */
     int insert(User user);
+
+    /**
+     * 查找并核对信息（登录）
+     */
+    int check(String username, String password);
 
     /* 管理员功能 */
     /**

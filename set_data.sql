@@ -1,4 +1,5 @@
 use ebook;
+/*
 insert into books values ("数据库系统概论", "（美）Abraham Silberschatz / （美）Henry F.Korth / （美）S.Sudarshan ", "../static/database.jpg", "9787111375296",
 0, 100, "本书是数据库系统方面的经典教材之一，其内容由浅入深，既包含数据库系统基本概念，又反映数据库技术新进展。它被国际上许多著名大学所采用，包括斯坦福大学、耶鲁大学、得克萨斯大学、康奈尔大学、伊利诺伊大学等。我国也有多所大学采用本书作为本科生和研究生数据库课程的教材和主要教学参考书，收到了良好的效果。
 第6版保持了前5版的总体风格，同时对内容进行了扩充，对结构进行了调整，以更好地符合数据库教学的需求和反映数据库设计、管理与使用方式的发展和变化。具体更新内容如下：
@@ -10,3 +11,10 @@ insert into books values ("数据库系统概论", "（美）Abraham Silberschat
 "Abraham Silberschatz 于纽约州立大学石溪分校获得博士学位，现为耶鲁大学计算机科学Sidney J. Weinberg教授，计算机科学系主任，曾任贝尔实验室信息科学研究中心副主任。他是ACM Fellow 和 IEEE Fellow，曾获得IEEE Taylor L. Booth 教育奖、 ACM Karl V. Karlstrom 杰出教育者奖、ACM SIGMOD 贡献奖和IEEE 计算机学会杰出论文奖。他的研究兴趣包括操作系统、数据库系统、存储系统、网络管理和分布式系统。
 Henry F. Korth 于普林斯顿大学获得博士学位，现为利哈伊大学计算机科学与工程系Weiseman教授，曾任贝尔实验室数据库原理研究中心主任。他是ACM Fellow 和 IEEE Fellow，是VLDB 10年贡献奖的获得者。他的研究兴趣包括为现代计算架构（多核、多线程、多级缓存）设计的数据库算法、基于Web的大型数据仓储、实时数据库系统和并行系统。
 S. Sudarshan 于威斯康星大学麦迪逊分校获得博士学位，现为印度理工学院计算机科学与工程系教授，曾为贝尔实验室数据库研究组技术人员。他的研究兴趣包括查询处理和优化、关系数据和图结构数据的关键字查询，以及构建和测试数据库应用系统的工具。");
+*/
+
+insert into carts values ("test", "9787111375296", 1);
+
+select username, cover, bookname, ISBN, price, num
+from carts natural join books
+where username = 'test';

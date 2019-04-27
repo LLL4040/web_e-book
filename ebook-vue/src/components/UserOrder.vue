@@ -8,10 +8,10 @@
             </div>
             <div class="clear"></div>
             <div id="menu">
-                <a href="/home">首页</a>
-                <a href="/userbooks">书籍</a>
-                <a href="/usercart">购物车</a>
-                <a class="now" href="#">我的订单</a>
+              <router-link :to="{name:'Home',params:{username: ''}}" >退出登录</router-link>
+              <router-link :to="{name:'UserBooks',params:{username: this.username}}" >书籍</router-link>
+              <router-link :to="{name:'UserCart',params:{username: this.username}}" >购物车</router-link>
+              <a class="now" href="#">我的订单</a>
             </div>
         </div>
         <div id="content">
@@ -59,6 +59,7 @@ export default {
   name: 'orders',
   data: function () {
     return {
+      username: '',
       activeIndex: 'orders',
       orders: [
         {

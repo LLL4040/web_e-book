@@ -1,7 +1,7 @@
 .clear{
     clear:both;
 }
- 
+
 #top_left{
     width: 300px;
     float: left;
@@ -50,14 +50,14 @@
     border:1px solid #999;
     margin-right: 8px;
 }
-    
+
 /*-------------------------------------------------------*/
-    
+
 #content{
     width:900px;
     margin:8px auto 15px;/*auto div居中*/
 }
-    
+
 #content_top{
     text-align: right;
     font-size:13px;
@@ -135,13 +135,13 @@
 	width: 400px;
 	height: 550px;
     float: right;
-    margin-right: 110px;
+    margin-right: 100px;
 }
 .sideright .index{
-	width: 330px;
+	width: 380px;
 	height: 450px;
 	background-color:#FCFDEF;
-    margin: 25px 90px;
+    margin: 25px 40px;
     border: 1px solid black;
 }
 .headline{
@@ -179,7 +179,7 @@ input[type="submit"]{
 }
 .astyle{
 	margin: 5px 0 5px 42px;
-	font-size:17px; 
+	font-size:17px;
 	color: #6a6f77;
 }
 .bstyle{

@@ -16,8 +16,28 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int insert(User user) {
-        return jdbcTemplate.update("insert into users values(?, ?, ?, ?, ?)",
-                user.getUsername(), user.getPassword(), user.getEmail(), user.getStatus(), user.getIdentity());
+        int flag = 0;
+        try {
+            User search = jdbcTemplate.queryForObject("SELECT * FROM users WHERE username = ?", new UserMapper(), user.getUsername());
+            return flag;
+        }catch (Exception e) {
+            flag = 1;
+            jdbcTemplate.update("insert into users values(?, ?, ?, ?, ?)",
+                    user.getUsername(), user.getPassword(), user.getEmail(), user.getStatus(), user.getIdentity());
+            return flag;
+        }
+    }
+
+    @Override
+    public int check(String username, String password) {
+        int flag = 0;
+        try {
+            User search = jdbcTemplate.queryForObject("SELECT * FROM users WHERE username = ? and password = ?", new UserMapper(), username, password);
+            flag = 1;
+            return flag;
+        }catch (Exception e) {
+            return flag;
+        }
     }
 
     @Override
