@@ -50,4 +50,11 @@ public class CartController {
         int num = (int)map.get("num");
         return cs.update(username, ISBN, num);
     }
+
+    @RequestMapping(value = "/submit", method = RequestMethod.POST)
+    @ResponseBody
+    public int submit(@RequestBody Map map) {
+        String username = (String)map.get("username");
+        return cs.moveToOrder(username);
+    }
 }

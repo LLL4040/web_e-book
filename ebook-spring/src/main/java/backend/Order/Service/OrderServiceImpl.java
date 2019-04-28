@@ -16,16 +16,17 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public LinkedList<Order> searchByUsername(String username) {
-        List<Order> orders = jdbcTemplate.query("select order_id, username, ISBN, bookname, cover, price, number, time " +
-                "from users natural join orders natural join orderitems natural join books" +
-                "where username = ?", new OrderMapper(), username);
-        return new LinkedList<>(orders);
+        try {
+            List<Order> orders = jdbcTemplate.query("select * from users natural join orders natural join orderitems natural join books where username = ?", new OrderMapper(), username);
+            return new LinkedList<>(orders);
+        }catch (Exception e) {
+            return new LinkedList<>();
+        }
     }
 
     @Override
     public LinkedList<Order> searchAll() {
-        List<Order> orders = jdbcTemplate.query("select order_id, username, ISBN, bookname, cover, price, number, time " +
-                "from users natural join orders natural join orderitems natural join books", new OrderMapper());
+        List<Order> orders = jdbcTemplate.query("select order_id, username, ISBN, bookname, cover, price, number, time  from users natural join orders natural join orderitems natural join books", new OrderMapper());
         return new LinkedList<>(orders);
     }
 }

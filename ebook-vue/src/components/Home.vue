@@ -12,7 +12,6 @@
               <router-link :to="{name:'UserBooks',params:{username: this.username}}" >书籍</router-link>
               <router-link :to="{name:'UserCart',params:{username: this.username}}" >购物车</router-link>
               <router-link :to="{name:'UserOrder',params:{username: this.username}}" >我的订单</router-link>
-              <a href="/manage">管理员入口</a>
             </div>
         </div>
         <div id="content">
@@ -72,7 +71,7 @@
         }
       };
       return {
-        username: 'test',
+        username: '',
         ruleForm: {
           name: '',
           pass: '',
@@ -81,11 +80,9 @@
         rules: {
           name: [
             { validator: checkName, trigger: 'blur' },
-            { required: true }
           ],
           pass: [
             { validator: validatePass, trigger: 'blur' },
-            { required: true }
           ],
         }
       };
@@ -99,10 +96,13 @@
               .then(response => {
                 this.msg = response.data;
                 if (this.msg === 0) {
+                  alert('您的账户已被禁用，请解禁后再登录！');
+                  return false;
+                } else if (this.msg === 2) {
                   alert('用户名或密码错误，登录失败请重新登录！');
                   return false;
                 } else {
-                  this.$router.push({name: "UserBooks", params: {"user": ruleForm.name}});
+                  this.$router.push({name: "UserBooks", params: {"username": ruleForm.name}});
                 }
               });
           } else {

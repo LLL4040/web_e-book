@@ -10,9 +10,9 @@ public class Order {
     private String cover;
     private Double price;
     private Integer number;
-    private Date time;
+    private String time;
 
-    public Order(Integer id, String username, String ISBN, String bookname, String cover, Double price, Integer number, Date time) {
+    public Order(Integer id, String username, String ISBN, String bookname, String cover, Double price, Integer number, String time) {
         this.id = id;
         this.username = username;
         this.ISBN = ISBN;
@@ -51,7 +51,7 @@ public class Order {
         return number;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 }

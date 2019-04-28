@@ -8,7 +8,7 @@
 			</div>
 			<div class="clear"></div>
 			<div id="menu">
-        <router-link :to="{name:'Home',params:{username: ''}}" >退出登录</router-link>
+        <router-link :to="{name:'Home',params:{username: ''}}" >{{ index }}</router-link>
 				<a class="now" href="#">书籍</a>
         <router-link :to="{name:'UserCart',params:{username: this.username}}" >购物车</router-link>
         <router-link :to="{name:'UserOrder',params:{username: this.username}}" >我的订单</router-link>
@@ -19,6 +19,18 @@
 			<el-table :data="books.slice((bookCurrentPage - 1) * bookPageSize, bookCurrentPage * bookPageSize) &&
 			books.filter(data => !search || data.bookname.toLowerCase().includes(search.toLowerCase()))"
                 border style="width: 100%; margin-top: 10px">
+        <el-table-column type="expand">
+          <template slot-scope="props">
+            <el-form label-position="left" inline class="demo-table-expand">
+              <el-form-item label="内容简介">
+                <span>{{ props.row.contentInfo }}</span>
+              </el-form-item>
+              <el-form-item label="作者简介">
+                <span>{{ props.row.authorInfo }}</span>
+              </el-form-item>
+            </el-form>
+          </template>
+        </el-table-column>
           <el-table-column align="center" prop="isbn" label="ISBN" width="150px"></el-table-column>
           <el-table-column align="center" prop="cover" label="封面">
             <template slot-scope="scope">
@@ -34,15 +46,6 @@
               <el-input v-model="search" size="mini" placeholder="输入关键字搜索"/>
             </template>
             <template slot-scope="scope">
-              <el-popover placement="right" width="500" trigger="click">
-                <el-table :data="scope.row" height="250">
-                  <el-table-column width="500" prop="contentInfo" label="内容简介"></el-table-column>
-                </el-table>
-                <el-table :data="scope.row" height="250">
-                  <el-table-column width="500" prop="authorInfo" label="作者简介"></el-table-column>
-                </el-table>
-                <el-button size="mini" slot="reference">详情</el-button>
-              </el-popover>
               <el-button size="mini" type="danger" @click="handleAdd(scope.row)">加购</el-button>
             </template>
           </el-table-column>
@@ -63,7 +66,8 @@
     name: 'book_user',
     data () {
       return {
-        username: 'test',
+        index: '首页',
+        username: '',
         bookNumber: 0,
         bookCurrentPage: 1,
         bookPageSize: 10,
@@ -72,6 +76,10 @@
       }
     },
     mounted () {
+      this.username = this.$route.params.username;
+      if (this.username !== '') {
+        this.index = '退出登录';
+      }
       axios
         .get('http://localhost:8088/api/books')
         .then(response => {
@@ -81,6 +89,10 @@
     },
     methods: {
       handleAdd(row) {
+        if (this.username === '') {
+          alert("请登录后再加入购物车！");
+          this.$router.push({name: "Home"});
+        }
         let form = {"username": this.username, "ISBN": row.isbn, "num": 1};
         axios
           .post('http://localhost:8088/api/insert', form)

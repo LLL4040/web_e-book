@@ -16,88 +16,98 @@
         </div>
         <div id="content">
             <div id="content_bottom">
-                <el-main style="width: 800px; margin: 0 auto;">
-                    <el-card v-for="(order, orderIndex) in orders" :key="orderIndex" class="box-card" style="margin: 10px 0;">
-                    <div slot="header" class="clearfix">
-                        <span><b>{{ order.date }}</b> 订单号：{{ order.orderNumber }}</span>
-                    </div>
-                    <el-row style="text-align: center;">
-                        <el-col :span="16">
-                        <div v-for="(item, itemIndex) in order.items" :key="itemIndex" style="padding: 10px 0; border-bottom: 1px solid #eff2f6">
-                            <el-row>
-                            <el-col :span="6">
-                                <img :src="item.cover" style="width: 100px;">
-                            </el-col>
-                            <el-col :span="6" style="line-height: 103.8px">
-                                {{ item.title }}
-                            </el-col>
-                            <el-col :span="6" style="height: 103.8px; display: flex; justify-content: center; flex-direction: column;">
-                                数量<br>{{ item.number }}
-                            </el-col>
-                            <el-col :span="6" style="height: 103.8px; display: flex; justify-content: center; flex-direction: column;">
-                                价格<br>{{ item.amount }}
-                            </el-col>
-                            </el-row>
-                        </div>
-                        </el-col>
-                        <el-col :span="4" style="height: 249.6px; display: flex; justify-content: center; flex-direction: column;">
-                        总数<br>{{ order.number }}
-                        </el-col>
-                        <el-col :span="4" style="height: 249.6px; display: flex; justify-content: center; flex-direction: column;">
-                        总价<br>{{ order.totalAmount }}
-                        </el-col>
-                    </el-row>
-                    </el-card>
+                <el-main style="width: 900px; margin: 0 auto;">
+                  <el-table :data="items.slice((itemCurrentPage - 1) * itemPageSize, itemCurrentPage * itemPageSize) && items.filter(data => (!startdate || data.time >= startdate) &&(!enddate || data.time <= enddate))" :span-method="objectSpanMethod" border style="width: 100%; margin-top: 20px">
+                    <el-table-column align="center" prop="id" label="ID" width="100"></el-table-column>
+                    <el-table-column align="center" prop="time" label="日期" width="160"></el-table-column>
+                    <el-table-column align="center" prop="cover" label="封面" width="110">
+                      <template slot-scope="scope">
+                        <img :src="scope.row.cover" style="width: 80px; height: 120px">
+                      </template>
+                    </el-table-column>
+                    <el-table-column align="center" prop="bookname" label="书名"></el-table-column>
+                    <el-table-column align="center" prop="price" label="单价"></el-table-column>
+                    <el-table-column align="center" prop="number" label="数量"></el-table-column>
+                    <el-table-column align="center" prop="total" width="200">
+                      <template slot="header" slot-scope="scope">
+                        <el-input v-model="startdate" type="date" style="width: 170px;"/>
+                        <el-input v-model="enddate"   type="date" style="width: 170px;"/>
+                      </template>
+                    </el-table-column>
+                  </el-table>
                 </el-main>
+              <el-pagination style="text-align: center; margin-top: 5px;" :current-page="itemCurrentPage"
+                             :page-sizes="[10, 20, 30, 40, 50]" :page-size="itemPageSize"
+                             layout="total, sizes, prev, pager, next, jumper" :total="itemNumber"></el-pagination>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-export default {
-  name: 'orders',
-  data: function () {
-    return {
-      username: '',
-      activeIndex: 'orders',
-      orders: [
-        {
-          date: '2019-04-01',
-          orderNumber: 1651194849,
-          number: 2,
-          totalAmount: 200.00,
-          items: [{
-            cover: require('../../static/datastructure.jpg'),
-            title: '数据结构',
-            number: 1,
-            amount: '100.00'
-          }, {
-            cover: require('../../static/software.jpg'),
-            title: '软件工程原理',
-            number: 2,
-            amount: '100.00'
-          }]
-        }, {
-          date: '2019-04-01',
-          orderNumber: 1651195445,
-          number: 2,
-          totalAmount: 200.00,
-          items: [{
-            cover: require('../../static/database.jpg'),
-            title: '数据库系统概念',
-            number: 1,
-            amount: '100.00'
-          }, {
-            cover: require('../../static/ics.jpg'),
-            title: '深入理解计算机系统',
-            number: 2,
-            amount: '100.00'
-          }]
-        }]
-    };
-  }
-};
+  import axios from "axios";
+
+  export default {
+    name: 'orders',
+    data: function () {
+      return {
+        username: '',
+        activeIndex: 'orders',
+        items: [],
+        itemCurrentPage: 1,
+        itemPageSize: 10,
+        itemNumber: 0,
+        spanArr: [],
+        startdate: '',
+        enddate: ''
+      };
+    },
+    mounted () {
+      this.username = this.$route.params.username;
+      if (this.username === '') {
+        alert("请登录后查看订单！");
+        this.$router.push({name: "Home"});
+      }
+      let form = {"username": this.username};
+      axios
+        .post('http://localhost:8088/api/orders', form)
+        .then(response => {
+          this.items = response.data;
+          this.itemNumber = this.items.length;
+          for (let i = 0; i < this.items.length; i++) {
+            this.$set(this.items[i],'total',0);
+            if (i === 0) {
+              this.spanArr.push(1);
+              this.pos = 0;
+              this.items[i].total = this.items[i].price * this.items[i].number;
+            } else {
+              // 判断当前元素与上一个元素是否相同
+              if (this.items[i].id === this.items[i - 1].id) {
+                this.spanArr[this.pos] += 1;
+                this.spanArr.push(0);
+                this.items[this.pos].total += this.items[i].price * this.items[i].number;
+              } else {
+                this.spanArr.push(1);
+                this.pos = i;
+                this.items[this.pos].total = this.items[i].price * this.items[i].number;
+              }
+            }
+          }
+        })
+    },
+    methods: {
+      objectSpanMethod({ row, column, rowIndex, columnIndex }) {
+        if (columnIndex === 0 || columnIndex === 1 || columnIndex === 6) {
+          const _row = this.spanArr[rowIndex];
+          const _col = _row > 0 ? 1 : 0;
+          return {
+            rowspan: _row,
+            colspan: _col
+          }
+        }
+      }
+    }
+  };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -1,4 +1,4 @@
-/*drop database ebook;*/
+drop database ebook;
 create database if not exists ebook;
 use ebook;
 
@@ -42,10 +42,12 @@ CREATE TABLE IF NOT EXISTS carts (
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8MB4;   
 
 /* 将用户、订单、单品联系起来 */
+/* status表示该订单是否被删除 */
 CREATE TABLE IF NOT EXISTS orders (
     `order_id` INT UNSIGNED AUTO_INCREMENT,
     `username` VARCHAR(50) NOT NULL,
-    `time` DATETIME NOT NULL,
+    `time` VARCHAR(20) NOT NULL,
+    `status` INT DEFAULT 1,
     PRIMARY KEY (`order_id`),
     FOREIGN KEY (`username`)
         REFERENCES users (`username`)

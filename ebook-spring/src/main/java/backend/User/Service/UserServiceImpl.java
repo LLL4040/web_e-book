@@ -33,9 +33,13 @@ public class UserServiceImpl implements UserService {
         int flag = 0;
         try {
             User search = jdbcTemplate.queryForObject("SELECT * FROM users WHERE username = ? and password = ?", new UserMapper(), username, password);
+            if (search.getStatus() == 0) {
+                return flag;
+            }
             flag = 1;
             return flag;
         }catch (Exception e) {
+            flag = 2;
             return flag;
         }
     }

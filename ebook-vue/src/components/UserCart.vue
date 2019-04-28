@@ -49,7 +49,7 @@
                       总价 {{ getTotalAmount }}
                     </el-col>
                     <el-col :span="4" style="text-align: center;">
-                      <el-button type="primary">下单</el-button>
+                      <el-button type="primary" @click="handleSubmit()">提交订单</el-button>
                     </el-col>
                   </el-row>
                 </el-card>
@@ -61,6 +61,7 @@
 
 <script>
   import axios from "axios";
+
   export default {
     name: 'Cart',
     data: function () {
@@ -100,7 +101,11 @@
           .then(response => {
             if (response.data === 1) {
               alert("删除成功！");
-              this.CartItems.splice(i, 1);
+              axios
+                .post('http://localhost:8088/api/carts', form)
+                .then(response => {
+                  this.CartItems = response.data;
+                })
             }
           })
       },
@@ -110,7 +115,25 @@
           .post('http://localhost:8088/api/update', form)
           .then(response => {
             if (response.data === 1) {
-              alert("同步成功！");
+              console.log("同步成功！");
+            }
+            else {
+              alert("加购数量不能超过库存量！");
+              console.log("同步失败！");
+            }
+          })
+      },
+      handleSubmit () {
+        let form = {"username": this.username};
+        axios
+          .post('http://localhost:8088/api/submit', form)
+          .then(response => {
+            if (response.data === 1) {
+              alert("提交成功！");
+              this.CartItems = [];
+            }
+            else {
+              alert("提交失败！请联系客服处理。");
             }
           })
       }
