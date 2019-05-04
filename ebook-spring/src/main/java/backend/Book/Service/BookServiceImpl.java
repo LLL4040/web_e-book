@@ -15,14 +15,24 @@ public class BookServiceImpl implements BookService {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public void insert(Book book) {
-        jdbcTemplate.update("insert into books values (?, ?, ?, ?, ?, ?)",
-                book.getBookname(), book.getAuthor(), book.getCover(), book.getISBN(), book.getAmount(), book.getPrice());
+    public boolean insert(Book book) {
+        try {
+            jdbcTemplate.update("insert into books values (?, ?, ?, ?, ?, ?)",
+                    book.getBookname(), book.getAuthor(), book.getCover(), book.getISBN(), book.getAmount(), book.getPrice());
+            return true;
+        }catch (Exception e) {
+            return false;
+        }
     }
 
     @Override
-    public void deleteByISBN(String ISBN) {
-        jdbcTemplate.update("delete from BOOKS where ISBN = ?", ISBN);
+    public boolean deleteByISBN(String ISBN) {
+        try {
+            jdbcTemplate.update("delete from BOOKS where ISBN = ?", ISBN);
+            return true;
+        }catch (Exception e) {
+            return false;
+        }
     }
 
     @Override
@@ -34,6 +44,13 @@ public class BookServiceImpl implements BookService {
     public LinkedList<Book> searchAll() {
         List<Book> Books = jdbcTemplate.query("SELECT * FROM books", new BookMapper());
         return new LinkedList<>(Books);
+    }
+
+    @Override
+    public boolean modify(Book book) {
+        String isbn = book.getISBN();
+        deleteByISBN(isbn);
+        return insert(book);
     }
 
 }

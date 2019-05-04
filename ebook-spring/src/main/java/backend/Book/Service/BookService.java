@@ -8,12 +8,12 @@ public interface BookService {
     /**
      * 新增一本书
      */
-    void insert(Book book);
+    boolean insert(Book book);
 
     /**
      * 根据ISBN删除一本书
      */
-    void deleteByISBN(String ISBN);
+    boolean deleteByISBN(String ISBN);
 
     /**
      * 根据ISBN查找一本书
@@ -24,5 +24,10 @@ public interface BookService {
      * 查找所有的书籍
      */
     LinkedList<Book> searchAll();
+
+    /**
+     * 修改一本书的属性
+     */
+    boolean modify(Book book);
 
 }
