@@ -40,4 +40,12 @@ public class UserController {
         String email = (String)map.get("email");
         return us.insert(new User(username, password, email, 1, 0));
     }
+
+    @RequestMapping(value = "/change", method = RequestMethod.POST)
+    @ResponseBody
+    public int changeStatus(@RequestBody Map map) {
+        String username = (String)map.get("username");
+        Integer status = (Integer) map.get("status");
+        return us.changeStatus(username, status);
+    }
 }

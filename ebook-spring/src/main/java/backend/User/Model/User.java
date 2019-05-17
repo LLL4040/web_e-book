@@ -4,8 +4,14 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private Integer status;//0->被禁，1->未被禁
-    private Integer identity;//0->普通用户，1->管理员
+    /**
+     * 0->被禁，1->未被禁
+     */
+    private Integer status;
+    /**
+     * 0->普通用户，1->管理员
+     */
+    private Integer identity;
 
     public User(String username, String password, String email, Integer status, Integer identity) {
         this.username = username;
