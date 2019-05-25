@@ -8,10 +8,10 @@
             </div>
             <div class="clear"></div>
             <div id="menu">
-              <router-link :to="{name:'Home',params:{username: ''}}" >退出登录</router-link>
-              <router-link :to="{name:'UserBooks',params:{username: this.username}}" >书籍</router-link>
+              <router-link :to="{name:'Home',params:{user: ''}}" >退出登录</router-link>
+              <router-link :to="{name:'UserBooks',params:{user: this.user}}" >书籍</router-link>
               <a class="now" href="#">购物车</a>
-              <router-link :to="{name:'UserOrder',params:{username: this.username}}" >我的订单</router-link>
+              <router-link :to="{name:'UserOrder',params:{user: this.user}}" >我的订单</router-link>
             </div>
         </div>
         <div id="content">
@@ -66,18 +66,18 @@
     name: 'Cart',
     data: function () {
       return {
-        username: '',
+        user: '',
         activeIndex: 'cart',
         CartItems: []
       };
     },
     mounted () {
-      this.username = this.$route.params.username;
-      if (this.username === '') {
+      this.user = this.$route.params.user;
+      if (this.user === '') {
         alert("请登录后查看购物车！");
         this.$router.push({name: "Home"});
       }
-      let form = {"username": this.username};
+      let form = {"username": this.user};
       axios
         .post('http://localhost:8088/api/carts', form)
         .then(response => {
@@ -95,7 +95,7 @@
     },
     methods: {
       handleDelete (i, ISBN) {
-        let form = {"username": this.username, "ISBN": ISBN};
+        let form = {"username": this.user, "isbn": ISBN};
         axios
           .post('http://localhost:8088/api/delete', form)
           .then(response => {
@@ -110,7 +110,7 @@
           })
       },
       handleChange (username, ISBN, num) {
-        let form = {"username": username, "ISBN": ISBN, "num": num};
+        let form = {"username": username, "isbn": ISBN, "num": num};
         axios
           .post('http://localhost:8088/api/update', form)
           .then(response => {
@@ -124,7 +124,7 @@
           })
       },
       handleSubmit () {
-        let form = {"username": this.username};
+        let form = {"username": this.user};
         axios
           .post('http://localhost:8088/api/submit', form)
           .then(response => {

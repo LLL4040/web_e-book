@@ -4,11 +4,11 @@ import backend.Dao.UserDao;
 import backend.Entity.User;
 import backend.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import com.google.common.base.Optional;
+
+import java.util.LinkedList;
 
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -41,7 +41,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public Page<User> findAll(Pageable pageable) {
-        return userRepository.findAll(pageable);
+    public LinkedList<User> findAll() {
+        return new LinkedList<>(userRepository.findAll());
     }
 }

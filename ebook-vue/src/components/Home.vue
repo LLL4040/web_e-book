@@ -9,9 +9,9 @@
             <div class="clear"></div>
             <div id="menu">
               <a class="now" href="#">首页</a>
-              <router-link :to="{name:'UserBooks',params:{username: this.username}}" >书籍</router-link>
-              <router-link :to="{name:'UserCart',params:{username: this.username}}" >购物车</router-link>
-              <router-link :to="{name:'UserOrder',params:{username: this.username}}" >我的订单</router-link>
+              <router-link :to="{name:'UserBooks',params:{user: this.user}}" >书籍</router-link>
+              <router-link :to="{name:'UserCart',params:{user: this.user}}" >购物车</router-link>
+              <router-link :to="{name:'UserOrder',params:{user: this.user}}" >我的订单</router-link>
             </div>
         </div>
         <div id="content">
@@ -28,10 +28,10 @@
                       <p class="headline">用户登录</p>
                       <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="90px" class="demo-ruleForm">
                         <el-form-item label="用户名" prop="name">
-                          <el-input v-model="ruleForm.name"></el-input>
+                          <el-input v-model="ruleForm.username"></el-input>
                         </el-form-item>
                         <el-form-item label="密码" prop="pass">
-                          <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+                          <el-input type="password" v-model="ruleForm.password" autocomplete="off"></el-input>
                         </el-form-item>
                         <el-form-item align="center">
                           <el-button type="primary" @click="submitForm(ruleForm)">登录</el-button>
@@ -71,17 +71,17 @@
         }
       };
       return {
-        username: '',
+        user: '',
         ruleForm: {
-          name: '',
-          pass: '',
+          username: '',
+          password: '',
           msg: ''
         },
         rules: {
-          name: [
+          username: [
             { validator: checkName, trigger: 'blur' },
           ],
-          pass: [
+          password: [
             { validator: validatePass, trigger: 'blur' },
           ],
         }
@@ -92,17 +92,17 @@
         this.$refs['ruleForm'].validate((valid) => {
           if (valid) {
             axios
-              .post('http://localhost:8088/api/login', ruleForm)
+              .post('http://localhost:8088/api/user/login', ruleForm)
               .then(response => {
                 this.msg = response.data;
-                if (this.msg === 0) {
+                if (this.msg === 2) {
                   alert('您的账户已被禁用，请解禁后再登录！');
                   return false;
-                } else if (this.msg === 2) {
+                } else if (this.msg === 0) {
                   alert('用户名或密码错误，登录失败请重新登录！');
                   return false;
                 } else {
-                  this.$router.push({name: "UserBooks", params: {"username": ruleForm.name}});
+                  this.$router.push({name: "UserBooks", params: {"user": ruleForm.name}});
                 }
               });
           } else {

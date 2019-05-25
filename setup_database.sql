@@ -29,10 +29,11 @@ CREATE TABLE IF NOT EXISTS books (
 
 /* 购物车 */
 CREATE TABLE IF NOT EXISTS carts (
+	`cart_id` INT UNSIGNED AUTO_INCREMENT,
     `username` VARCHAR(50) NOT NULL,
     `ISBN` VARCHAR(13) NOT NULL,
     `num` INT NOT NULL,
-    PRIMARY KEY (`username` , `ISBN`),
+    PRIMARY KEY (`cart_id`),
     FOREIGN KEY (`ISBN`)
         REFERENCES books (`ISBN`)
         ON DELETE CASCADE ON UPDATE CASCADE,

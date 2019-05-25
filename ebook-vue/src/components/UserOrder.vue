@@ -8,9 +8,9 @@
             </div>
             <div class="clear"></div>
             <div id="menu">
-              <router-link :to="{name:'Home',params:{username: ''}}" >退出登录</router-link>
-              <router-link :to="{name:'UserBooks',params:{username: this.username}}" >书籍</router-link>
-              <router-link :to="{name:'UserCart',params:{username: this.username}}" >购物车</router-link>
+              <router-link :to="{name:'Home',params:{user: ''}}" >退出登录</router-link>
+              <router-link :to="{name:'UserBooks',params:{user: this.user}}" >书籍</router-link>
+              <router-link :to="{name:'UserCart',params:{user: this.user}}" >购物车</router-link>
               <a class="now" href="#">我的订单</a>
             </div>
         </div>
@@ -51,7 +51,7 @@
     name: 'orders',
     data: function () {
       return {
-        username: '',
+        user: '',
         activeIndex: 'orders',
         items: [],
         itemCurrentPage: 1,
@@ -63,12 +63,12 @@
       };
     },
     mounted () {
-      this.username = this.$route.params.username;
-      if (this.username === '') {
+      this.user = this.$route.params.user;
+      if (this.user === '') {
         alert("请登录后查看订单！");
         this.$router.push({name: "Home"});
       }
-      let form = {"username": this.username};
+      let form = {"username": this.user};
       axios
         .post('http://localhost:8088/api/orders', form)
         .then(response => {

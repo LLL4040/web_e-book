@@ -1,16 +1,16 @@
 package backend.Service;
 
 import backend.Entity.User;
-import org.springframework.data.domain.Page;
 
 import javax.transaction.Transactional;
+import java.util.LinkedList;
 import java.util.Map;
 
 public interface UserService {
     User addUser(User user);
 
     User findUserByUsername(String username);
-    Page<User> findUserByPage(int page, int size);
+    LinkedList<User> findAll();
 
     @Transactional
     boolean deleteUser(String username);
@@ -19,5 +19,5 @@ public interface UserService {
 
     boolean nameIsValid(String username);
 
-    boolean checkPassword(User user);
+    Integer checkPassword(User user);
 }

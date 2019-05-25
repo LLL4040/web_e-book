@@ -4,10 +4,8 @@ import backend.Dao.UserDao;
 import backend.Entity.User;
 import backend.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 
+import java.util.LinkedList;
 import java.util.Map;
 import com.google.common.base.Optional;
 import org.springframework.stereotype.Service;
@@ -32,9 +30,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Page<User> findUserByPage(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
-        return userDao.findAll(pageable);
+    public LinkedList<User> findAll() {
+        return userDao.findAll();
     }
 
     @Override
@@ -70,15 +67,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean checkPassword(User user) {
+    public Integer checkPassword(User user) {
         Optional<User> optionalUser = userDao.findByUsername(user.getUsername());
         User userFind = optionalUser.orNull();
-        if(userFind == null || userFind.getStatus() == 0) {
-            return false;
+        if(userFind == null) {
+            return 0;
         }
-        else if(user.equals(userFind)) {
-            return true;
+        else if(userFind.getStatus() == 0) {
+            return 2;
         }
-        return false;
+        else if(user.getPassword().equals(userFind.getPassword())) {
+            return 1;
+        }
+        return 0;
     }
 }

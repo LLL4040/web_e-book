@@ -47,4 +47,8 @@ select order_id, username, ISBN, bookname, cover, price, number, time
 from users natural join orders natural join orderitems natural join books 
 where username = 'test0';
 */
+/*
+insert into users values("test", "123", "123@qq.com", 1, 0);
 insert into users values("test1", "123", "123@qq.com", 0, 0);
+*/
+insert into carts values(1,"test", "9787111375296",1);

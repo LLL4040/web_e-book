@@ -8,10 +8,10 @@
 			</div>
 			<div class="clear"></div>
 			<div id="menu">
-        <router-link :to="{name:'Home',params:{username: ''}}" >{{ index }}</router-link>
+        <router-link :to="{name:'Home',params:{user: ''}}" >{{ index }}</router-link>
 				<a class="now" href="#">书籍</a>
-        <router-link :to="{name:'UserCart',params:{username: this.username}}" >购物车</router-link>
-        <router-link :to="{name:'UserOrder',params:{username: this.username}}" >我的订单</router-link>
+        <router-link :to="{name:'UserCart',params:{user: this.user}}" >购物车</router-link>
+        <router-link :to="{name:'UserOrder',params:{user: this.user}}" >我的订单</router-link>
 			</div>
 		</div>
     <div id="content">
@@ -67,7 +67,7 @@
     data () {
       return {
         index: '首页',
-        username: '',
+        user: '',
         bookNumber: 0,
         bookCurrentPage: 1,
         bookPageSize: 10,
@@ -76,12 +76,12 @@
       }
     },
     mounted () {
-      this.username = this.$route.params.username;
-      if (this.username !== '') {
+      this.user = this.$route.params.user;
+      if (this.user !== '') {
         this.index = '退出登录';
       }
       axios
-        .get('http://localhost:8088/api/books')
+        .get('http://localhost:8088/api/book/all')
         .then(response => {
           this.books = response.data;
           this.bookNumber = this.books.length;
@@ -89,13 +89,13 @@
     },
     methods: {
       handleAdd(row) {
-        if (this.username === '') {
+        if (this.user === '') {
           alert("请登录后再加入购物车！");
           this.$router.push({name: "Home"});
         }
-        let form = {"username": this.username, "ISBN": row.isbn, "num": 1};
+        let form = {"username": this.user, "isbn": row.isbn, "num": 1};
         axios
-          .post('http://localhost:8088/api/insert', form)
+          .post('http://localhost:8088/api/cart/insert', form)
           .then(response => {
             if (response.data === 1) {
               alert("成功加入购物车！");
