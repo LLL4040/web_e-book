@@ -19,7 +19,6 @@ public class UserServiceImpl implements UserService {
     public User addUser(User user) {
         user.setStatus(1);
         user.setIdentity(0);
-        user.setPassword(user.getPassword());
         userDao.addUser(user);
         return userDao.findOne(user.getUsername());
     }
@@ -67,8 +66,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer checkPassword(User user) {
-        Optional<User> optionalUser = userDao.findByUsername(user.getUsername());
+    public Integer checkPassword(String username, String password) {
+        Optional<User> optionalUser = userDao.findByUsername(username);
         User userFind = optionalUser.orNull();
         if(userFind == null) {
             return 0;
@@ -76,7 +75,7 @@ public class UserServiceImpl implements UserService {
         else if(userFind.getStatus() == 0) {
             return 2;
         }
-        else if(user.getPassword().equals(userFind.getPassword())) {
+        else if(password.equals(userFind.getPassword())) {
             return 1;
         }
         return 0;

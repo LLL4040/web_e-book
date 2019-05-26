@@ -12,9 +12,9 @@ public interface BookDao {
     Book addBook(Book book);
 
     /**
-     * Delete methods
+     * Modify methods
      */
-    boolean deleteBook(String isbn);
+    Book updateBook(Book book);
 
     /**
      * Query methods

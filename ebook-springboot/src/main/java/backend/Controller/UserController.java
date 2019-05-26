@@ -5,6 +5,8 @@ import backend.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -17,8 +19,15 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public boolean register(@RequestBody User user) {
-        if(us.nameIsValid(user.getUsername())) {
+    public boolean register(@RequestBody Map<String, String> map) {
+        String username = map.get("username");
+        String password = map.get("password");
+        String email = map.get("email");
+        if(us.nameIsValid(username)) {
+            User user = new User();
+            user.setUsername(username);
+            user.setPassword(password);
+            user.setEmail(email);
             us.addUser(user);
             return true;
         }
@@ -26,7 +35,9 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public Integer login(@RequestBody User user) {
-        return us.checkPassword(user);
+    public Integer login(@RequestBody Map<String, String> map) {
+        String username = map.get("username");
+        String password = map.get("password");
+        return us.checkPassword(username, password);
     }
 }

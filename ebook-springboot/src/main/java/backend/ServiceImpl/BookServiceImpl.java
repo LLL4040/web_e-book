@@ -32,11 +32,6 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public boolean deleteBook(String isbn) {
-        return bookDao.deleteBook(isbn);
-    }
-
-    @Override
     public Book updateBook(Map<String, String> data) {
         String isbn = data.get("ISBN"), bookname = data.get("bookname"),
                 author = data.get("author"), cover = data.get("cover"),

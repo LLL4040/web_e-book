@@ -16,26 +16,36 @@
         </div>
         <div id="content">
             <div id="content_bottom">
-                <el-main style="width: 900px; margin: 0 auto;">
-                  <el-table :data="items.slice((itemCurrentPage - 1) * itemPageSize, itemCurrentPage * itemPageSize) && items.filter(data => (!startdate || data.time >= startdate) &&(!enddate || data.time <= enddate))" :span-method="objectSpanMethod" border style="width: 100%; margin-top: 20px">
-                    <el-table-column align="center" prop="id" label="ID" width="100"></el-table-column>
-                    <el-table-column align="center" prop="time" label="日期" width="160"></el-table-column>
-                    <el-table-column align="center" prop="cover" label="封面" width="110">
-                      <template slot-scope="scope">
-                        <img :src="scope.row.cover" style="width: 80px; height: 120px">
-                      </template>
-                    </el-table-column>
-                    <el-table-column align="center" prop="bookname" label="书名"></el-table-column>
-                    <el-table-column align="center" prop="price" label="单价"></el-table-column>
-                    <el-table-column align="center" prop="number" label="数量"></el-table-column>
-                    <el-table-column align="center" prop="total" width="200">
-                      <template slot="header" slot-scope="scope">
-                        <el-input v-model="startdate" type="date" style="width: 170px;"/>
-                        <el-input v-model="enddate"   type="date" style="width: 170px;"/>
-                      </template>
-                    </el-table-column>
-                  </el-table>
-                </el-main>
+              <el-card class="box-card" style="text-align: center;">
+              <div v-if="items.length === 0">
+                暂无订单记录
+              </div>
+              </el-card>
+              <div v-for="o in items.slice((itemCurrentPage - 1) * itemPageSize, itemCurrentPage * itemPageSize)" :key="o">
+                <el-card class="box-card">
+                  <div slot="header" class="clearfix">
+                    <span>{{o.time}}</span>
+                    <el-button style="float: right; padding: 3px 0; color: red" type="text">删除此项</el-button>
+                  </div>
+                  <el-row v-for="(item, index) in o.orderItems" :key="index" style="padding: 10px 0; border-bottom: 1px solid #eff2f6">
+                    <el-col :span="4">
+                      <img :src="item.book.cover" style="width: 120px;">
+                    </el-col>
+                    <el-col :span="4" style="line-height: 103.8px; width: 240px;">
+                      {{ item.book.bookname }}
+                    </el-col>
+                    <el-col :span="4" style="height: 103.8px; display: flex; justify-content: center; flex-direction: column;">
+                      单价<br><br>{{ item.book.price }}
+                    </el-col>
+                    <el-col :span="4" style="height: 103.8px; display: flex; justify-content: center; flex-direction: column;">
+                      数量<br><br>{{ item.number }}
+                    </el-col>
+                    <el-col :span="4" style="height: 103.8px; display: flex; justify-content: center; flex-direction: column;">
+                      金额<br><br>{{ item.book.price * item.number }}
+                    </el-col>
+                  </el-row>
+                </el-card>
+              </div>
               <el-pagination style="text-align: center; margin-top: 5px;" :current-page="itemCurrentPage"
                              :page-sizes="[10, 20, 30, 40, 50]" :page-size="itemPageSize"
                              layout="total, sizes, prev, pager, next, jumper" :total="itemNumber"></el-pagination>
@@ -70,10 +80,11 @@
       }
       let form = {"username": this.user};
       axios
-        .post('http://localhost:8088/api/orders', form)
+        .post('http://localhost:8088/api/order/all', form)
         .then(response => {
           this.items = response.data;
           this.itemNumber = this.items.length;
+          /*
           for (let i = 0; i < this.items.length; i++) {
             this.$set(this.items[i],'total',0);
             if (i === 0) {
@@ -92,20 +103,10 @@
                 this.items[this.pos].total = this.items[i].price * this.items[i].number;
               }
             }
-          }
+          }*/
         })
     },
     methods: {
-      objectSpanMethod({ row, column, rowIndex, columnIndex }) {
-        if (columnIndex === 0 || columnIndex === 1 || columnIndex === 6) {
-          const _row = this.spanArr[rowIndex];
-          const _col = _row > 0 ? 1 : 0;
-          return {
-            rowspan: _row,
-            colspan: _col
-          }
-        }
-      }
     }
   };
 </script>

@@ -22,23 +22,23 @@
                 </div>
                 <el-row v-for="(item, index) in CartItems" :key="index" style="padding: 10px 0; border-bottom: 1px solid #eff2f6">
                   <el-col :span="4">
-                    <img :src="item.cover" style="width: 120px;">
+                    <img :src="item.book.cover" style="width: 120px;">
                   </el-col>
                   <el-col :span="4" style="line-height: 50px; width: 120px;">
-                    {{ item.bookname }}
+                    {{ item.book.bookname }}
                   </el-col>
                   <el-col :span="4" style="height: 103.8px; display: flex; justify-content: center; flex-direction: column;">
-                    单价<br>{{ item.price }}
+                    单价<br>{{ item.book.price }}
                   </el-col>
                   <el-col :span="4" style="height: 103.8px; display: flex; justify-content: center; flex-direction: column;">
                     数量<br>
-                    <el-input-number v-model="item.num" @change="handleChange(item.username, item.isbn, item.num)" :precision="0" size="small" :min="1" :max="99"></el-input-number>
+                    <el-input-number v-model="item.num" @change="handleChange(item.book.isbn, item.num)" :precision="0" size="small" :min="1" :max="99"></el-input-number>
                   </el-col>
                   <el-col :span="4" style="height: 103.8px; display: flex; justify-content: center; flex-direction: column;">
-                    金额<br>{{ item.price * item.num }}
+                    金额<br>{{ item.book.price * item.num }}
                   </el-col>
                   <el-col :span="4" style="line-height: 103.8px">
-                    <el-button type="danger" icon="el-icon-delete" circle @click="handleDelete(item.id, item.isbn)"></el-button>
+                    <el-button type="danger" icon="el-icon-delete" circle @click="handleDelete(item.id, item.book.isbn)"></el-button>
                   </el-col>
                 </el-row>
               </el-card>
@@ -88,7 +88,7 @@
       getTotalAmount () {
         let s = 0;
         for (let i = 0; i < this.CartItems.length; i++) {
-          s += (this.CartItems[i].num * this.CartItems[i].price);
+          s += (this.CartItems[i].num * this.CartItems[i].book.price);
         }
         return s;
       }
@@ -97,24 +97,24 @@
       handleDelete (i, ISBN) {
         let form = {"username": this.user, "isbn": ISBN};
         axios
-          .post('http://localhost:8088/api/delete', form)
+          .post('http://localhost:8088/api/cart/delete', form)
           .then(response => {
-            if (response.data === 1) {
+            if (response.data === true) {
               alert("删除成功！");
               axios
-                .post('http://localhost:8088/api/carts', form)
+                .post('http://localhost:8088/api/cart/all', form)
                 .then(response => {
                   this.CartItems = response.data;
                 })
             }
           })
       },
-      handleChange (username, ISBN, num) {
-        let form = {"username": username, "isbn": ISBN, "num": num};
+      handleChange (ISBN, num) {
+        let form = {"username": this.user, "isbn": ISBN, "num": num};
         axios
-          .post('http://localhost:8088/api/update', form)
+          .post('http://localhost:8088/api/cart/update', form)
           .then(response => {
-            if (response.data === 1) {
+            if (response.data === true) {
               console.log("同步成功！");
             }
             else {
@@ -126,9 +126,9 @@
       handleSubmit () {
         let form = {"username": this.user};
         axios
-          .post('http://localhost:8088/api/submit', form)
+          .post('http://localhost:8088/api/order/insert', form)
           .then(response => {
-            if (response.data === 1) {
+            if (response.data === true) {
               alert("提交成功！");
               this.CartItems = [];
             }

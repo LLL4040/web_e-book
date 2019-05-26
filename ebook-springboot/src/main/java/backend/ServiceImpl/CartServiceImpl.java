@@ -26,7 +26,7 @@ public class CartServiceImpl implements CartService {
     public LinkedList<Cart> getAll(String username) {
         LinkedList<Cart> cartLinkedList = cartDao.findAllByUsername(username);
         for(Cart cart: cartLinkedList) {
-            //cart.setUser(null);
+            cart.setUser(null);
         }
         return cartLinkedList;
     }
@@ -44,9 +44,20 @@ public class CartServiceImpl implements CartService {
             return cartDao.addOne(cart);
         }
         else {
-            cart.setNum(num);
+            cart.setNum(cart.getNum()+num);
             return cartDao.updateOne(cart);
         }
+    }
+
+    @Override
+    public boolean updateOne(String username, String isbn, Integer num) {
+        Cart cart = cartDao.findOne(username, isbn).orNull();
+        if(cart != null && cart.getBook().getAmount() >= num) {
+            cart.setNum(num);
+            cartDao.updateOne(cart);
+            return true;
+        }
+        return false;
     }
 
     @Override

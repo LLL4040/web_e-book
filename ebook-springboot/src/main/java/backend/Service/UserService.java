@@ -19,5 +19,5 @@ public interface UserService {
 
     boolean nameIsValid(String username);
 
-    Integer checkPassword(User user);
+    Integer checkPassword(String username, String password);
 }

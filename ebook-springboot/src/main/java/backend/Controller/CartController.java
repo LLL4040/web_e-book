@@ -34,6 +34,14 @@ public class CartController {
         return cs.addOne(username, isbn, num);
     }
 
+    @PostMapping("/update")
+    public boolean updateOne(@RequestBody Map<String, String> map) {
+        String username = map.get("username");
+        String isbn = map.get("isbn");
+        Integer num = Integer.valueOf(map.get("num"));
+        return cs.updateOne(username, isbn, num);
+    }
+
     @PostMapping("/delete")
     public boolean deleteOne(@RequestBody Map<String, String> map) {
         String username = map.get("username");

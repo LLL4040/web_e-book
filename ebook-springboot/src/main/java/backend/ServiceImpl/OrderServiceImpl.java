@@ -1,8 +1,10 @@
 package backend.ServiceImpl;
 
+import backend.Dao.BookDao;
 import backend.Dao.CartDao;
 import backend.Dao.OrderDao;
 import backend.Dao.OrderItemDao;
+import backend.Entity.Book;
 import backend.Entity.Cart;
 import backend.Entity.Order;
 import backend.Entity.OrderItem;
@@ -22,6 +24,8 @@ public class OrderServiceImpl implements OrderService {
     OrderItemDao orderItemDao;
     @Autowired
     CartDao cartDao;
+    @Autowired
+    BookDao bookDao;
 
     @Override
     public LinkedList<Order> findAll() {
@@ -59,8 +63,10 @@ public class OrderServiceImpl implements OrderService {
             orderItem.setOrder_id(order.getOrder_id());
             orderItem.setBook(cart.getBook());
             orderItem.setNumber(cart.getNum());
-            System.out.println(cart.getCart_id());
             orderItemDao.addItem(orderItem);
+            Book book = cart.getBook();
+            book.setAmount(book.getAmount()-cart.getNum());
+            bookDao.updateBook(book);
             cartDao.deleteOne(cart.getUser().getUsername(), cart.getBook().getIsbn());
         }
         return true;

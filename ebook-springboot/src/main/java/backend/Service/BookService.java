@@ -14,8 +14,5 @@ public interface BookService {
 
     Book addBook(Book book);
 
-    @Transactional
-    boolean deleteBook(String isbn);
-
     Book updateBook(Map<String, String> data);
 }

@@ -20,8 +20,8 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
-    public boolean deleteBook(String isbn) {
-        return bookRepository.deleteByIsbn(isbn);
+    public Book updateBook(Book book) {
+        return bookRepository.save(book);
     }
 
     @Override

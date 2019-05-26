@@ -97,12 +97,7 @@
         axios
           .post('http://localhost:8088/api/cart/insert', form)
           .then(response => {
-            if (response.data === 1) {
-              alert("成功加入购物车！");
-            }
-            else {
-              alert("加入失败请重试！");
-            }
+            alert("成功加入购物车！");
           })
       }
     }
