@@ -24,7 +24,11 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public LinkedList<Cart> getAll(String username) {
-        return cartDao.findAllByUsername(username);
+        LinkedList<Cart> cartLinkedList = cartDao.findAllByUsername(username);
+        for(Cart cart: cartLinkedList) {
+            //cart.setUser(null);
+        }
+        return cartLinkedList;
     }
 
     @Override
@@ -42,6 +46,23 @@ public class CartServiceImpl implements CartService {
         else {
             cart.setNum(num);
             return cartDao.updateOne(cart);
+        }
+    }
+
+    @Override
+    public Cart getOne(String username, String isbn) {
+        return cartDao.findOne(username, isbn).orNull();
+    }
+
+    @Override
+    public boolean deleteOne(String username, String isbn) {
+        Cart cart = cartDao.findOne(username, isbn).orNull();
+        if(cart == null) {
+            return false;
+        }
+        else {
+            cartDao.deleteOne(username, isbn);
+            return true;
         }
     }
 }

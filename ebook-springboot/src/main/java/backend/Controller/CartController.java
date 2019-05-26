@@ -14,9 +14,16 @@ public class CartController {
     @Autowired
     CartService cs;
 
-    @GetMapping("/all/{name}")
-    public LinkedList<Cart> getAll(@PathVariable("name") String username) {
+    @PostMapping("/all")
+    public LinkedList<Cart> getAll(@RequestBody Map<String, String> map) {
+        String username = map.get("username");
         return cs.getAll(username);
+    }
+
+    @GetMapping("/one/{name}&&{isbn}")
+    public Cart getOne(@PathVariable("name") String username,
+                                   @PathVariable("isbn") String isbn) {
+        return cs.getOne(username, isbn);
     }
 
     @PostMapping("/insert")
@@ -26,4 +33,12 @@ public class CartController {
         Integer num = Integer.valueOf(map.get("num"));
         return cs.addOne(username, isbn, num);
     }
+
+    @PostMapping("/delete")
+    public boolean deleteOne(@RequestBody Map<String, String> map) {
+        String username = map.get("username");
+        String isbn = map.get("isbn");
+        return cs.deleteOne(username, isbn);
+    }
+
 }

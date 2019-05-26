@@ -5,6 +5,8 @@ import backend.Entity.Cart;
 import java.util.LinkedList;
 import com.google.common.base.Optional;
 
+import javax.transaction.Transactional;
+
 public interface CartDao {
     /**
      * Create methods
@@ -14,7 +16,8 @@ public interface CartDao {
     /**
      * Delete methods
      */
-    boolean deleteOne(String username, String isbn);
+    @Transactional
+    void deleteOne(String username, String isbn);
 
     /**
      * Query methods

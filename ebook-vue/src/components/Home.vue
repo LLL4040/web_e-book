@@ -102,7 +102,7 @@
                   alert('用户名或密码错误，登录失败请重新登录！');
                   return false;
                 } else {
-                  this.$router.push({name: "UserBooks", params: {"user": ruleForm.name}});
+                  this.$router.push({name: "UserBooks", params: {"user": ruleForm.username}});
                 }
               });
           } else {

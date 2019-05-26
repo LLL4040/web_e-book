@@ -79,7 +79,7 @@
       }
       let form = {"username": this.user};
       axios
-        .post('http://localhost:8088/api/carts', form)
+        .post('http://localhost:8088/api/cart/all', form)
         .then(response => {
           this.CartItems = response.data;
         })

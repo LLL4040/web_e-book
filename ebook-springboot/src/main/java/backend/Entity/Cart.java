@@ -1,8 +1,6 @@
 package backend.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -10,17 +8,18 @@ import java.util.Objects;
 @Entity
 @Table(name = "carts", schema = "ebook", catalog = "")
 @JsonIgnoreProperties(value = {"handler", "hibernateLazyInitializer", "fieldHandler"})
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "cart_id")
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonBackReference
+    @JsonManagedReference
     private Integer cart_id;
 
-    @ManyToOne(targetEntity = User.class, cascade={CascadeType.MERGE,CascadeType.REFRESH}, optional=false)
+    @ManyToOne(targetEntity = User.class, cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "username", referencedColumnName = "username")
-    private User user;
+    protected User user;
 
-    @ManyToOne(targetEntity = Book.class, cascade={CascadeType.MERGE,CascadeType.REFRESH}, optional=false)
+    @ManyToOne(targetEntity = Book.class, cascade={CascadeType.MERGE,CascadeType.REFRESH}, fetch=FetchType.EAGER, optional=false)
     @JoinColumn(name = "isbn", referencedColumnName = "isbn")
     private Book book;
 
