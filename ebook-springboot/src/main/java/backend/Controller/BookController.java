@@ -1,14 +1,13 @@
 package backend.Controller;
 
 import backend.Entity.Book;
+import backend.Entity.BookMongoDB;
 import backend.Service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedList;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/book")
@@ -24,5 +23,17 @@ public class BookController {
     @GetMapping("/all")
     public LinkedList<Book> getAllBooks() {
         return bs.findAll();
+    }
+
+    @GetMapping("/isbn/mongo/{isbn}")
+    public BookMongoDB getByIsbn(@PathVariable("isbn") String isbn) {
+        return bs.findBookMongo(isbn);
+    }
+
+    @PostMapping("/add/mongo")
+    public void addMongo(@RequestBody Map<String, String> map) {
+        String isbn = map.get("isbn");
+        String comment = map.get("comment");
+        bs.addBookMongo(isbn, comment);
     }
 }

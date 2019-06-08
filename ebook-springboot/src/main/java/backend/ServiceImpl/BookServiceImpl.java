@@ -1,19 +1,25 @@
 package backend.ServiceImpl;
 
 import backend.Dao.BookDao;
+import backend.Dao.BookMongoDBDao;
 import backend.Entity.Book;
+import backend.Entity.BookMongoDB;
 import backend.Service.BookService;
 import com.google.common.base.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 @Service
 public class BookServiceImpl implements BookService {
     @Autowired
     private BookDao bookDao;
+
+    @Autowired
+    private BookMongoDBDao bookMongoDBDao;
 
     @Override
     public Optional<Book> findBookByIsbn(String isbn) {
@@ -61,5 +67,24 @@ public class BookServiceImpl implements BookService {
         }
 
         return bookDao.addBook(book);
+    }
+
+    @Override
+    public BookMongoDB findBookMongo(String isbn) {
+        return bookMongoDBDao.findByIsbn(isbn);
+    }
+
+    @Override
+    public void addBookMongo(String isbn, String comment) {
+        try {
+            BookMongoDB bookMongoDB = bookMongoDBDao.findByIsbn(isbn);
+            bookMongoDB.updateComments(comment);
+            bookMongoDBDao.save(bookMongoDB);
+        } catch (Exception e) {
+            LinkedList<String> comments = new LinkedList<>();
+            comments.add(comment);
+            BookMongoDB bookMongoDB = new BookMongoDB(isbn, comments);
+            bookMongoDBDao.save(bookMongoDB);
+        }
     }
 }
