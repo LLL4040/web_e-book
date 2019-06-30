@@ -41,7 +41,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public LinkedList<User> findAll() {
-        return new LinkedList<>(userRepository.findAll());
+    public LinkedList<User> findAll(Integer id) {
+        return new LinkedList<>(userRepository.findAllByIdentityIs(id));
     }
 }

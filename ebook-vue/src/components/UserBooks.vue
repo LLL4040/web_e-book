@@ -16,44 +16,46 @@
 		</div>
     <div id="content">
       <div id="content_bottom">
-			<el-table :data="books.slice((bookCurrentPage - 1) * bookPageSize, bookCurrentPage * bookPageSize) &&
-			books.filter(data => !search || data.bookname.toLowerCase().includes(search.toLowerCase()))"
-                border style="width: 100%; margin-top: 10px">
-        <el-table-column type="expand">
-          <template slot-scope="props">
-            <el-form label-position="left" inline class="demo-table-expand">
-              <el-form-item label="内容简介">
-                <span>{{ props.row.contentInfo }}</span>
-              </el-form-item>
-              <el-form-item label="作者简介">
-                <span>{{ props.row.authorInfo }}</span>
-              </el-form-item>
-            </el-form>
-          </template>
-        </el-table-column>
-          <el-table-column align="center" prop="isbn" label="ISBN" width="150px"></el-table-column>
-          <el-table-column align="center" prop="cover" label="封面">
-            <template slot-scope="scope">
-              <img :src="scope.row.cover" style="width: 80px; height: 120px">
-            </template>
-          </el-table-column>
-          <el-table-column align="center" prop="bookname" label="书名"></el-table-column>
-          <el-table-column align="center" prop="author" label="作者"></el-table-column>
-          <el-table-column align="center" prop="price" label="单价"></el-table-column>
-          <el-table-column align="center" prop="amount" label="库存"></el-table-column>
-          <el-table-column align="center" width="170px">
-            <template slot="header" slot-scope="scope">
-              <el-input v-model="search" size="mini" placeholder="输入关键字搜索"/>
-            </template>
-            <template slot-scope="scope">
-              <el-button size="mini" type="danger" @click="handleAdd(scope.row)">加购</el-button>
-            </template>
-          </el-table-column>
-      </el-table>
-      <el-pagination style="text-align: center; margin-top: 5px;" :current-page="bookCurrentPage"
-                     :page-sizes="[10, 20, 30, 40, 50]" :page-size="bookPageSize"
-                     layout="total, sizes, prev, pager, next, jumper" :total="bookNumber"></el-pagination>
-      <div class="clear"></div>
+        <el-card class="box-card" style="text-align: center;">
+          <el-table :data="books.slice((bookCurrentPage - 1) * bookPageSize, bookCurrentPage * bookPageSize) &&
+          books.filter(data => !search || data.bookname.toLowerCase().includes(search.toLowerCase()))"
+                    border style="width: 100%; margin-top: 10px">
+            <el-table-column type="expand">
+              <template slot-scope="props">
+                <el-form label-position="left" inline class="demo-table-expand">
+                  <el-form-item label="内容简介">
+                    <span>{{ props.row.contentInfo }}</span>
+                  </el-form-item>
+                  <el-form-item label="作者简介">
+                    <span>{{ props.row.authorInfo }}</span>
+                  </el-form-item>
+                </el-form>
+              </template>
+            </el-table-column>
+              <el-table-column align="center" prop="isbn" label="ISBN" width="150px"></el-table-column>
+              <el-table-column align="center" prop="cover" label="封面">
+                <template slot-scope="scope">
+                  <img :src="scope.row.cover" style="width: 80px; height: 120px">
+                </template>
+              </el-table-column>
+              <el-table-column align="center" prop="bookname" label="书名"></el-table-column>
+              <el-table-column align="center" prop="author" label="作者"></el-table-column>
+              <el-table-column align="center" prop="price" label="单价"></el-table-column>
+              <el-table-column align="center" prop="amount" label="库存"></el-table-column>
+              <el-table-column align="center" width="170px">
+                <template slot="header" slot-scope="scope">
+                  <el-input v-model="search" size="mini" placeholder="输入关键字搜索"/>
+                </template>
+                <template slot-scope="scope">
+                  <el-button size="mini" type="danger" @click="handleAdd(scope.row)">加购</el-button>
+                </template>
+              </el-table-column>
+          </el-table>
+          <el-pagination style="text-align: center; margin-top: 5px;" :current-page="bookCurrentPage"
+                         :page-sizes="[10, 20, 30, 40, 50]" :page-size="bookPageSize"
+                         layout="total, sizes, prev, pager, next, jumper" :total="bookNumber"></el-pagination>
+          <div class="clear"></div>
+        </el-card>
     </div>
     </div>
   </div>

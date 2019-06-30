@@ -29,8 +29,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public LinkedList<User> findAll() {
-        return userDao.findAll();
+    public LinkedList<User> findAll(String name, Integer id) {
+        try {
+            if(userDao.findOne(name).getIdentity() == 1) {
+                return userDao.findAll(id);
+            }
+            else {
+                return new LinkedList<>();
+            }
+        } catch (Exception e) {
+            return new LinkedList<>();
+        }
     }
 
     @Override
@@ -39,7 +48,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updateUser(Map<String, String> data) {
+    public Integer updateUser(Map<String, String> data) {
         String username = data.get("username");
         User user = userDao.findOne(username);
         String email = data.get("email"), password = data.get("password"), status = data.get("status");
@@ -52,7 +61,8 @@ public class UserServiceImpl implements UserService {
         if(status != null) {
             user.setStatus(Integer.valueOf(status));
         }
-        return userDao.addUser(user);
+        userDao.addUser(user);
+        return 1;
     }
 
     @Override
@@ -70,14 +80,14 @@ public class UserServiceImpl implements UserService {
         Optional<User> optionalUser = userDao.findByUsername(username);
         User userFind = optionalUser.orNull();
         if(userFind == null) {
-            return 0;
+            return -1;
         }
         else if(userFind.getStatus() == 0) {
             return 2;
         }
         else if(password.equals(userFind.getPassword())) {
-            return 1;
+            return userFind.getIdentity();
         }
-        return 0;
+        return -1;
     }
 }

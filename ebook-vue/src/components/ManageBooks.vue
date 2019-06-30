@@ -1,137 +1,214 @@
 <template>
-  <div class="managebooks">
+  <div class="book_user">
     <div id="page" align="center">
-            <div id="top">
-                <div id="top_left">
-                    <img alt="" src="../assets/logo.png" width="50%">
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div id="menu">
-                <a href="/home">首页</a>
-                <a href="/manage">用户管理</a>
-                <a class="now" href="#">书籍管理</a>
-                <a href="/manageorder">查看订单</a>
-                <a href="/statistics">统计</a>
-            </div>
+      <div id="top">
+        <div id="top_left">
+          <img alt="" src="../assets/logo.png" width="50%">
         </div>
-        <div id="content">
-                <div id="content_bottom">
-      <el-main style="width: 800px; margin: 0 auto;">
-        <el-row type="flex" justify="center">
-          <el-col :span="8">
-            <el-input placeholder="请输入书名" v-model="search" clearable></el-input>
-          </el-col>
-        </el-row>
-        <el-table :data="bookData.slice((bookCurrentPage - 1) * bookPageSize, bookCurrentPage * bookPageSize)" border style="width: 100%; margin-top: 10px">
-          <el-table-column prop="id" label="id"></el-table-column>
-          <el-table-column label="封面">
-            <template slot-scope="scope">
-              <img :src="scope.row.cover" style="width: 50px">
-            </template>
-          </el-table-column>
-          <el-table-column align="center" prop="title" label="书名"></el-table-column>
-          <el-table-column align="center" prop="author" label="作者"></el-table-column>
-          <el-table-column align="center" prop="price" label="单价"></el-table-column>
-          <el-table-column align="center" prop="stock" label="库存"></el-table-column>
-          <el-table-column align="center" label="操作" width="180px">
-            <template slot-scope="scope">
-              <el-button size="mini" @click="handleEdit(scope.row.id)">编辑</el-button>
-              <el-button size="mini" type="danger">删除</el-button>
-            </template>
-          </el-table-column>
-        </el-table>
-        <el-pagination style="text-align: center; margin-top: 5px;" :current-page="bookCurrentPage" :page-sizes="[10, 20, 30, 40, 50]" :page-size="bookPageSize" layout="total, sizes, prev, pager, next, jumper" :total="bookNumber"></el-pagination>
-        <el-dialog title="书籍编辑" :visible.sync="dialogFormVisible" width="400px">
-          <el-form :model="bookForm">
-            <el-form-item label="书名">
-              <el-input v-model="bookForm.title"></el-input>
-            </el-form-item>
-            <el-form-item label="作者">
-              <el-input v-model="bookForm.author"></el-input>
-            </el-form-item>
-            <el-form-item label="单价">
-              <el-input v-model="bookForm.price"></el-input>
-            </el-form-item>
-            <el-form-item label="库存">
-              <el-input v-model="bookForm.stock"></el-input>
-            </el-form-item>
-          </el-form>
-          <div slot="footer" class="dialog-footer">
-            <el-button type="primary" @click="dialogFormVisible = false">提交</el-button>
-          </div>
-        </el-dialog>
-      </el-main>
-                </div>
-        </div>
+      </div>
+      <div class="clear"></div>
+      <div id="menu">
+        <router-link :to="{name:'Home',params:{user: ''}}" >{{ index }}</router-link>
+        <a class="now" href="#">书籍管理</a>
+        <router-link :to="{name:'ManageUsers',params:{user: this.user}}" >用户管理</router-link>
+        <router-link :to="{name:'ManageOrders',params:{user: this.user}}" >订单管理</router-link>
+        <router-link :to="{name:'Statistics',params:{user: this.user}}" >统计</router-link>
+      </div>
+    </div>
+    <div id="content">
+      <div id="content_bottom">
+        <el-card class="box-card">
+          <el-row type="flex" justify="center">
+            <el-input v-model="search" size="mini" placeholder="输入关键字搜索"/>
+          </el-row>
+          <el-table :data="books.slice((bookCurrentPage - 1) * bookPageSize, bookCurrentPage * bookPageSize) &&
+        books.filter(data => !search || data.bookname.toLowerCase().includes(search.toLowerCase()))"
+                    border style="width: 100%; margin-top: 10px">
+            <el-table-column type="expand">
+              <template slot-scope="props">
+                <el-form label-position="left" inline class="demo-table-expand">
+                  <el-form-item label="内容简介">
+                    <span>{{ props.row.contentInfo }}</span>
+                  </el-form-item>
+                  <el-form-item label="作者简介">
+                    <span>{{ props.row.authorInfo }}</span>
+                  </el-form-item>
+                </el-form>
+              </template>
+            </el-table-column>
+            <el-table-column align="center" prop="isbn" label="ISBN" width="150px"></el-table-column>
+            <el-table-column align="center" prop="cover0" label="封面">
+              <template slot-scope="scope">
+                <img :src="scope.row.cover" style="width: 80px; height: 120px">
+              </template>
+            </el-table-column>
+            <el-table-column align="center" prop="bookname" label="书名"></el-table-column>
+            <el-table-column align="center" prop="author" label="作者"></el-table-column>
+            <el-table-column align="center" prop="price" label="单价"></el-table-column>
+            <el-table-column align="center" prop="amount" label="库存"></el-table-column>
+            <el-table-column align="center" width="180px">
+              <template slot="header" slot-scope="scope">
+                <el-button size="mini " style="margin-left: 5px; " @click="handleAdd()">添加新书</el-button>
+              </template>
+              <template slot-scope="scope">
+                <el-button size="mini" type="success" @click="handleEdit(scope.row)">编辑</el-button>
+                <el-button size="mini" type="danger" @click="handleDelete(scope.row)">删除</el-button>
+              </template>
+            </el-table-column>
+          </el-table>
+          <el-pagination style="text-align: center; margin-top: 5px;" :current-page="bookCurrentPage"
+                         :page-sizes="[10, 20, 30, 40, 50]" :page-size="bookPageSize"
+                         layout="total, sizes, prev, pager, next, jumper" :total="bookNumber"></el-pagination>
+          <div class="clear"></div>
+          <el-dialog title="书籍管理" :visible.sync="dialogFormVisible" width="400px">
+            <el-form :model="bookForm">
+              <el-form-item label="ISBN">
+                <el-input v-model="bookForm.isbn"></el-input>
+              </el-form-item>
+              <el-form-item label="封面">
+                <el-input type='file' accept="image/*" id="file" ref="file"></el-input>
+              </el-form-item>
+              <el-form-item label="书名">
+                <el-input v-model="bookForm.bookname"></el-input>
+              </el-form-item>
+              <el-form-item label="作者">
+                <el-input v-model="bookForm.author"></el-input>
+              </el-form-item>
+              <el-form-item label="单价">
+                <el-input v-model="bookForm.price"></el-input>
+              </el-form-item>
+              <el-form-item label="库存">
+                <el-input v-model="bookForm.amount"></el-input>
+              </el-form-item>
+              <el-form-item label="作者简介">
+                <el-input v-model="bookForm.authorInfo"></el-input>
+              </el-form-item>
+              <el-form-item label="内容简介">
+                <el-input v-model="bookForm.contentInfo"></el-input>
+              </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+              <el-button type="primary" @click="submitChange()">提交</el-button>
+            </div>
+          </el-dialog>
+        </el-card>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'managebooks',
-  data: function () {
-    return {
-      activeIndex: 'managebooks',
-      search: '',
-      dialogFormVisible: false,
-      bookForm: {
-        id: 1,
-        cover: require('../../static/software.jpg'),
-        title: '软件工程原理',
-        author: 'xxx',
-        price: 10,
-        stock: 0
+  import axios from "axios";
+
+  export default {
+    name: 'book_manager',
+    data () {
+      return {
+        index: '退出登录',
+        user: '',
+        bookNumber: 0,
+        bookCurrentPage: 1,
+        bookPageSize: 10,
+        books: [],
+        book:'',
+        search: '',
+        dialogFormVisible: false,
+        bookForm: {
+          isbn: '',
+          bookname: '',
+          author: '',
+          price: 0,
+          amount: 0,
+          authorInfo: '',
+          contentInfo: ''
+        }
+      }
+    },
+    mounted () {
+      this.loadBooks();
+    },
+    methods: {
+      loadBooks () {
+        this.user = this.$route.params.user;
+        if (this.user === '') {
+          alert("请登录！");
+          this.$router.push({name: "Home"});
+        }
+        axios
+          .get('http://localhost:8088/api/book/all')
+          .then(response => {
+            this.books = response.data;
+            this.bookNumber = this.books.length;
+            let self = this;
+            for(let i = 0; i < this.bookNumber; i++) {
+              axios
+                .post('http://localhost:8088/api/book/isbn/mongo', {"isbn": self.books[i].isbn})
+                .then(response => {
+                  console.log(response);
+                  //self.books[i].push("cover0", "data:image/png;base64," + response.data.cover.toString());
+                })
+            }
+          })
       },
-      bookData: [{
-        id: 1,
-        cover: require('../../static/datastructure.jpg'),
-        title: '数据结构',
-        author: 'xxx',
-        price: 10,
-        stock: 0
-      }, {
-        id: 2,
-        cover: require('../../static/software.jpg'),
-        title: '软件工程原理',
-        author: 'xxx',
-        price: 10,
-        stock: 0
-      }, {
-        id: 3,
-        cover: require('../../static/database.jpg'),
-        title: '数据库系统概念',
-        author: 'xxx',
-        price: 10,
-        stock: 0
-      }, {
-        id: 4,
-        cover: require('../../static/ics.jpg'),
-        title: '深入理解计算机系统',
-        author: 'xxx',
-        price: 10,
-        stock: 0
-      }],
-      bookNumber: 4,
-      bookCurrentPage: 1,
-      bookPageSize: 10
-    };
-  },
-  methods: {
-    handleEdit (id) {
-      window.console.log(id);
-      this.dialogFormVisible = true;
+      handleEdit (row) {
+        this.dialogFormVisible = true;
+        this.bookForm = row;
+      },
+      handleAdd () {
+        this.dialogFormVisible = true;
+        this.bookForm = [];
+      },
+      handleDelete (row) {
+        let form = {"isbn": row.isbn, "amount": 0};
+        axios
+          .post("http://localhost:8088/api/book/delete", form)
+          .then(response => {
+            if(response) {
+              alert("删除成功！");
+              this.loadBooks();
+            }
+            else {
+              alert("删除失败！");
+            }
+          })
+      },
+      submitChange() {
+        let imagFile = this.$refs.file.files[0];
+        let bodyData = new FormData();
+        bodyData.set('isbn', this.bookForm.isbn);
+        bodyData.set('bookname', this.bookForm.bookname);
+        bodyData.set('author', this.bookForm.author);
+        bodyData.set('price', this.bookForm.price);
+        bodyData.set('amount', this.bookForm.amount);
+        bodyData.set('authorInfo', this.bookForm.authorInfo);
+        bodyData.set('contentInfo', this.bookForm.contentInfo);
+        bodyData.append('cover', imagFile);
+        axios
+          .post({method: 'post',
+            url: 'http://localhost:8088/api/book/add',
+            data: bodyData,
+            config: { headers: {'Content-Type': 'multipart/form-data' }}}
+            )
+          .then(response => {
+            if(response) {
+              alert("更新数据成功！");
+              this.loadBooks();
+            }
+            else {
+              alert("更新失败！");
+            }
+          })
+      }
     }
-  }
-};
+  };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.cover {
-  width: 150px;
-}
-.el-menu-item {
-  font-size: 18px;
-}
+<style>
+  .el-table .cell {
+    white-space: pre-wrap;
+  }
+  .el-menu-item {
+    font-size: 18px;
+  }
 </style>

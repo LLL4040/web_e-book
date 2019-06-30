@@ -8,4 +8,5 @@ public interface OrderService {
     LinkedList<Order> findAll();
     LinkedList<Order> findByUserAndStatus(String username, Integer status);
     boolean addOne(String username);
+    boolean deleteOne(Integer id);
 }

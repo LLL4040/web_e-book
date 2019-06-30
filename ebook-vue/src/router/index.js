@@ -5,11 +5,11 @@ import Register from '../components/Register.vue';
 import UserBooks from '../components/UserBooks.vue';
 import UserCart from '../components/UserCart.vue';
 import UserOrder from '../components/UserOrder.vue';
-import Manage from '../components/Manage.vue';
 import ManageBooks from '../components/ManageBooks.vue';
-import ManageOrder from '../components/ManageOrder.vue';
+import ManageOrders from '../components/ManageOrders.vue';
 import Statistics from '../components/Statistics.vue';
 import Hello from '../components/HelloWorld.vue';
+import ManageUsers from "../components/ManageUsers";
 
 Vue.use(Router);
 
@@ -43,17 +43,17 @@ export default new Router({
     name: 'UserOrder',
     component: UserOrder
   }, {
-    path: '/manage',
-    name: 'Manage',
-    component: Manage
+    path: '/manageusers',
+    name: 'ManageUsers',
+    component: ManageUsers
   }, {
     path: '/managebooks',
     name: 'ManageBooks',
     component: ManageBooks
   }, {
     path: '/manageorder',
-    name: 'ManageOrder',
-    component: ManageOrder
+    name: 'ManageOrders',
+    component: ManageOrders
   }, {
     path: '/statistics',
     name: 'Statistics',

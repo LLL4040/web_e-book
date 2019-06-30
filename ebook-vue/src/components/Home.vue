@@ -27,10 +27,10 @@
                     <div class="index">
                       <p class="headline">用户登录</p>
                       <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="90px" class="demo-ruleForm">
-                        <el-form-item label="用户名" prop="name">
+                        <el-form-item label="用户名" prop="username">
                           <el-input v-model="ruleForm.username"></el-input>
                         </el-form-item>
-                        <el-form-item label="密码" prop="pass">
+                        <el-form-item label="密码" prop="password">
                           <el-input type="password" v-model="ruleForm.password" autocomplete="off"></el-input>
                         </el-form-item>
                         <el-form-item align="center">
@@ -77,14 +77,7 @@
           password: '',
           msg: ''
         },
-        rules: {
-          username: [
-            { validator: checkName, trigger: 'blur' },
-          ],
-          password: [
-            { validator: validatePass, trigger: 'blur' },
-          ],
-        }
+
       };
     },
     methods: {
@@ -98,11 +91,13 @@
                 if (this.msg === 2) {
                   alert('您的账户已被禁用，请解禁后再登录！');
                   return false;
-                } else if (this.msg === 0) {
+                } else if (this.msg === -1) {
                   alert('用户名或密码错误，登录失败请重新登录！');
                   return false;
-                } else {
+                } else if (this.msg === 0) {
                   this.$router.push({name: "UserBooks", params: {"user": ruleForm.username}});
+                } else if (this.msg === 1) {
+                  this.$router.push({name: "ManageBooks", params: {"user": ruleForm.username}});
                 }
               });
           } else {

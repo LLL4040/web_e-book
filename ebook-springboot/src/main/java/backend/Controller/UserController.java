@@ -5,6 +5,7 @@ import backend.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedList;
 import java.util.Map;
 
 @RestController
@@ -39,5 +40,16 @@ public class UserController {
         String username = map.get("username");
         String password = map.get("password");
         return us.checkPassword(username, password);
+    }
+
+    @PostMapping("/all")
+    public LinkedList<User> getAll(@RequestBody Map<String, String> map) {
+        String name = map.get("name");
+        return us.findAll(name, 0);
+    }
+
+    @PostMapping("/change")
+    public Integer change(@RequestBody Map<String, String> map) {
+        return us.updateUser(map);
     }
 }

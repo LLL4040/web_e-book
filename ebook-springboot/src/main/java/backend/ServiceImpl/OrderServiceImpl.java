@@ -1,9 +1,6 @@
 package backend.ServiceImpl;
 
-import backend.Dao.BookDao;
-import backend.Dao.CartDao;
-import backend.Dao.OrderDao;
-import backend.Dao.OrderItemDao;
+import backend.Dao.*;
 import backend.Entity.Book;
 import backend.Entity.Cart;
 import backend.Entity.Order;
@@ -30,6 +27,9 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     BookDao bookDao;
 
+    @Autowired
+    UserDao userDao;
+
     @Override
     public LinkedList<Order> findAll() {
         LinkedList<Order> orderLinkedList = orderDao.findAll();
@@ -41,11 +41,27 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public LinkedList<Order> findByUserAndStatus(String username, Integer status) {
-        LinkedList<Order> orderLinkedList = orderDao.findByUserAndStatus(username, status);
-        for(Order order: orderLinkedList) {
-            order.setUser(null);
+        try {
+            if(userDao.findOne(username).getIdentity() == 1) {
+                LinkedList<Order> orderLinkedList = orderDao.findAll();
+                for(Order order: orderLinkedList) {
+                    order.getUser().setEmail(null);
+                    order.getUser().setPassword(null);
+                }
+                return orderLinkedList;
+            }
+            else {
+                LinkedList<Order> orderLinkedList = orderDao.findByUserAndStatus(username, status);
+                for(Order order: orderLinkedList) {
+                    order.getUser().setEmail(null);
+                    order.getUser().setPassword(null);
+                }
+                return orderLinkedList;
+            }
+        } catch (Exception e) {
+            return new LinkedList<>();
         }
-        return orderLinkedList;
+
     }
 
     @Override
@@ -73,5 +89,16 @@ public class OrderServiceImpl implements OrderService {
             cartDao.deleteOne(cart.getUser().getUsername(), cart.getBook().getIsbn());
         }
         return true;
+    }
+
+    @Override
+    public boolean deleteOne(Integer id) {
+        try {
+            Order order = orderDao.findById(id);
+            orderDao.deleteOrder(order);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

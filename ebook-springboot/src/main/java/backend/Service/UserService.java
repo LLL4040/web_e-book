@@ -10,12 +10,12 @@ public interface UserService {
     User addUser(User user);
 
     User findUserByUsername(String username);
-    LinkedList<User> findAll();
+    LinkedList<User> findAll(String name, Integer id);
 
     @Transactional
     boolean deleteUser(String username);
 
-    User updateUser(Map<String, String> data);
+    Integer updateUser(Map<String, String> data);
 
     boolean nameIsValid(String username);
 

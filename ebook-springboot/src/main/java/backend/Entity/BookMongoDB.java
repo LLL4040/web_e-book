@@ -3,6 +3,7 @@ package backend.Entity;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Id;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,12 +12,11 @@ public class BookMongoDB {
     @Id
     private String id;
     private String isbn;
+    private byte[] cover;
 
-    private List<String> comments;
-
-    public BookMongoDB(String isbn, List<String> comments) {
+    public BookMongoDB(String isbn, byte[] cover) {
         this.isbn = isbn;
-        this.comments = comments;
+        this.cover = cover;
     }
 
     public String getId() {
@@ -31,27 +31,23 @@ public class BookMongoDB {
         return isbn;
     }
 
-    public List<String> getComments() {
-        return comments;
-    }
-
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
-    public void setComments(List<String> comments) {
-        this.comments = comments;
+    public byte[] getCover() {
+        return cover;
     }
 
-    public void updateComments(String comment) {
-        this.comments.add(comment);
+    public void setCover(byte[] cover) {
+        this.cover = cover;
     }
 
     @Override
     public String toString() {
         return String.format(
-                "Book[id=%s,isbn='%s',comments='%s']",
-                id, isbn, comments
+                "Book[id=%s,isbn='%s'']",
+                id, isbn
         );
     }
 
@@ -68,11 +64,11 @@ public class BookMongoDB {
         if(!Objects.equals(isbn, that.isbn)) {
             return false;
         }
-        if(!Objects.equals(comments, that.comments)) {
+        if(!Arrays.equals(cover, that.cover)) {
             return false;
         }
 
-        return true;
+        return false;
     }
 
     @Override
@@ -80,7 +76,7 @@ public class BookMongoDB {
         int result = 0;
         result = 31 * result + (id != null ? id.hashCode() : 0);
         result = 31 * result + (isbn != null ? isbn.hashCode() : 0);
-        result = 31 * result + (comments != null ? comments.hashCode() : 0);
+        result = 31 * result + (cover != null ? Arrays.hashCode(cover) : 0);
         return result;
     }
 }

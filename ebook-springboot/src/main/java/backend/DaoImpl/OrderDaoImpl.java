@@ -24,6 +24,11 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
+    public Order findById(Integer id) {
+        return orderRepository.findByOrder_id(id);
+    }
+
+    @Override
     public LinkedList<Order> findByUserAndStatus(String username, Integer status) {
         return new LinkedList<>(orderRepository.findByUser_UsernameAndStatus(username, status));
     }

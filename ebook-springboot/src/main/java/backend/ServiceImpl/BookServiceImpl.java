@@ -8,9 +8,10 @@ import backend.Service.BookService;
 import com.google.common.base.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
 @Service
@@ -32,18 +33,46 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book addBook(Book book) {
-        book.setCover(book.getCover() == null ? "../static/nocover.png": book.getCover());
-        return bookDao.addBook(book);
+    public Boolean addBook(MultipartFile cover, String isbn, String bookname, String author, Integer amount, Double price, String authorInfo, String contentInfo) throws IOException {
+        Book book = bookDao.findByIsbn(isbn).orNull();
+        if(book != null) {
+            return false;
+        }
+        else {
+            book = new Book();
+            book.setIsbn(isbn);
+            book.setBookname(bookname);
+            book.setAuthor(author);
+            book.setCover("");
+            book.setAmount(amount);
+            book.setPrice(price);
+            book.setAuthorInfo(authorInfo);
+            book.setContentInfo(contentInfo);
+            bookDao.addBook(book);
+            bookMongoDBDao.save(new BookMongoDB(isbn, cover.getBytes()));
+            return true;
+        }
     }
 
     @Override
-    public Book updateBook(Map<String, String> data) {
-        String isbn = data.get("ISBN"), bookname = data.get("bookname"),
-                author = data.get("author"), cover = data.get("cover"),
-                amount = data.get("amount"), price = data.get("price"),
+    public Book updateBook(Map<String, String> data, MultipartFile cover) throws IOException {
+        String isbn = data.get("isbn"), bookname = data.get("bookname"),
+                author = data.get("author"), amount = data.get("amount"), price = data.get("price"),
                 contentInfo = data.get("contentInfo"), authorInfo = data.get("authorInfo");
         Book book = bookDao.findByIsbn(isbn).orNull();
+        if(book == null) {
+            book = new Book();
+            book.setIsbn(isbn);
+            book.setBookname(bookname);
+            book.setAuthor(author);
+            book.setCover("");
+            book.setAmount(Integer.valueOf(amount));
+            book.setPrice(Double.valueOf(price));
+            book.setContentInfo("");
+            book.setAuthorInfo("");
+            bookMongoDBDao.save(new BookMongoDB(isbn, cover.getBytes()));
+            return bookDao.addBook(book);
+        }
         if(bookname != null) {
             book.setBookname(bookname);
         }
@@ -51,7 +80,9 @@ public class BookServiceImpl implements BookService {
             book.setAuthor(author);
         }
         if(cover != null) {
-            book.setCover(cover);
+            BookMongoDB bookMongoDB = bookMongoDBDao.findByIsbn(isbn);
+            bookMongoDB.setCover(cover.getBytes());
+            bookMongoDBDao.save(bookMongoDB);
         }
         if(amount != null) {
             book.setAmount(Integer.valueOf(amount));
@@ -74,17 +105,4 @@ public class BookServiceImpl implements BookService {
         return bookMongoDBDao.findByIsbn(isbn);
     }
 
-    @Override
-    public void addBookMongo(String isbn, String comment) {
-        try {
-            BookMongoDB bookMongoDB = bookMongoDBDao.findByIsbn(isbn);
-            bookMongoDB.updateComments(comment);
-            bookMongoDBDao.save(bookMongoDB);
-        } catch (Exception e) {
-            LinkedList<String> comments = new LinkedList<>();
-            comments.add(comment);
-            BookMongoDB bookMongoDB = new BookMongoDB(isbn, comments);
-            bookMongoDBDao.save(bookMongoDB);
-        }
-    }
 }

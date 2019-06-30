@@ -28,4 +28,10 @@ public class OrderController {
         String username = map.get("username");
         return os.addOne(username);
     }
+
+    @PostMapping("/delete")
+    public boolean deleteOne(@RequestBody Map<String, String> map) {
+        Integer id = Integer.valueOf(map.get("id"));
+        return os.deleteOne(id);
+    }
 }

@@ -23,5 +23,5 @@ public interface UserDao {
     User findOne(String username);
     Optional<User> findByUsername(String username);
     Optional<User> findByEmail(String email);
-    LinkedList<User> findAll();
+    LinkedList<User> findAll(Integer id);
 }
