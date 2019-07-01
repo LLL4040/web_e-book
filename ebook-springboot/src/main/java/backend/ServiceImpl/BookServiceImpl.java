@@ -68,8 +68,8 @@ public class BookServiceImpl implements BookService {
             book.setCover("");
             book.setAmount(Integer.valueOf(amount));
             book.setPrice(Double.valueOf(price));
-            book.setContentInfo("");
-            book.setAuthorInfo("");
+            book.setContentInfo(contentInfo);
+            book.setAuthorInfo(authorInfo);
             bookMongoDBDao.save(new BookMongoDB(isbn, cover.getBytes()));
             return bookDao.addBook(book);
         }

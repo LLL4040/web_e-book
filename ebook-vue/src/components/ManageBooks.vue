@@ -37,7 +37,7 @@
               </template>
             </el-table-column>
             <el-table-column align="center" prop="isbn" label="ISBN" width="150px"></el-table-column>
-            <el-table-column align="center" prop="cover0" label="封面">
+            <el-table-column align="center" prop="cover" label="封面">
               <template slot-scope="scope">
                 <img :src="scope.row.cover" style="width: 80px; height: 120px">
               </template>
@@ -66,7 +66,8 @@
                 <el-input v-model="bookForm.isbn"></el-input>
               </el-form-item>
               <el-form-item label="封面">
-                <el-input type='file' accept="image/*" id="file" ref="file"></el-input>
+                <br>
+                <input type='file' accept="image/*" id="file" ref="file"></input>
               </el-form-item>
               <el-form-item label="书名">
                 <el-input v-model="bookForm.bookname"></el-input>
@@ -106,6 +107,7 @@
       return {
         index: '退出登录',
         user: '',
+        file:'',
         bookNumber: 0,
         bookCurrentPage: 1,
         bookPageSize: 10,
@@ -115,6 +117,7 @@
         dialogFormVisible: false,
         bookForm: {
           isbn: '',
+          cover: null,
           bookname: '',
           author: '',
           price: 0,
@@ -144,19 +147,18 @@
               axios
                 .post('http://localhost:8088/api/book/isbn/mongo', {"isbn": self.books[i].isbn})
                 .then(response => {
-                  console.log(response);
-                  //self.books[i].push("cover0", "data:image/png;base64," + response.data.cover.toString());
+                  self.books[i].cover = "data:image/png;base64," + response.data.cover.toString();
                 })
             }
           })
       },
       handleEdit (row) {
-        this.dialogFormVisible = true;
         this.bookForm = row;
+        this.dialogFormVisible = true;
       },
       handleAdd () {
-        this.dialogFormVisible = true;
         this.bookForm = [];
+        this.dialogFormVisible = true;
       },
       handleDelete (row) {
         let form = {"isbn": row.isbn, "amount": 0};
@@ -173,6 +175,7 @@
           })
       },
       submitChange() {
+        this.dialogFormVisible = false;
         let imagFile = this.$refs.file.files[0];
         let bodyData = new FormData();
         bodyData.set('isbn', this.bookForm.isbn);
@@ -183,14 +186,13 @@
         bodyData.set('authorInfo', this.bookForm.authorInfo);
         bodyData.set('contentInfo', this.bookForm.contentInfo);
         bodyData.append('cover', imagFile);
-        axios
-          .post({method: 'post',
+        axios({method: 'post',
             url: 'http://localhost:8088/api/book/add',
             data: bodyData,
             config: { headers: {'Content-Type': 'multipart/form-data' }}}
             )
           .then(response => {
-            if(response) {
+            if(response.data) {
               alert("更新数据成功！");
               this.loadBooks();
             }

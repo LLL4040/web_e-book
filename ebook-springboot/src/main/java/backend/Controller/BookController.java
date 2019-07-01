@@ -51,7 +51,7 @@ public class BookController {
                                @RequestParam String bookname, @RequestParam String author,
                                @RequestParam Integer amount, @RequestParam Double price,
                                @RequestParam String authorInfo, @RequestParam String contentInfo) throws IOException {
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, String> map = new HashMap<>();
         map.put("isbn", isbn);
         map.put("bookname", bookname);
         map.put("author", author);

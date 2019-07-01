@@ -4,27 +4,17 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Id;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 
 @Document(collection = "books")
 public class BookMongoDB {
     @Id
-    private String id;
     private String isbn;
     private byte[] cover;
 
     public BookMongoDB(String isbn, byte[] cover) {
         this.isbn = isbn;
         this.cover = cover;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getIsbn() {
@@ -45,10 +35,7 @@ public class BookMongoDB {
 
     @Override
     public String toString() {
-        return String.format(
-                "Book[id=%s,isbn='%s'']",
-                id, isbn
-        );
+        return String.format("Book[isbn='%s'']", isbn);
     }
 
     @Override
@@ -74,7 +61,6 @@ public class BookMongoDB {
     @Override
     public int hashCode(){
         int result = 0;
-        result = 31 * result + (id != null ? id.hashCode() : 0);
         result = 31 * result + (isbn != null ? isbn.hashCode() : 0);
         result = 31 * result + (cover != null ? Arrays.hashCode(cover) : 0);
         return result;

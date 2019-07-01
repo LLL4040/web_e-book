@@ -72,19 +72,30 @@
       };
     },
     mounted () {
-      this.user = this.$route.params.user;
-      if (this.user === '') {
-        alert("请登录后查看购物车！");
-        this.$router.push({name: "Home"});
-      }
-      let form = {"username": this.user};
-      axios
-        .post('http://localhost:8088/api/cart/all', form)
-        .then(response => {
-          this.CartItems = response.data;
-        })
+      this.loadCarts();
     },
     computed: {
+      loadCarts () {
+        this.user = this.$route.params.user;
+        if (this.user === '') {
+          alert("请登录后查看购物车！");
+          this.$router.push({name: "Home"});
+        }
+        let form = {"username": this.user};
+        axios
+          .post('http://localhost:8088/api/cart/all', form)
+          .then(response => {
+            this.CartItems = response.data;
+            let self = this;
+            for(let i = 0; i < this.CartItems.length; i++) {
+              axios
+                .post('http://localhost:8088/api/book/isbn/mongo', {"isbn": self.CartItems[i].book.isbn})
+                .then(response => {
+                  self.CartItems[i].book.cover = "data:image/png;base64," + response.data.cover.toString();
+                })
+            }
+          })
+      },
       getTotalAmount () {
         let s = 0;
         for (let i = 0; i < this.CartItems.length; i++) {
@@ -101,11 +112,7 @@
           .then(response => {
             if (response.data === true) {
               alert("删除成功！");
-              axios
-                .post('http://localhost:8088/api/cart/all', form)
-                .then(response => {
-                  this.CartItems = response.data;
-                })
+              this.loadCarts();
             }
           })
       },

@@ -78,18 +78,30 @@
       }
     },
     mounted () {
-      this.user = this.$route.params.user;
-      if (this.user !== '') {
-        this.index = '退出登录';
-      }
-      axios
-        .get('http://localhost:8088/api/book/all')
-        .then(response => {
-          this.books = response.data;
-          this.bookNumber = this.books.length;
-        })
+      this.loadBooks();
     },
     methods: {
+      loadBooks () {
+        this.user = this.$route.params.user;
+        if (this.user === '') {
+          alert("请登录！");
+          this.$router.push({name: "Home"});
+        }
+        axios
+          .get('http://localhost:8088/api/book/all')
+          .then(response => {
+            this.books = response.data;
+            this.bookNumber = this.books.length;
+            let self = this;
+            for(let i = 0; i < this.bookNumber; i++) {
+              axios
+                .post('http://localhost:8088/api/book/isbn/mongo', {"isbn": self.books[i].isbn})
+                .then(response => {
+                  self.books[i].cover = "data:image/png;base64," + response.data.cover.toString();
+                })
+            }
+          })
+      },
       handleAdd(row) {
         if (this.user === '') {
           alert("请登录后再加入购物车！");
