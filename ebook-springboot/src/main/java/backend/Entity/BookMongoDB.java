@@ -9,12 +9,21 @@ import java.util.Objects;
 @Document(collection = "books")
 public class BookMongoDB {
     @Id
+    private String id;
     private String isbn;
     private byte[] cover;
 
     public BookMongoDB(String isbn, byte[] cover) {
         this.isbn = isbn;
         this.cover = cover;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getIsbn() {
@@ -35,7 +44,7 @@ public class BookMongoDB {
 
     @Override
     public String toString() {
-        return String.format("Book[isbn='%s'']", isbn);
+        return String.format("Book[id='%s' isbn='%s'']", id, isbn);
     }
 
     @Override
@@ -48,6 +57,9 @@ public class BookMongoDB {
         }
 
         BookMongoDB that = (BookMongoDB) o;
+        if(!Objects.equals(id, that.id)) {
+            return false;
+        }
         if(!Objects.equals(isbn, that.isbn)) {
             return false;
         }
@@ -61,6 +73,7 @@ public class BookMongoDB {
     @Override
     public int hashCode(){
         int result = 0;
+        result = 31 * result + (id != null ? id.hashCode() : 0);
         result = 31 * result + (isbn != null ? isbn.hashCode() : 0);
         result = 31 * result + (cover != null ? Arrays.hashCode(cover) : 0);
         return result;
