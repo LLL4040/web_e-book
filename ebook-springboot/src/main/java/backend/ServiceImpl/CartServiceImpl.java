@@ -1,6 +1,5 @@
 package backend.ServiceImpl;
 
-
 import backend.Dao.BookDao;
 import backend.Dao.CartDao;
 import backend.Dao.UserDao;
@@ -9,11 +8,13 @@ import backend.Entity.Cart;
 import backend.Entity.User;
 import backend.Service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 
 @Service
+@Scope("prototype")
 public class CartServiceImpl implements CartService {
     @Autowired
     private CartDao cartDao;
@@ -21,6 +22,11 @@ public class CartServiceImpl implements CartService {
     private UserDao userDao;
     @Autowired
     private BookDao bookDao;
+
+    @Override
+    public void test() {
+        System.out.println("csi");
+    }
 
     @Override
     public LinkedList<Cart> getAll(String username) {

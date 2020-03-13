@@ -9,4 +9,5 @@ import java.util.List;
 public interface BookRepository extends JpaRepository<Book, String> {
     Optional<Book> findByIsbn(String isbn);
     List<Book> findAllByAmountIsNot(Integer num);
+    List<Book> findAllByBooknameEquals(String name);
 }

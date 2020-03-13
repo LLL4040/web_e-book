@@ -33,4 +33,9 @@ public class BookDaoImpl implements BookDao {
     public LinkedList<Book> findAll() {
         return new LinkedList<>(bookRepository.findAllByAmountIsNot(0));
     }
+
+    @Override
+    public LinkedList<Book> findAllByBookname(String name) {
+        return new LinkedList<>(bookRepository.findAllByBooknameEquals(name));
+    }
 }
