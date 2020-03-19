@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.LinkedList;
 
 @Service
-@Scope("prototype")
+@Scope("session")
 public class CartServiceImpl implements CartService {
     @Autowired
     private CartDao cartDao;
