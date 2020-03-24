@@ -12,6 +12,7 @@
               <router-link :to="{name:'UserBooks',params:{user: this.user}}" >书籍</router-link>
               <router-link :to="{name:'UserCart',params:{user: this.user}}" >购物车</router-link>
               <a class="now" href="#">我的订单</a>
+              <router-link :to="{name:'ChatRoom',params:{user: this.user}}" >聊天室</router-link>
             </div>
         </div>
         <div id="content">

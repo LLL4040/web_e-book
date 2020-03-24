@@ -1,5 +1,3 @@
-package FilePermission;
-
 import backend.FilePermission.MyFilePermission;
 
 /**

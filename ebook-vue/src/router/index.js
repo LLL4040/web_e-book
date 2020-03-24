@@ -10,6 +10,7 @@ import ManageOrders from '../components/ManageOrders.vue';
 import Statistics from '../components/Statistics.vue';
 import Hello from '../components/HelloWorld.vue';
 import ManageUsers from "../components/ManageUsers";
+import ChatRoom from "../components/ChatRoom";
 
 Vue.use(Router);
 
@@ -58,5 +59,9 @@ export default new Router({
     path: '/statistics',
     name: 'Statistics',
     component: Statistics
+  }, {
+    path: '/chatRoom',
+    name: 'ChatRoom',
+    component: ChatRoom
   }]
 });
