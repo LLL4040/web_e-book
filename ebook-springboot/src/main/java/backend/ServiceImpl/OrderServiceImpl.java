@@ -6,7 +6,10 @@ import backend.Entity.Cart;
 import backend.Entity.Order;
 import backend.Entity.OrderItem;
 import backend.Service.OrderService;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -29,6 +32,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     UserDao userDao;
+
+    @Autowired
+    KafkaTemplate kafkaTemplate;
 
     @Override
     public LinkedList<Order> findAll() {
@@ -66,28 +72,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public boolean addOne(String username) {
-        LinkedList<Cart> cartLinkedList = cartDao.findAllByUsername(username);
-        if(cartLinkedList.isEmpty()) {
-            return false;
-        }
-        Order order = new Order();
-        order.setUser(cartLinkedList.getFirst().getUser());
-        order.setStatus(1);
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String dateTime = df.format(new Date());
-        order.setTime(dateTime);
-        orderDao.addOrder(order);
-        for(Cart cart: cartLinkedList) {
-            OrderItem orderItem = new OrderItem();
-            orderItem.setOrder_id(order.getOrder_id());
-            orderItem.setBook(cart.getBook());
-            orderItem.setNumber(cart.getNum());
-            orderItemDao.addItem(orderItem);
-            Book book = cart.getBook();
-            book.setAmount(book.getAmount()-cart.getNum());
-            bookDao.updateBook(book);
-            cartDao.deleteOne(cart.getUser().getUsername(), cart.getBook().getIsbn());
-        }
+        kafkaTemplate.send("order_topic", username);
         return true;
     }
 

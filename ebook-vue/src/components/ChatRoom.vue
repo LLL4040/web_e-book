@@ -17,125 +17,139 @@
     </div>
     <div id="content">
       <div id="content_bottom">
-        <el-card class="box-card" style="text-align: center;">
-          <div v-if="CartItems.length === 0">
-            您的购物车为空
-          </div>
-          <el-row v-for="(item, index) in CartItems" :key="index" style="padding: 10px 0; border-bottom: 1px solid #eff2f6">
-            <el-col :span="4">
-              <img :src="item.book.cover" style="width: 120px;">
-            </el-col>
-            <el-col :span="4" style="line-height: 50px; width: 120px;">
-              {{ item.book.bookname }}
-            </el-col>
-            <el-col :span="4" style="height: 103.8px; display: flex; justify-content: center; flex-direction: column;">
-              单价<br>{{ item.book.price }}
-            </el-col>
-            <el-col :span="4" style="height: 103.8px; display: flex; justify-content: center; flex-direction: column;">
-              数量<br>
-              <el-input-number v-model="item.num" @change="handleChange(item.book.isbn, item.num)" :precision="0" size="small" :min="1" :max="99"></el-input-number>
-            </el-col>
-            <el-col :span="4" style="height: 103.8px; display: flex; justify-content: center; flex-direction: column;">
-              金额<br>{{ item.book.price * item.num }}
-            </el-col>
-            <el-col :span="4" style="line-height: 103.8px">
-              <el-button type="danger" icon="el-icon-delete" circle @click="handleDelete(item.id, item.book.isbn)"></el-button>
-            </el-col>
-          </el-row>
+        <el-card class="box-card" style="text-align: left;">
+          <el-container>
+            <el-container>
+              <el-aside style="height: 475px; width: 200px; padding-top: 0px; padding-left: 0px; padding-right: 0px; padding-bottom: 0px; border: 1px solid #eee">
+                <textarea readonly="true" style="resize: none; height: 462px; width: 190px;">{{ userList }}</textarea>
+              </el-aside>
+              <el-container>
+                <el-main style="padding-top: 0px; padding-left: 0px; padding-right: 0px; padding-bottom: 0px; border: 1px solid #eee">
+<!--                  <div id="message" style='width: 600px;display:block;word-break: break-all;word-wrap: break-word;'>-->
+<!--                    <p>{{ content }}</p>-->
+<!--                  </div>-->
+                  <textarea readonly="true" style="resize: none; height: 350px; width: 640px;">{{ content }}</textarea>
+                </el-main>
+                <el-footer style="padding-top: 0px; height: 110px; width: 650px; border: 1px solid #eee" align="right">
+                  <el-input type="textarea" :rows="3" placeholder="请输入内容，不能超过300字符" v-model="textarea" maxlength="300" resize="none">
+                  </el-input>
+                  <el-button type="primary" size="small" @click="sendMessage()">发送</el-button>
+                </el-footer>
+              </el-container>
+            </el-container>
+          </el-container>
         </el-card>
-        <el-row style="margin-top: 10px;">
-          <el-card class="box-card" style="text-align: right;">
-            <el-row type="flex" justify="end">
-              <el-col :span="4" style="text-align: center; line-height: 40px;">
-                总价 {{ getTotalAmount }}
-              </el-col>
-              <el-col :span="4" style="text-align: center;">
-                <el-button type="primary" @click="handleSubmit()">提交订单</el-button>
-              </el-col>
-            </el-row>
-          </el-card>
-        </el-row>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  import axios from "axios";
-
   export default {
     name: 'ChatRoom',
     data: function () {
+      const item = {
+        date: '2016-05-02',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄'
+      };
       return {
-        user: '',
-        activeIndex: 'cart',
-        CartItems: []
+        tableData: Array(5).fill(item),
+        user: "", // 用户名
+        textarea: "", // 输入消息
+        userList: "", // 聊天成员
+        wsocket: null, // Websocket connection
+        content: "", // 聊天内容
       };
     },
     mounted () {
-    },
-    computed: {
-      checkLogin() {
-        this.user = this.$route.params.user;
-        if (this.user === '') {
-          alert("请登录后进入聊天室！");
-          this.$router.push({name: "Home"});
-        }
-        let form = {"username": this.user};
-        axios
-          .post('http://localhost:8088/api/cart/all', form)
-          .then(response => {
-            this.CartItems = response.data;
-            let self = this;
-            for (let i = 0; i < this.CartItems.length; i++) {
-              axios
-                .post('http://localhost:8088/api/book/isbn/mongo', {"isbn": self.CartItems[i].book.isbn})
-                .then(response => {
-                  self.CartItems[i].book.cover = "data:image/png;base64," + response.data.cover.toString();
-                })
-            }
-          })
+      this.user = this.$route.params.user;
+      if (this.user === '') {
+        alert("请登录后进入聊天室！");
+        this.$router.push({name: "Home"});
       }
+      this.initWebsocket();
+    },
+    destroyed() {
+      this.wsocket.close();
     },
     methods: {
-      handleDelete (i, ISBN) {
-        let form = {"username": this.user, "isbn": ISBN};
-        axios
-          .post('http://localhost:8088/api/cart/delete', form)
-          .then(response => {
-            if (response.data === true) {
-              alert("删除成功！");
-              this.loadCarts();
-            }
-          })
+      initWebsocket() {
+        let url = "ws://localhost:8088/websocket";
+        this.wsocket = new WebSocket(url);
+        this.wsocket.onopen = this.onOpen;
+        this.wsocket.onmessage = this.onMessage;
+        this.wsocket.onerror = this.onError;
+        this.wsocket.onclose = this.onClose;
       },
-      handleChange (ISBN, num) {
-        let form = {"username": this.user, "isbn": ISBN, "num": num};
-        axios
-          .post('http://localhost:8088/api/cart/update', form)
-          .then(response => {
-            if (response.data === true) {
-              console.log("同步成功！");
-            }
-            else {
-              alert("加购数量不能超过库存量！");
-              console.log("同步失败！");
-            }
-          })
+      onOpen() {
+        let joinMsg = {};
+        joinMsg.type = "join";
+        joinMsg.name = this.user;
+        let jsonstr = JSON.stringify(joinMsg);
+        this.wsocket.send(jsonstr);
+        window.console.log("connect to ws.");
       },
-      handleSubmit () {
-        let form = {"username": this.user};
-        axios
-          .post('http://localhost:8088/api/order/insert', form)
-          .then(response => {
-            if (response.data === true) {
-              alert("提交成功！");
-              this.CartItems = [];
-            }
-            else {
-              alert("提交失败！请联系客服处理。");
-            }
-          })
+      onError() {
+        window.console.log("connect error");
+      },
+      onMessage(evt) {
+        let line = "";
+        let msg = JSON.parse(evt.data);
+        if (msg.type === "chat") {
+          line = msg.name + ": ";
+          if (msg.target.length > 0) {
+            line += "@" + msg.target + " ";
+          }
+          line += msg.message + "\n";
+          this.content += line;
+        } else if (msg.type === "info") {
+          line = "[--" + msg.info + "--]\n";
+          this.content += line;
+        } else if (msg.type === "users") {
+          line = "Users:\n";
+          for (let i=0; i < msg.userList.length; i++)
+            line += "-" + msg.userList[i] + "\n";
+          /* Update the user list area */
+          this.userList = line;
+        }
+      },
+      sendMessage() {
+        if (this.textarea.length > 0) {
+          let chatMsg = {};
+          chatMsg.type = "chat";
+          chatMsg.name = this.user;
+          chatMsg.target = this.getTarget(this.textarea.replace(/,/g, ""));
+          chatMsg.message = this.cleanTarget(this.textarea);
+          chatMsg.message = chatMsg.message.replace(/(\r\n|\n|\r)/gm,"");
+          this.wsocket.send(JSON.stringify(chatMsg));
+          this.textarea = "";
+        } else {
+          this.$alert("发送消息内容不能为空！");
+        }
+      },
+      onClose(e) {
+        window.console.log('connect close', e);
+      },
+      getTarget(str) {
+        let arr = str.split(" ");
+        let target = "";
+        for (let i=0; i<arr.length; i++) {
+          if (arr[i].charAt(0) === '@') {
+            target = arr[i].substring(1,arr[i].length);
+            target = target.replace(/(\r\n|\n|\r)/gm,"");
+          }
+        }
+        return target;
+      },
+      cleanTarget(str) {
+        let arr = str.split(" ");
+        let cleanstr = "";
+        for (let i=0; i<arr.length; i++) {
+          if (arr[i].charAt(0) !== '@')
+            cleanstr += arr[i] + " ";
+        }
+        return cleanstr.substring(0,cleanstr.length-1);
       }
     }
   };
@@ -149,5 +163,6 @@
   .el-menu-item {
     font-size: 18px;
   }
+
 </style>
 
