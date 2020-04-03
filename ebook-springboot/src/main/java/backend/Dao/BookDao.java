@@ -17,6 +17,11 @@ public interface BookDao {
     Book updateBook(Book book);
 
     /**
+     * delete methods
+     */
+    Boolean deleteByIsbn(String isbn);
+
+    /**
      * Query methods
      */
     Optional<Book> findByIsbn(String isbn);

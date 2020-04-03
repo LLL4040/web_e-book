@@ -25,6 +25,12 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
+    public Boolean deleteByIsbn(String isbn) {
+        bookRepository.deleteBookByIsbn(isbn);
+        return true;
+    }
+
+    @Override
     public Optional<Book> findByIsbn(String isbn) {
         return bookRepository.findByIsbn(isbn);
     }

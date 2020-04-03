@@ -9,6 +9,8 @@ import java.util.LinkedList;
 import java.util.Map;
 import com.google.common.base.Optional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -43,6 +45,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public boolean deleteUser(String username) {
         return userDao.deleteUser(username);
     }

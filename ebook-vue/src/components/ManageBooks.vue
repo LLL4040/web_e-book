@@ -161,7 +161,7 @@
         this.dialogFormVisible = true;
       },
       handleDelete (row) {
-        let form = {"isbn": row.isbn, "amount": 0};
+        let form = {"isbn": row.isbn};
         axios
           .post("http://localhost:8088/api/book/delete", form)
           .then(response => {

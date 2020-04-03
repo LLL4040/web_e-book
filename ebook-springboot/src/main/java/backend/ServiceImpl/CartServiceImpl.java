@@ -10,6 +10,8 @@ import backend.Service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.LinkedList;
 
@@ -72,14 +74,14 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public boolean deleteOne(String username, String isbn) {
         Cart cart = cartDao.findOne(username, isbn).orNull();
         if(cart == null) {
             return false;
         }
         else {
-            cartDao.deleteOne(username, isbn);
-            return true;
+            return cartDao.deleteOne(username, isbn);
         }
     }
 }

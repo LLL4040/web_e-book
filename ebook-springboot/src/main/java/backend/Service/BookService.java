@@ -18,5 +18,7 @@ public interface BookService {
 
     BookMongoDB findBookMongo(String isbn);
 
+    Boolean deleteByIsbn(String isbn);
+
     Boolean addBook(MultipartFile cover, String isbn, String bookname, String author, Integer amount, Double price, String authorInfo, String contentInfo) throws IOException;
 }

@@ -1,8 +1,6 @@
 package backend.Service;
 
 import backend.Entity.Cart;
-
-import javax.transaction.Transactional;
 import java.util.LinkedList;
 
 public interface CartService {
@@ -13,6 +11,5 @@ public interface CartService {
     Cart getOne(String username, String isbn);
     boolean updateOne(String username, String isbn, Integer num);
 
-    @Transactional
     boolean deleteOne(String username, String isbn);
 }

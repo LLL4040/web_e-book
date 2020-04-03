@@ -25,9 +25,6 @@
               </el-aside>
               <el-container>
                 <el-main style="padding-top: 0px; padding-left: 0px; padding-right: 0px; padding-bottom: 0px; border: 1px solid #eee">
-<!--                  <div id="message" style='width: 600px;display:block;word-break: break-all;word-wrap: break-word;'>-->
-<!--                    <p>{{ content }}</p>-->
-<!--                  </div>-->
                   <textarea readonly="true" style="resize: none; height: 350px; width: 640px;">{{ content }}</textarea>
                 </el-main>
                 <el-footer style="padding-top: 0px; height: 110px; width: 650px; border: 1px solid #eee" align="right">
@@ -125,7 +122,7 @@
           this.wsocket.send(JSON.stringify(chatMsg));
           this.textarea = "";
         } else {
-          this.$alert("发送消息内容不能为空！");
+          alert("发送消息内容不能为空！");
         }
       },
       onClose(e) {

@@ -65,8 +65,12 @@ public class BookController {
 
     @PostMapping("/delete")
     @ResponseBody
-    public boolean deleteBook(@RequestBody Map<String, String> map) throws IOException {
-        bs.updateBook(map, null);
-        return true;
+    public boolean deleteBook(@RequestBody Map<String, String> map) {
+        try {
+            return bs.deleteByIsbn(map.get("isbn"));
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

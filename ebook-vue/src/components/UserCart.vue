@@ -76,6 +76,15 @@
       this.loadCarts();
     },
     computed: {
+      getTotalAmount () {
+        let s = 0;
+        for (let i = 0; i < this.CartItems.length; i++) {
+          s += (this.CartItems[i].num * this.CartItems[i].book.price);
+        }
+        return s;
+      }
+    },
+    methods: {
       loadCarts () {
         this.user = this.$route.params.user;
         if (this.user === '') {
@@ -97,15 +106,6 @@
             }
           })
       },
-      getTotalAmount () {
-        let s = 0;
-        for (let i = 0; i < this.CartItems.length; i++) {
-          s += (this.CartItems[i].num * this.CartItems[i].book.price);
-        }
-        return s;
-      }
-    },
-    methods: {
       handleDelete (i, ISBN) {
         let form = {"username": this.user, "isbn": ISBN};
         axios
@@ -114,6 +114,7 @@
             if (response.data === true) {
               alert("删除成功！");
               this.loadCarts();
+              // this.$forceUpdate();
             }
           })
       },

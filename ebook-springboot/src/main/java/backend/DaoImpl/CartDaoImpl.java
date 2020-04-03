@@ -20,8 +20,9 @@ public class CartDaoImpl implements CartDao {
     }
 
     @Override
-    public void deleteOne(String username, String isbn) {
+    public Boolean deleteOne(String username, String isbn) {
         cartRepository.deleteByUser_UsernameAndBook_Isbn(username, isbn);
+        return true;
     }
 
     @Override

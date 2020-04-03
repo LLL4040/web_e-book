@@ -52,4 +52,15 @@ public class UserController {
     public Integer change(@RequestBody Map<String, String> map) {
         return us.updateUser(map);
     }
+
+    @PostMapping("/delete")
+    public Boolean delete(@RequestBody Map<String, String> map) {
+        try {
+            String username = map.get("username");
+            return us.deleteUser(username);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

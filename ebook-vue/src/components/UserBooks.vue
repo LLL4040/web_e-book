@@ -8,7 +8,7 @@
 			</div>
 			<div class="clear"></div>
 			<div id="menu">
-        <router-link :to="{name:'Home',params:{user: ''}}" >{{ index }}</router-link>
+        <router-link :to="{name:'Home',params:{user: ''}}" >退出登录</router-link>
 				<a class="now" href="#">书籍</a>
         <router-link :to="{name:'UserCart',params:{user: this.user}}" >购物车</router-link>
         <router-link :to="{name:'UserOrder',params:{user: this.user}}" >我的订单</router-link>
@@ -69,7 +69,6 @@
     name: 'book_user',
     data () {
       return {
-        index: '首页',
         user: '',
         bookNumber: 0,
         bookCurrentPage: 1,

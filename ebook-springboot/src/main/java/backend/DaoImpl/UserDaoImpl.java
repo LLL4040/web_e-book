@@ -22,7 +22,8 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public boolean deleteUser(String username) {
-        return userRepository.deleteByUsername(username);
+        userRepository.deleteByUsername(username);
+        return true;
     }
 
     @Override

@@ -21,6 +21,7 @@
                 <!-- 左侧信息栏 -->
                 <div class="sideleft">
                     <h2>欢迎来到eBooks！</h2>
+                    <p>访问量：{{ visitors }}</p>
                     <img alt="" src="../assets/bg.jpg">
                 </div>
                 <!-- 右侧登陆界面 -->
@@ -78,8 +79,15 @@
           password: '',
           msg: ''
         },
-
+        visitors: ''
       };
+    },
+    mounted () {
+      axios
+        .get('http://localhost:8088/api/visit/count')
+        .then(response => {
+          this.visitors = response.data;
+        })
     },
     methods: {
       submitForm(ruleForm) {

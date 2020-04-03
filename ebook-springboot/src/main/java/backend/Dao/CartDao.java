@@ -17,7 +17,7 @@ public interface CartDao {
      * Delete methods
      */
     @Transactional
-    void deleteOne(String username, String isbn);
+    Boolean deleteOne(String username, String isbn);
 
     /**
      * Query methods

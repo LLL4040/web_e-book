@@ -57,10 +57,15 @@ public class CartController {
 
     @PostMapping("/delete")
     public boolean deleteOne(@RequestBody Map<String, String> map) {
-        String username = map.get("username");
-        String isbn = map.get("isbn");
-        CartService cs = applicationContext.getBean(CartService.class);
-        return cs.deleteOne(username, isbn);
+        try {
+            String username = map.get("username");
+            String isbn = map.get("isbn");
+            CartService cs = applicationContext.getBean(CartService.class);
+            return cs.deleteOne(username, isbn);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
 }

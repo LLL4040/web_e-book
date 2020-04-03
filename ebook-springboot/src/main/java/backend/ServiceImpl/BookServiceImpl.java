@@ -8,6 +8,8 @@ import backend.Service.BookService;
 import com.google.common.base.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -55,6 +57,13 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public Boolean deleteByIsbn(String isbn) {
+        return bookDao.deleteByIsbn(isbn);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Book updateBook(Map<String, String> data, MultipartFile cover) throws IOException {
         String isbn = data.get("isbn"), bookname = data.get("bookname"),
                 author = data.get("author"), amount = data.get("amount"), price = data.get("price"),
