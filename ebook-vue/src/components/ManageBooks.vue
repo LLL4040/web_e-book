@@ -19,7 +19,9 @@
       <div id="content_bottom">
         <el-card class="box-card">
           <el-row type="flex" justify="center">
-            <el-input v-model="search" size="mini" placeholder="输入关键字搜索"/>
+            <el-input v-model="search" size="mini" placeholder="输入书名关键字进行搜索"/>
+            <el-input v-model="keyword" size="mini" placeholder="输入简介关键字进行搜索"/>
+            <el-button size="mini" @click="handleSearch()">search</el-button>
           </el-row>
           <el-table :data="books.slice((bookCurrentPage - 1) * bookPageSize, bookCurrentPage * bookPageSize) &&
         books.filter(data => !search || data.bookname.toLowerCase().includes(search.toLowerCase()))"
@@ -28,10 +30,10 @@
               <template slot-scope="props">
                 <el-form label-position="left" inline class="demo-table-expand">
                   <el-form-item label="内容简介">
-                    <span>{{ props.row.contentInfo }}</span>
+                    <span>{{ props.row.contentInfo || props.row.contentinfo }}</span>
                   </el-form-item>
                   <el-form-item label="作者简介">
-                    <span>{{ props.row.authorInfo }}</span>
+                    <span>{{ props.row.authorInfo || props.row.authorinfo}}</span>
                   </el-form-item>
                 </el-form>
               </template>
@@ -114,6 +116,7 @@
         books: [],
         book:'',
         search: '',
+        keyword: '',
         dialogFormVisible: false,
         bookForm: {
           isbn: '',
@@ -123,7 +126,9 @@
           price: 0,
           amount: 0,
           authorInfo: '',
-          contentInfo: ''
+          contentInfo: '',
+          authorinfo: '',
+          contentinfo: '',
         }
       }
     },
@@ -139,6 +144,23 @@
         }
         axios
           .get('http://localhost:8088/api/book/all')
+          .then(response => {
+            this.books = response.data;
+            this.bookNumber = this.books.length;
+            let self = this;
+            for(let i = 0; i < this.bookNumber; i++) {
+              axios
+                .post('http://localhost:8088/api/book/isbn/mongo', {"isbn": self.books[i].isbn})
+                .then(response => {
+                  self.books[i].cover = "data:image/png;base64," + response.data.cover.toString();
+                })
+            }
+          })
+      },
+      handleSearch () {
+        let url = 'http://localhost:8088/api/book/search/' + this.keyword;
+        axios
+          .get(url)
           .then(response => {
             this.books = response.data;
             this.bookNumber = this.books.length;
