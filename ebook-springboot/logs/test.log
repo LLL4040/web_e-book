@@ -1,0 +1,6 @@
+2020-04-17 11:59:41.006  INFO 11904 --- [main] backend.BackendApplication               : Starting BackendApplication on LAPTOP-G6M9NTHV with PID 11904 (started by Hazel in D:\myGithub\web e-book\ebook-springboot)
+2020-04-17 11:59:41.011  INFO 11904 --- [main] backend.BackendApplication               : No active profile set, falling back to default profiles: default
+2020-04-17 11:59:42.929  INFO 11904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-17 11:59:42.931  INFO 11904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-04-17 11:59:43.087  INFO 11904 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JPA - Could not safely identify store assignment for repository candidate interface backend.Repository.BookMongoDBRepository.
+2020-04-17 11:59:43.421  INFO 11904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 472ms. Found 5 repository interfaces.

@@ -1,0 +1,547 @@
+2020-04-17 11:59:41.006  INFO 11904 --- [main] backend.BackendApplication               : Starting BackendApplication on LAPTOP-G6M9NTHV with PID 11904 (started by Hazel in D:\myGithub\web e-book\ebook-springboot)
+2020-04-17 11:59:41.011  INFO 11904 --- [main] backend.BackendApplication               : No active profile set, falling back to default profiles: default
+2020-04-17 11:59:42.929  INFO 11904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-17 11:59:42.931  INFO 11904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-04-17 11:59:43.087  INFO 11904 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JPA - Could not safely identify store assignment for repository candidate interface backend.Repository.BookMongoDBRepository.
+2020-04-17 11:59:43.421  INFO 11904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 472ms. Found 5 repository interfaces.
+2020-04-17 11:59:43.482  INFO 11904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-17 11:59:43.483  INFO 11904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-04-17 11:59:43.567  INFO 11904 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface backend.Repository.BookRepository.
+2020-04-17 11:59:43.570  INFO 11904 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface backend.Repository.CartRepository.
+2020-04-17 11:59:43.571  INFO 11904 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderItemRepository.
+2020-04-17 11:59:43.573  INFO 11904 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderRepository.
+2020-04-17 11:59:43.574  INFO 11904 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface backend.Repository.UserRepository.
+2020-04-17 11:59:43.611  INFO 11904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 127ms. Found 1 repository interfaces.
+2020-04-17 11:59:43.647  INFO 11904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-17 11:59:43.666  INFO 11904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-04-17 11:59:43.770  INFO 11904 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.BookMongoDBRepository.
+2020-04-17 11:59:43.772  INFO 11904 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.BookRepository.
+2020-04-17 11:59:43.774  INFO 11904 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.CartRepository.
+2020-04-17 11:59:43.777  INFO 11904 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderItemRepository.
+2020-04-17 11:59:43.779  INFO 11904 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderRepository.
+2020-04-17 11:59:43.781  INFO 11904 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.UserRepository.
+2020-04-17 11:59:43.782  INFO 11904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 86ms. Found 0 repository interfaces.
+2020-04-17 11:59:44.066  INFO 11904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-17 11:59:44.069  INFO 11904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-04-17 11:59:44.139  INFO 11904 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.BookMongoDBRepository.
+2020-04-17 11:59:44.140  INFO 11904 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.BookRepository.
+2020-04-17 11:59:44.140  INFO 11904 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.CartRepository.
+2020-04-17 11:59:44.141  INFO 11904 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderItemRepository.
+2020-04-17 11:59:44.142  INFO 11904 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderRepository.
+2020-04-17 11:59:44.144  INFO 11904 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.UserRepository.
+2020-04-17 11:59:44.144  INFO 11904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59ms. Found 0 repository interfaces.
+2020-04-17 11:59:45.314  INFO 11904 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.kafka.annotation.KafkaBootstrapConfiguration' of type [org.springframework.kafka.annotation.KafkaBootstrapConfiguration$$EnhancerBySpringCGLIB$$ccee7c7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-17 11:59:45.498  INFO 11904 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$391cd644] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-17 11:59:45.610  INFO 11904 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisConfig' of type [backend.config.RedisConfig$$EnhancerBySpringCGLIB$$b8a58974] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-17 11:59:45.686  INFO 11904 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.hateoas.config.HateoasConfiguration' of type [org.springframework.hateoas.config.HateoasConfiguration$$EnhancerBySpringCGLIB$$b89d2376] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-17 11:59:46.932  INFO 11904 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2020-04-17 11:59:47.011  INFO 11904 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-17 11:59:47.012  INFO 11904 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.19]
+2020-04-17 11:59:47.573  INFO 11904 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-17 11:59:47.574  INFO 11904 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 6498 ms
+2020-04-17 11:59:48.706  INFO 11904 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-04-17 11:59:49.498  INFO 11904 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-04-17 11:59:49.796  INFO 11904 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-04-17 11:59:50.003  INFO 11904 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.10.Final}
+2020-04-17 11:59:50.009  INFO 11904 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2020-04-17 11:59:50.406  INFO 11904 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-04-17 11:59:50.781  INFO 11904 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-04-17 11:59:52.661  INFO 11904 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-17 11:59:55.215  INFO 11904 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2020-04-17 11:59:55.377  INFO 11904 --- [cluster-ClusterId{value='5e9929bb57ec942e804f7aee', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:2}] to localhost:27017
+2020-04-17 11:59:55.392  INFO 11904 --- [cluster-ClusterId{value='5e9929bb57ec942e804f7aee', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 10]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=6831800}
+2020-04-17 12:00:02.533  INFO 11904 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-17 12:00:02.732  WARN 11904 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-17 12:00:05.605  INFO 11904 --- [main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	auto.commit.interval.ms = 1000
+	auto.offset.reset = latest
+	bootstrap.servers = [127.0.0.1:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = ebook
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2020-04-17 12:00:05.749  INFO 11904 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka version : 2.0.1
+2020-04-17 12:00:05.750  INFO 11904 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId : fa14705e51bd2ce5
+2020-04-17 12:00:08.031  WARN 11904 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:00:10.143  WARN 11904 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:00:12.249  WARN 11904 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:00:14.458  WARN 11904 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:00:16.967  WARN 11904 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:00:19.910  WARN 11904 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:00:23.145  WARN 11904 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:00:26.160  WARN 11904 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:00:29.168  WARN 11904 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:00:32.178  WARN 11904 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:00:35.185  WARN 11904 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:06:04.181  INFO 6668 --- [main] backend.BackendApplication               : Starting BackendApplication on LAPTOP-G6M9NTHV with PID 6668 (started by Hazel in D:\myGithub\web e-book\ebook-springboot)
+2020-04-17 12:06:04.185  INFO 6668 --- [main] backend.BackendApplication               : No active profile set, falling back to default profiles: default
+2020-04-17 12:06:06.675  INFO 6668 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-17 12:06:06.677  INFO 6668 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-04-17 12:06:07.027  INFO 6668 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JPA - Could not safely identify store assignment for repository candidate interface backend.Repository.BookMongoDBRepository.
+2020-04-17 12:06:07.422  INFO 6668 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 717ms. Found 5 repository interfaces.
+2020-04-17 12:06:07.496  INFO 6668 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-17 12:06:07.498  INFO 6668 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-04-17 12:06:07.609  INFO 6668 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface backend.Repository.BookRepository.
+2020-04-17 12:06:07.612  INFO 6668 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface backend.Repository.CartRepository.
+2020-04-17 12:06:07.615  INFO 6668 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderItemRepository.
+2020-04-17 12:06:07.619  INFO 6668 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderRepository.
+2020-04-17 12:06:07.621  INFO 6668 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface backend.Repository.UserRepository.
+2020-04-17 12:06:07.727  INFO 6668 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 227ms. Found 1 repository interfaces.
+2020-04-17 12:06:07.779  INFO 6668 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-17 12:06:07.788  INFO 6668 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-04-17 12:06:07.889  INFO 6668 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.BookMongoDBRepository.
+2020-04-17 12:06:07.891  INFO 6668 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.BookRepository.
+2020-04-17 12:06:07.895  INFO 6668 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.CartRepository.
+2020-04-17 12:06:07.904  INFO 6668 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderItemRepository.
+2020-04-17 12:06:07.910  INFO 6668 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderRepository.
+2020-04-17 12:06:07.912  INFO 6668 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.UserRepository.
+2020-04-17 12:06:07.915  INFO 6668 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 101ms. Found 0 repository interfaces.
+2020-04-17 12:06:08.442  INFO 6668 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-17 12:06:08.443  INFO 6668 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-04-17 12:06:08.583  INFO 6668 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.BookMongoDBRepository.
+2020-04-17 12:06:08.586  INFO 6668 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.BookRepository.
+2020-04-17 12:06:08.596  INFO 6668 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.CartRepository.
+2020-04-17 12:06:08.651  INFO 6668 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderItemRepository.
+2020-04-17 12:06:08.681  INFO 6668 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderRepository.
+2020-04-17 12:06:08.687  INFO 6668 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.UserRepository.
+2020-04-17 12:06:08.689  INFO 6668 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 221ms. Found 0 repository interfaces.
+2020-04-17 12:06:10.508  INFO 6668 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.kafka.annotation.KafkaBootstrapConfiguration' of type [org.springframework.kafka.annotation.KafkaBootstrapConfiguration$$EnhancerBySpringCGLIB$$e7c727b7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-17 12:06:10.636  INFO 6668 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$14151634] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-17 12:06:10.700  INFO 6668 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisConfig' of type [backend.config.RedisConfig$$EnhancerBySpringCGLIB$$939dc964] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-17 12:06:10.766  INFO 6668 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.hateoas.config.HateoasConfiguration' of type [org.springframework.hateoas.config.HateoasConfiguration$$EnhancerBySpringCGLIB$$93956366] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-17 12:06:11.871  INFO 6668 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2020-04-17 12:06:12.000  INFO 6668 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-17 12:06:12.002  INFO 6668 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.19]
+2020-04-17 12:06:12.695  INFO 6668 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-17 12:06:12.696  INFO 6668 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 8455 ms
+2020-04-17 12:06:14.652  INFO 6668 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-04-17 12:06:15.902  INFO 6668 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-04-17 12:06:16.332  INFO 6668 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-04-17 12:06:16.654  INFO 6668 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.10.Final}
+2020-04-17 12:06:16.663  INFO 6668 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2020-04-17 12:06:17.005  INFO 6668 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-04-17 12:06:17.500  INFO 6668 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-04-17 12:06:19.393  INFO 6668 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-17 12:06:22.877  INFO 6668 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2020-04-17 12:06:23.037  INFO 6668 --- [cluster-ClusterId{value='5e992b3e57ec941a0c450f89', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:3}] to localhost:27017
+2020-04-17 12:06:23.054  INFO 6668 --- [cluster-ClusterId{value='5e992b3e57ec941a0c450f89', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 10]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=8732700}
+2020-04-17 12:06:32.324  INFO 6668 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-17 12:06:32.575  WARN 6668 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-17 12:06:35.042  INFO 6668 --- [main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	auto.commit.interval.ms = 1000
+	auto.offset.reset = latest
+	bootstrap.servers = [127.0.0.1:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = ebook
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2020-04-17 12:06:35.459  INFO 6668 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka version : 2.0.1
+2020-04-17 12:06:35.467  INFO 6668 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId : fa14705e51bd2ce5
+2020-04-17 12:06:38.199  WARN 6668 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:06:40.382  WARN 6668 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:06:42.490  WARN 6668 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:06:44.702  WARN 6668 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:06:47.137  WARN 6668 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:06:49.943  WARN 6668 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:06:53.051  WARN 6668 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:06:55.963  WARN 6668 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:06:59.175  WARN 6668 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:07:02.085  WARN 6668 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:07:05.197  WARN 6668 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:07:08.410  WARN 6668 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:07:11.394  WARN 6668 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:07:14.503  WARN 6668 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:07:17.613  WARN 6668 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:07:20.527  WARN 6668 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:07:23.736  WARN 6668 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:07:26.947  WARN 6668 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:07:29.864  WARN 6668 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:13:42.654  INFO 5144 --- [main] backend.BackendApplication               : Starting BackendApplication on LAPTOP-G6M9NTHV with PID 5144 (started by Hazel in D:\myGithub\web e-book\ebook-springboot)
+2020-04-17 12:13:42.662  INFO 5144 --- [main] backend.BackendApplication               : No active profile set, falling back to default profiles: default
+2020-04-17 12:13:44.781  INFO 5144 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-17 12:13:44.783  INFO 5144 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-04-17 12:13:44.946  INFO 5144 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JPA - Could not safely identify store assignment for repository candidate interface backend.Repository.BookMongoDBRepository.
+2020-04-17 12:13:45.177  INFO 5144 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 369ms. Found 5 repository interfaces.
+2020-04-17 12:13:45.255  INFO 5144 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-17 12:13:45.256  INFO 5144 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-04-17 12:13:45.336  INFO 5144 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface backend.Repository.BookRepository.
+2020-04-17 12:13:45.339  INFO 5144 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface backend.Repository.CartRepository.
+2020-04-17 12:13:45.341  INFO 5144 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderItemRepository.
+2020-04-17 12:13:45.343  INFO 5144 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderRepository.
+2020-04-17 12:13:45.345  INFO 5144 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface backend.Repository.UserRepository.
+2020-04-17 12:13:45.383  INFO 5144 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 126ms. Found 1 repository interfaces.
+2020-04-17 12:13:45.417  INFO 5144 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-17 12:13:45.422  INFO 5144 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-04-17 12:13:45.492  INFO 5144 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.BookMongoDBRepository.
+2020-04-17 12:13:45.493  INFO 5144 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.BookRepository.
+2020-04-17 12:13:45.494  INFO 5144 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.CartRepository.
+2020-04-17 12:13:45.495  INFO 5144 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderItemRepository.
+2020-04-17 12:13:45.497  INFO 5144 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderRepository.
+2020-04-17 12:13:45.498  INFO 5144 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.UserRepository.
+2020-04-17 12:13:45.498  INFO 5144 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 58ms. Found 0 repository interfaces.
+2020-04-17 12:13:45.694  INFO 5144 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-17 12:13:45.696  INFO 5144 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-04-17 12:13:45.887  INFO 5144 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.BookMongoDBRepository.
+2020-04-17 12:13:45.888  INFO 5144 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.BookRepository.
+2020-04-17 12:13:45.890  INFO 5144 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.CartRepository.
+2020-04-17 12:13:45.892  INFO 5144 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderItemRepository.
+2020-04-17 12:13:45.894  INFO 5144 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderRepository.
+2020-04-17 12:13:45.898  INFO 5144 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.UserRepository.
+2020-04-17 12:13:45.899  INFO 5144 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 131ms. Found 0 repository interfaces.
+2020-04-17 12:13:47.154  INFO 5144 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.kafka.annotation.KafkaBootstrapConfiguration' of type [org.springframework.kafka.annotation.KafkaBootstrapConfiguration$$EnhancerBySpringCGLIB$$832a31ff] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-17 12:13:47.346  INFO 5144 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$af78207c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-17 12:13:47.443  INFO 5144 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisConfig' of type [backend.config.RedisConfig$$EnhancerBySpringCGLIB$$2f00d3ac] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-17 12:13:47.498  INFO 5144 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.hateoas.config.HateoasConfiguration' of type [org.springframework.hateoas.config.HateoasConfiguration$$EnhancerBySpringCGLIB$$2ef86dae] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-17 12:13:48.802  INFO 5144 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2020-04-17 12:13:48.933  INFO 5144 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-17 12:13:48.935  INFO 5144 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.19]
+2020-04-17 12:13:49.708  INFO 5144 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-17 12:13:49.710  INFO 5144 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 6953 ms
+2020-04-17 12:13:51.274  INFO 5144 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-04-17 12:13:52.207  INFO 5144 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-04-17 12:13:52.582  INFO 5144 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-04-17 12:13:52.842  INFO 5144 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.10.Final}
+2020-04-17 12:13:52.849  INFO 5144 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2020-04-17 12:13:53.384  INFO 5144 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-04-17 12:13:53.823  INFO 5144 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-04-17 12:13:56.099  INFO 5144 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-17 12:14:00.048  INFO 5144 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2020-04-17 12:14:00.224  INFO 5144 --- [cluster-ClusterId{value='5e992d0857ec94141824cc4b', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:4}] to localhost:27017
+2020-04-17 12:14:00.245  INFO 5144 --- [cluster-ClusterId{value='5e992d0857ec94141824cc4b', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 10]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=11054600}
+2020-04-17 12:14:07.695  INFO 5144 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-17 12:14:07.871  WARN 5144 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-17 12:14:10.261  INFO 5144 --- [main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	auto.commit.interval.ms = 1000
+	auto.offset.reset = latest
+	bootstrap.servers = [127.0.0.1:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = ebook
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2020-04-17 12:14:10.435  INFO 5144 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka version : 2.0.1
+2020-04-17 12:14:10.436  INFO 5144 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId : fa14705e51bd2ce5
+2020-04-17 12:14:12.864  WARN 5144 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:14:14.982  WARN 5144 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:14:17.107  WARN 5144 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:14:19.458  WARN 5144 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:14:22.161  WARN 5144 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:16:23.866  INFO 9120 --- [main] backend.BackendApplication               : Starting BackendApplication on LAPTOP-G6M9NTHV with PID 9120 (started by Hazel in D:\myGithub\web e-book\ebook-springboot)
+2020-04-17 12:16:23.870  INFO 9120 --- [main] backend.BackendApplication               : No active profile set, falling back to default profiles: default
+2020-04-17 12:16:26.322  INFO 9120 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-17 12:16:26.324  INFO 9120 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-04-17 12:16:26.528  INFO 9120 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JPA - Could not safely identify store assignment for repository candidate interface backend.Repository.BookMongoDBRepository.
+2020-04-17 12:16:26.833  INFO 9120 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 484ms. Found 5 repository interfaces.
+2020-04-17 12:16:26.893  INFO 9120 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-17 12:16:26.895  INFO 9120 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-04-17 12:16:26.954  INFO 9120 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface backend.Repository.BookRepository.
+2020-04-17 12:16:26.956  INFO 9120 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface backend.Repository.CartRepository.
+2020-04-17 12:16:26.957  INFO 9120 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderItemRepository.
+2020-04-17 12:16:26.958  INFO 9120 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderRepository.
+2020-04-17 12:16:26.960  INFO 9120 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface backend.Repository.UserRepository.
+2020-04-17 12:16:26.997  INFO 9120 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 101ms. Found 1 repository interfaces.
+2020-04-17 12:16:27.027  INFO 9120 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-17 12:16:27.032  INFO 9120 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-04-17 12:16:27.167  INFO 9120 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.BookMongoDBRepository.
+2020-04-17 12:16:27.169  INFO 9120 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.BookRepository.
+2020-04-17 12:16:27.170  INFO 9120 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.CartRepository.
+2020-04-17 12:16:27.175  INFO 9120 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderItemRepository.
+2020-04-17 12:16:27.178  INFO 9120 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderRepository.
+2020-04-17 12:16:27.180  INFO 9120 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface backend.Repository.UserRepository.
+2020-04-17 12:16:27.182  INFO 9120 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 122ms. Found 0 repository interfaces.
+2020-04-17 12:16:27.499  INFO 9120 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-17 12:16:27.501  INFO 9120 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-04-17 12:16:27.596  INFO 9120 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.BookMongoDBRepository.
+2020-04-17 12:16:27.597  INFO 9120 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.BookRepository.
+2020-04-17 12:16:27.598  INFO 9120 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.CartRepository.
+2020-04-17 12:16:27.600  INFO 9120 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderItemRepository.
+2020-04-17 12:16:27.602  INFO 9120 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.OrderRepository.
+2020-04-17 12:16:27.603  INFO 9120 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Solr - Could not safely identify store assignment for repository candidate interface backend.Repository.UserRepository.
+2020-04-17 12:16:27.603  INFO 9120 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 84ms. Found 0 repository interfaces.
+2020-04-17 12:16:29.506  INFO 9120 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.kafka.annotation.KafkaBootstrapConfiguration' of type [org.springframework.kafka.annotation.KafkaBootstrapConfiguration$$EnhancerBySpringCGLIB$$fac6b3d4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-17 12:16:29.624  INFO 9120 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2714a251] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-17 12:16:29.697  INFO 9120 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisConfig' of type [backend.config.RedisConfig$$EnhancerBySpringCGLIB$$a69d5581] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-17 12:16:29.757  INFO 9120 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.hateoas.config.HateoasConfiguration' of type [org.springframework.hateoas.config.HateoasConfiguration$$EnhancerBySpringCGLIB$$a694ef83] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-17 12:16:31.287  INFO 9120 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2020-04-17 12:16:31.427  INFO 9120 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-17 12:16:31.431  INFO 9120 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.19]
+2020-04-17 12:16:32.613  INFO 9120 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-17 12:16:32.615  INFO 9120 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 8609 ms
+2020-04-17 12:16:35.057  INFO 9120 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-04-17 12:16:35.823  INFO 9120 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-04-17 12:16:35.936  INFO 9120 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-04-17 12:16:36.079  INFO 9120 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.10.Final}
+2020-04-17 12:16:36.083  INFO 9120 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2020-04-17 12:16:36.337  INFO 9120 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-04-17 12:16:36.812  INFO 9120 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-04-17 12:16:39.870  INFO 9120 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-17 12:16:43.943  INFO 9120 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2020-04-17 12:16:44.039  INFO 9120 --- [cluster-ClusterId{value='5e992dab57ec9423a0e3cf84', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:5}] to localhost:27017
+2020-04-17 12:16:44.049  INFO 9120 --- [cluster-ClusterId{value='5e992dab57ec9423a0e3cf84', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 10]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=4722100}
+2020-04-17 12:16:49.027  INFO 9120 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-17 12:16:49.209  WARN 9120 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-17 12:16:51.216  INFO 9120 --- [main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	auto.commit.interval.ms = 1000
+	auto.offset.reset = latest
+	bootstrap.servers = [127.0.0.1:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = ebook
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2020-04-17 12:16:51.406  INFO 9120 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka version : 2.0.1
+2020-04-17 12:16:51.406  INFO 9120 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId : fa14705e51bd2ce5
+2020-04-17 12:16:53.757  WARN 9120 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:16:55.867  WARN 9120 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:16:57.972  WARN 9120 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:17:00.278  WARN 9120 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:17:02.691  WARN 9120 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:17:05.399  WARN 9120 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:17:08.610  WARN 9120 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:17:11.625  WARN 9120 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:17:14.754  WARN 9120 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:17:17.879  WARN 9120 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:17:20.896  WARN 9120 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.
+2020-04-17 12:17:23.908  WARN 9120 --- [main] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=ebook] Connection to node -1 could not be established. Broker may not be available.

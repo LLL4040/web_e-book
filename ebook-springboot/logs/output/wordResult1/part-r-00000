@@ -1,0 +1,652 @@
+	997
+	...]	4
+	auto.commit.interval.ms	4
+	auto.offset.reset	4
+	bootstrap.servers	4
+	check.crcs	4
+	client.id	4
+	connections.max.idle.ms	4
+	default.api.timeout.ms	4
+	enable.auto.commit	4
+	exclude.internal.topics	4
+	fetch.max.bytes	4
+	fetch.max.wait.ms	4
+	fetch.min.bytes	4
+	group.id	4
+	heartbeat.interval.ms	4
+	interceptor.classes	4
+	internal.leave.group.on.close	4
+	isolation.level	4
+	key.deserializer	4
+	max.partition.fetch.bytes	4
+	max.poll.interval.ms	4
+	max.poll.records	4
+	metadata.max.age.ms	4
+	metric.reporters	4
+	metrics.num.samples	4
+	metrics.recording.level	4
+	metrics.sample.window.ms	4
+	name:	4
+	partition.assignment.strategy	4
+	receive.buffer.bytes	4
+	reconnect.backoff.max.ms	4
+	reconnect.backoff.ms	4
+	request.timeout.ms	4
+	retry.backoff.ms	4
+	sasl.client.callback.handler.class	4
+	sasl.jaas.config	4
+	sasl.kerberos.kinit.cmd	4
+	sasl.kerberos.min.time.before.relogin	4
+	sasl.kerberos.service.name	4
+	sasl.kerberos.ticket.renew.jitter	4
+	sasl.kerberos.ticket.renew.window.factor	4
+	sasl.login.callback.handler.class	4
+	sasl.login.class	4
+	sasl.login.refresh.buffer.seconds	4
+	sasl.login.refresh.min.period.seconds	4
+	sasl.login.refresh.window.factor	4
+	sasl.login.refresh.window.jitter	4
+	sasl.mechanism	4
+	security.protocol	4
+	send.buffer.bytes	4
+	session.timeout.ms	4
+	ssl.cipher.suites	4
+	ssl.enabled.protocols	4
+	ssl.endpoint.identification.algorithm	4
+	ssl.key.password	4
+	ssl.keymanager.algorithm	4
+	ssl.keystore.location	4
+	ssl.keystore.password	4
+	ssl.keystore.type	4
+	ssl.protocol	4
+	ssl.provider	4
+	ssl.secure.random.implementation	4
+	ssl.trustmanager.algorithm	4
+	ssl.truststore.location	4
+	ssl.truststore.password	4
+	ssl.truststore.type	4
+	value.deserializer	4
+'applicationTaskExecutor'	4
+'default'	4
+'org.springframework.hateoas.config.HateoasConfiguration'	4
+'org.springframework.kafka.annotation.KafkaBootstrapConfiguration'	4
+'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration'	4
+'redisConfig'	4
+(for	16
+(http)	4
+(started	4
+-	80
+---	275
+-1	47
+.RepositoryConfigurationExtensionSupport	72
+.s.d.r.c.RepositoryConfigurationDelegate	48
+/usr/bin/kinit	4
+0	8
+0,	4
+0.05	8
+0.8	8
+1	8
+100	4
+1000	8
+10000	4
+101ms.	2
+1048576	4
+10]},	4
+11904	69
+11:59:41.006	1
+11:59:41.011	1
+11:59:42.929	1
+11:59:42.931	1
+11:59:43.087	1
+11:59:43.421	1
+11:59:43.482	1
+11:59:43.483	1
+11:59:43.567	1
+11:59:43.570	1
+11:59:43.571	1
+11:59:43.573	1
+11:59:43.574	1
+11:59:43.611	1
+11:59:43.647	1
+11:59:43.666	1
+11:59:43.770	1
+11:59:43.772	1
+11:59:43.774	1
+11:59:43.777	1
+11:59:43.779	1
+11:59:43.781	1
+11:59:43.782	1
+11:59:44.066	1
+11:59:44.069	1
+11:59:44.139	1
+11:59:44.140	2
+11:59:44.141	1
+11:59:44.142	1
+11:59:44.144	2
+11:59:45.314	1
+11:59:45.498	1
+11:59:45.610	1
+11:59:45.686	1
+11:59:46.932	1
+11:59:47.011	1
+11:59:47.012	1
+11:59:47.573	1
+11:59:47.574	1
+11:59:48.706	1
+11:59:49.498	1
+11:59:49.796	1
+11:59:50.003	1
+11:59:50.009	1
+11:59:50.406	1
+11:59:50.781	1
+11:59:52.661	1
+11:59:55.215	1
+11:59:55.377	1
+11:59:55.392	1
+122ms.	1
+126ms.	1
+127ms.	1
+12:00:02.533	1
+12:00:02.732	1
+12:00:05.605	1
+12:00:05.749	1
+12:00:05.750	1
+12:00:08.031	1
+12:00:10.143	1
+12:00:12.249	1
+12:00:14.458	1
+12:00:16.967	1
+12:00:19.910	1
+12:00:23.145	1
+12:00:26.160	1
+12:00:29.168	1
+12:00:32.178	1
+12:00:35.185	1
+12:06:04.181	1
+12:06:04.185	1
+12:06:06.675	1
+12:06:06.677	1
+12:06:07.027	1
+12:06:07.422	1
+12:06:07.496	1
+12:06:07.498	1
+12:06:07.609	1
+12:06:07.612	1
+12:06:07.615	1
+12:06:07.619	1
+12:06:07.621	1
+12:06:07.727	1
+12:06:07.779	1
+12:06:07.788	1
+12:06:07.889	1
+12:06:07.891	1
+12:06:07.895	1
+12:06:07.904	1
+12:06:07.910	1
+12:06:07.912	1
+12:06:07.915	1
+12:06:08.442	1
+12:06:08.443	1
+12:06:08.583	1
+12:06:08.586	1
+12:06:08.596	1
+12:06:08.651	1
+12:06:08.681	1
+12:06:08.687	1
+12:06:08.689	1
+12:06:10.508	1
+12:06:10.636	1
+12:06:10.700	1
+12:06:10.766	1
+12:06:11.871	1
+12:06:12.000	1
+12:06:12.002	1
+12:06:12.695	1
+12:06:12.696	1
+12:06:14.652	1
+12:06:15.902	1
+12:06:16.332	1
+12:06:16.654	1
+12:06:16.663	1
+12:06:17.005	1
+12:06:17.500	1
+12:06:19.393	1
+12:06:22.877	1
+12:06:23.037	1
+12:06:23.054	1
+12:06:32.324	1
+12:06:32.575	1
+12:06:35.042	1
+12:06:35.459	1
+12:06:35.467	1
+12:06:38.199	1
+12:06:40.382	1
+12:06:42.490	1
+12:06:44.702	1
+12:06:47.137	1
+12:06:49.943	1
+12:06:53.051	1
+12:06:55.963	1
+12:06:59.175	1
+12:07:02.085	1
+12:07:05.197	1
+12:07:08.410	1
+12:07:11.394	1
+12:07:14.503	1
+12:07:17.613	1
+12:07:20.527	1
+12:07:23.736	1
+12:07:26.947	1
+12:07:29.864	1
+12:13:42.654	1
+12:13:42.662	1
+12:13:44.781	1
+12:13:44.783	1
+12:13:44.946	1
+12:13:45.177	1
+12:13:45.255	1
+12:13:45.256	1
+12:13:45.336	1
+12:13:45.339	1
+12:13:45.341	1
+12:13:45.343	1
+12:13:45.345	1
+12:13:45.383	1
+12:13:45.417	1
+12:13:45.422	1
+12:13:45.492	1
+12:13:45.493	1
+12:13:45.494	1
+12:13:45.495	1
+12:13:45.497	1
+12:13:45.498	2
+12:13:45.694	1
+12:13:45.696	1
+12:13:45.887	1
+12:13:45.888	1
+12:13:45.890	1
+12:13:45.892	1
+12:13:45.894	1
+12:13:45.898	1
+12:13:45.899	1
+12:13:47.154	1
+12:13:47.346	1
+12:13:47.443	1
+12:13:47.498	1
+12:13:48.802	1
+12:13:48.933	1
+12:13:48.935	1
+12:13:49.708	1
+12:13:49.710	1
+12:13:51.274	1
+12:13:52.207	1
+12:13:52.582	1
+12:13:52.842	1
+12:13:52.849	1
+12:13:53.384	1
+12:13:53.823	1
+12:13:56.099	1
+12:14:00.048	1
+12:14:00.224	1
+12:14:00.245	1
+12:14:07.695	1
+12:14:07.871	1
+12:14:10.261	1
+12:14:10.435	1
+12:14:10.436	1
+12:14:12.864	1
+12:14:14.982	1
+12:14:17.107	1
+12:14:19.458	1
+12:14:22.161	1
+12:16:23.866	1
+12:16:23.870	1
+12:16:26.322	1
+12:16:26.324	1
+12:16:26.528	1
+12:16:26.833	1
+12:16:26.893	1
+12:16:26.895	1
+12:16:26.954	1
+12:16:26.956	1
+12:16:26.957	1
+12:16:26.958	1
+12:16:26.960	1
+12:16:26.997	1
+12:16:27.027	1
+12:16:27.032	1
+12:16:27.167	1
+12:16:27.169	1
+12:16:27.170	1
+12:16:27.175	1
+12:16:27.178	1
+12:16:27.180	1
+12:16:27.182	1
+12:16:27.499	1
+12:16:27.501	1
+12:16:27.596	1
+12:16:27.597	1
+12:16:27.598	1
+12:16:27.600	1
+12:16:27.602	1
+12:16:27.603	2
+12:16:29.506	1
+12:16:29.624	1
+12:16:29.697	1
+12:16:29.757	1
+12:16:31.287	1
+12:16:31.427	1
+12:16:31.431	1
+12:16:32.613	1
+12:16:32.615	1
+12:16:35.057	1
+12:16:35.823	1
+12:16:35.936	1
+12:16:36.079	1
+12:16:36.083	1
+12:16:36.337	1
+12:16:36.812	1
+12:16:39.870	1
+12:16:43.943	1
+12:16:44.039	1
+12:16:44.049	1
+12:16:49.027	1
+12:16:49.209	1
+12:16:51.216	1
+12:16:51.406	2
+12:16:53.757	1
+12:16:55.867	1
+12:16:57.972	1
+12:17:00.278	1
+12:17:02.691	1
+12:17:05.399	1
+12:17:08.610	1
+12:17:11.625	1
+12:17:14.754	1
+12:17:17.879	1
+12:17:20.896	1
+12:17:23.908	1
+131072	4
+131ms.	1
+2	4
+2.0.1	4
+2020-04-17	275
+221ms.	1
+227ms.	1
+300	4
+3000	4
+30000	8
+300000	8
+369ms.	1
+472ms.	1
+484ms.	1
+5	4
+50	4
+500	8
+5144	63
+52428800	4
+540000	4
+58ms.	1
+59ms.	1
+60	4
+60000	8
+6498	1
+65536	4
+6668	77
+6953	1
+717ms.	1
+8455	1
+84ms.	1
+8609	1
+86ms.	1
+8888	4
+9120	70
+:	283
+=	260
+Annotations	4
+BackendApplication	4
+Bean	16
+BeanPostProcessors	16
+Bootstrapping	16
+Broker	47
+Cluster	4
+Commons	4
+Connection	47
+ConsumerConfig	4
+Core	4
+Could	72
+D:\myGithub\web	4
+DEFAULT	16
+Data	120
+EntityManagerFactory	4
+ExecutorService	4
+Explicitly	4
+Finished	16
+Found	16
+GSSAPI	4
+HCANN000001:	4
+HHH000204:	4
+HHH000206:	4
+HHH000400:	4
+HHH000412:	4
+Hazel	4
+Hibernate	8
+HikariPool-1	8
+INFO	228
+Initialized	4
+Initializing	8
+JKS	8
+JPA	8
+Kafka	8
+LAPTOP-G6M9NTHV	4
+MongoDB	20
+Monitor	4
+Multiple	16
+No	4
+Opened	4
+PID	4
+PKIX	4
+PLAINTEXT	4
+PersistenceUnitInfo	4
+Processing	4
+Redis	24
+Root	4
+ServerDescription{address=localhost:27017,	4
+Servlet	4
+Solr	24
+Spring	124
+Start	4
+Starting	12
+Starting...	4
+SunX509	4
+TLS	4
+TLSv1.1,	4
+TLSv1]	4
+Therefore,	4
+Tomcat	4
+Tomcat/9.0.19]	4
+Using	4
+WARN	51
+WebApplicationContext	4
+WebApplicationContext:	4
+[	4
+[127.0.0.1:9092]	4
+[Apache	4
+[Consumer	47
+[TLSv1.2,	4
+[Tomcat]	4
+[]	8
+[backend.config.RedisConfig$$EnhancerBySpringCGLIB$$2f00d3ac]	1
+[backend.config.RedisConfig$$EnhancerBySpringCGLIB$$939dc964]	1
+[backend.config.RedisConfig$$EnhancerBySpringCGLIB$$a69d5581]	1
+[backend.config.RedisConfig$$EnhancerBySpringCGLIB$$b8a58974]	1
+[class	4
+[cluster-ClusterId{value='5e9929bb57ec942e804f7aee',	2
+[cluster-ClusterId{value='5e992b3e57ec941a0c450f89',	2
+[cluster-ClusterId{value='5e992d0857ec94141824cc4b',	2
+[cluster-ClusterId{value='5e992dab57ec9423a0e3cf84',	2
+[connectionId{localValue:1,	4
+[main]	267
+[org.springframework.hateoas.config.HateoasConfiguration$$EnhancerBySpringCGLIB$$2ef86dae]	1
+[org.springframework.hateoas.config.HateoasConfiguration$$EnhancerBySpringCGLIB$$93956366]	1
+[org.springframework.hateoas.config.HateoasConfiguration$$EnhancerBySpringCGLIB$$a694ef83]	1
+[org.springframework.hateoas.config.HateoasConfiguration$$EnhancerBySpringCGLIB$$b89d2376]	1
+[org.springframework.kafka.annotation.KafkaBootstrapConfiguration$$EnhancerBySpringCGLIB$$832a31ff]	1
+[org.springframework.kafka.annotation.KafkaBootstrapConfiguration$$EnhancerBySpringCGLIB$$ccee7c7]	1
+[org.springframework.kafka.annotation.KafkaBootstrapConfiguration$$EnhancerBySpringCGLIB$$e7c727b7]	1
+[org.springframework.kafka.annotation.KafkaBootstrapConfiguration$$EnhancerBySpringCGLIB$$fac6b3d4]	1
+[org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$14151634]	1
+[org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2714a251]	1
+[org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$391cd644]	1
+[org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$af78207c]	1
+aWebConfiguration$JpaWebMvcConfiguration	4
+active	4
+all	16
+assignment	72
+auto-proxying)	16
+available.	47
+back	4
+backend.BackendApplication	8
+backend.Repository.BookMongoDBRepository.	12
+backend.Repository.BookRepository.	12
+backend.Repository.CartRepository.	12
+backend.Repository.OrderItemRepository.	12
+backend.Repository.OrderRepository.	12
+backend.Repository.UserRepository.	12
+be	98
+by	24
+candidate	72
+class	8
+clientId=consumer-1,	47
+com.zaxxer.hikari.HikariDataSource	8
+commitId	4
+completed	4
+completed.	4
+configuration	16
+configure	4
+connected	4
+connection	4
+could	47
+created	4
+database	4
+default	12
+default.	4
+description	4
+description='null'}-localhost:27017]	8
+dialect:	4
+disable	4
+during	4
+e-book\ebook-springboot)	4
+ebook	4
+eligible	32
+embedded	4
+enabled	4
+engine:	4
+entering	16
+established.	47
+example:	16
+fa14705e51bd2ce5	4
+falling	4
+for	108
+found	4
+found,	16
+getting	16
+groupId=ebook]	47
+hibernate.properties	4
+https	4
+identify	72
+in	40
+initialization	4
+initialized	4
+interface	72
+interfaces.	16
+is	20
+j.LocalContainerEntityManagerFactoryBean	4
+latest	4
+localhost:27017	4
+logicalSessionTimeoutMinutes=30,	4
+maxDocumentSize=16777216,	4
+maxWaitQueueSize=500}	4
+maxWireVersion=7,	4
+may	51
+minWireVersion=0,	4
+mode!	16
+mode.	16
+mode=SINGLE,	4
+modules	16
+ms	4
+ms',	4
+node	47
+not	202
+null	52
+o.a.c.c.C.[Tomcat].[localhost].[/]	4
+o.a.k.clients.consumer.ConsumerConfig	4
+o.a.kafka.common.utils.AppInfoParser	8
+o.apache.catalina.core.StandardService	4
+o.hibernate.annotations.common.Version	4
+o.hibernate.jpa.internal.util.LogHelper	4
+o.s.b.w.embedded.tomcat.TomcatWebServer	4
+o.s.s.concurrent.ThreadPoolTaskExecutor	4
+o.s.web.context.ContextLoader	4
+of	16
+ok=true,	4
+on	4
+org.apache.catalina.core.StandardEngine	4
+org.apache.kafka.clients.NetworkClient	47
+org.apache.kafka.clients.consumer.RangeAssignor]	4
+org.apache.kafka.common.serialization.StringDeserializer	8
+org.hibernate.Version	4
+org.hibernate.cfg.Environment	4
+org.hibernate.dialect.Dialect	4
+org.hibernate.dialect.MySQL5Dialect	4
+org.mongodb.driver.cluster	8
+org.mongodb.driver.connection	4
+performed	4
+persistence	4
+port(s):	4
+processed	16
+profile	4
+profiles:	4
+queries	4
+read_uncommitted	4
+rendering.	4
+repositories	16
+repository	120
+requiredClusterType=UNKNOWN,	4
+roundTripTimeNanos=11054600}	1
+roundTripTimeNanos=4722100}	1
+roundTripTimeNanos=6831800}	1
+roundTripTimeNanos=8732700}	1
+safely	72
+scanning	16
+server	4
+serverSelectionTimeout='30000	4
+serverValue:2}]	1
+serverValue:3}]	1
+serverValue:4}]	1
+serverValue:5}]	1
+service	4
+set,	4
+settings	4
+spring.jpa.open-in-view	8
+state=CONNECTED,	4
+store	72
+strict	16
+successfully	4
+this	4
+thread	4
+to	63
+trationDelegate$BeanPostProcessorChecker	16
+true	16
+type	16
+type=STANDALONE,	4
+unit	4
+values:	4
+version	4
+version=ServerVersion{versionList=[4,	4
+view	4
+warning	4
+with	16
+{5.0.4.Final}	4
+{5.3.10.Final}	4
+{hosts=[localhost:27017],	4
