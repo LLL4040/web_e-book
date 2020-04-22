@@ -7,6 +7,11 @@ logging:
 server:
   port: 8888
 
+hbase:
+  conf:
+    conf-maps:
+      'hbase.zookeeper.quorum' : '127.0.0.1:2181'
+
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
