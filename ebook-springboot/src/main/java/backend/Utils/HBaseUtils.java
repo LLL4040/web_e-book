@@ -4,6 +4,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.*;
 import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.filter.CompareFilter;
+import org.apache.hadoop.hbase.filter.FirstKeyOnlyFilter;
 import org.apache.hadoop.hbase.filter.RowFilter;
 import org.apache.hadoop.hbase.filter.SubstringComparator;
 import org.apache.hadoop.hbase.util.Bytes;
@@ -17,15 +18,15 @@ import java.util.List;
 import java.util.NavigableMap;
 
 @Component
-public class HbaseUtils {
+public class HBaseUtils {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private static Configuration conf = HBaseConfiguration.create();
     private static Connection connection = null;
-    private static HbaseUtils instance = null;
+    private static HBaseUtils instance = null;
     private static Admin admin = null;
 
-    public HbaseUtils() {
+    public HBaseUtils() {
         if (connection == null) {
             try {
                 connection = ConnectionFactory.createConnection(conf);
@@ -37,9 +38,9 @@ public class HbaseUtils {
     }
 
     //简单单例方法，如果autowired自动注入就不需要此方法
-    public static synchronized HbaseUtils getInstance(){
+    public static synchronized HBaseUtils getInstance(){
         if(instance == null){
-            instance = new HbaseUtils();
+            instance = new HBaseUtils();
         }
         return instance;
     }
@@ -312,6 +313,28 @@ public class HbaseUtils {
             admin.disableTable(name);
             admin.deleteTable(name);
         }
+    }
+
+    public int rowCountByScanFilter(String tableName){
+        int rowCount = 0;
+        try {
+            TableName name=TableName.valueOf(tableName);
+            //connection为类静态变量
+            Table table = connection.getTable(name);
+            Scan scan = new Scan();
+            //FirstKeyOnlyFilter只会取得每行数据的第一个kv，提高count速度
+            scan.setFilter(new FirstKeyOnlyFilter());
+
+            ResultScanner rs = table.getScanner(scan);
+            for (Result result : rs) {
+                rowCount += result.size();
+            }
+
+            System.out.println("RowCount: " + rowCount);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+        return rowCount;
     }
 
 }

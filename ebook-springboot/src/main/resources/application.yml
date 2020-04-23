@@ -1,8 +1,5 @@
 logging:
-  level:
-    ebook-springboot: DEBUG
-  file: ./logs/core.log
-  root: INFO
+  config: logback.xml
 
 server:
   port: 8888
@@ -80,6 +77,4 @@ spring:
     listener:
       # 在侦听器容器中运行的线程数。
       concurrency: 5
-
-
 
