@@ -10,16 +10,23 @@ public class HBaseAppender extends AppenderBase<LoggingEvent> {
     private String curCF;
     private String curCol;
     private int curRow;
+    private int curTN;
     private HBaseUtils hBaseUtils;
 
     @Override
     public void start() {
         try {
             hBaseUtils = new HBaseUtils();
-            curTable = "log1";
+            curTN = 0;
+            curTable = "log" + curTN;
             curCF = "log";
             curCol = "content";
-            curRow = hBaseUtils.rowCountByScanFilter(curTable);
+            if (hBaseUtils.isExist(curTable)) {
+                curRow = hBaseUtils.rowCountByScanFilter(curTable) + 1;
+            } else {
+                hBaseUtils.createTable(curTable, curCF);
+                curRow = 1;
+            }
         } catch (Exception e) {
             addStatus(new ErrorStatus("Failed to initialize HBase", this, e));
             return;
@@ -36,9 +43,18 @@ public class HBaseAppender extends AppenderBase<LoggingEvent> {
     protected void append(LoggingEvent event) {
         try {
             String log = event.getMessage();
-            System.out.println(log);
             if (!log.isEmpty()) {
+                if (curRow > 1000) {
+                    curTN = (curTN + 1) % 3;
+                    curTable = "log" + curTN;
+                    if (hBaseUtils.isExist(curTable)) {
+                        hBaseUtils.deleteTable(curTable);
+                    }
+                    hBaseUtils.createTable(curTable, curCF);
+                    curRow = 0;
+                }
                 hBaseUtils.insertOneRecord(curTable, String.valueOf(curRow), curCF, curCol, log);
+                curRow++;
             }
         } catch (Exception e) {
             addStatus(new ErrorStatus("日志写入HBase出错", this, e));
