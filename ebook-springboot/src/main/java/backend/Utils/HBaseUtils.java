@@ -29,6 +29,7 @@ public class HBaseUtils {
     public HBaseUtils() {
         if (connection == null) {
             try {
+                conf.set("hbase.zookeeper.quorum", "127.0.0.1:2191");
                 connection = ConnectionFactory.createConnection(conf);
                 admin = connection.getAdmin();
             } catch (IOException e) {

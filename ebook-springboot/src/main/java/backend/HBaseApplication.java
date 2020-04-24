@@ -10,7 +10,7 @@ public class HBaseApplication {
     private static final Logger hbaseLog = LoggerFactory.getLogger("HBase");
 
     public static void main(String[] args) throws Exception {
-        testLog();
+        deleteTable();
     }
 
     public static void testLog() {
@@ -22,9 +22,9 @@ public class HBaseApplication {
 
     public static void deleteTable() throws IOException {
         HBaseUtils hbaseUtils = new HBaseUtils();
+        hbaseUtils.deleteTable("log0");
         hbaseUtils.deleteTable("log1");
-        hbaseUtils.deleteTable("log2");
-        hbaseUtils.deleteTable("log3");
+//        hbaseUtils.deleteTable("log2");
         System.out.println("完成！");
     }
 

@@ -6,6 +6,8 @@ import backend.WebSocket.Encoders.InfoMessageEncoder;
 import backend.WebSocket.Encoders.JoinMessageEncoder;
 import backend.WebSocket.Encoders.UsersMessageEncoder;
 import backend.WebSocket.Messages.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.websocket.*;
@@ -14,7 +16,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @Component
 /* Websocket endpoint */
@@ -26,23 +27,23 @@ import java.util.logging.Logger;
 )
 /* There is a Endpoint instance per connetion */
 public class Endpoint {
-    private static final Logger logger = Logger.getLogger("Endpoint");
+    private static final Logger hbaseLog = LoggerFactory.getLogger("HBase");
 
     @OnOpen
     public void openConnection(Session session) {
-        logger.log(Level.INFO, "Connection opened.");
+        hbaseLog.info("Connection opened.");
     }
 
     @OnMessage
     public void message(final Session session, Message msg) {
-        logger.log(Level.INFO, "Received: {0}", msg.toString());
+        hbaseLog.info("Received: " + msg.toString());
 
         if (msg instanceof JoinMessage) {
             /* Add the new user and notify everybody */
             JoinMessage jmsg = (JoinMessage) msg;
             session.getUserProperties().put("name", jmsg.getName());
             session.getUserProperties().put("active", true);
-            logger.log(Level.INFO, "Received: {0}", jmsg.toString());
+            hbaseLog.info("Received: " + jmsg.toString());
             sendAll(session, new InfoMessage(jmsg.getName() + " has joined the chat"));
             sendAll(session, new ChatMessage("Duke", jmsg.getName(), "Hi there!!"));
             sendAll(session, new UsersMessage(this.getUserList(session)));
@@ -50,7 +51,7 @@ public class Endpoint {
         } else if (msg instanceof ChatMessage) {
             /* Forward the message to everybody */
             final ChatMessage cmsg = (ChatMessage) msg;
-            logger.log(Level.INFO, "Received: {0}", cmsg.toString());
+            hbaseLog.info("Received: " + cmsg.toString());
             sendAll(session, cmsg);
         }
     }
@@ -64,12 +65,12 @@ public class Endpoint {
             sendAll(session, new InfoMessage(name + " has left the chat"));
             sendAll(session, new UsersMessage(this.getUserList(session)));
         }
-        logger.log(Level.INFO, "Connection closed.");
+        hbaseLog.info("Connection closed.");
     }
 
     @OnError
     public void error(Session session, Throwable t) {
-        logger.log(Level.INFO, "Connection error ({0})", t.toString());
+        hbaseLog.info("Connection error: " + t.toString());
     }
 
     /* Forward a message to all connected clients
@@ -79,11 +80,11 @@ public class Endpoint {
             for (Session s : session.getOpenSessions()) {
                 if (s.isOpen()) {
                     s.getBasicRemote().sendObject(msg);
-                    logger.log(Level.INFO, "Sent: {0}", msg.toString());
+                    hbaseLog.info("Sent: " + msg.toString());
                 }
             }
         } catch (IOException | EncodeException e) {
-            logger.log(Level.INFO, e.toString());
+            hbaseLog.info(e.toString());
         }
     }
 

@@ -1,15 +1,10 @@
-logging:
-  config: logback.xml
-
 server:
   port: 8888
 
-hbase:
-  conf:
-    conf-maps:
-      'hbase.zookeeper.quorum' : '127.0.0.1:2181'
-
 spring:
+#  #日志配置-选择一个日志输出环境
+#  profiles:
+#    active: dev
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
@@ -78,3 +73,5 @@ spring:
       # 在侦听器容器中运行的线程数。
       concurrency: 5
 
+logging:
+  config: src/main/resources/logback.xml
