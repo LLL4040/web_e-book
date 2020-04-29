@@ -12,6 +12,7 @@
               <router-link :to="{name:'UserBooks',params:{user: this.user}}" >书籍</router-link>
               <router-link :to="{name:'UserCart',params:{user: this.user}}" >购物车</router-link>
               <a class="now" href="#">我的订单</a>
+              <router-link :to="{name:'UserFriends',params:{user: this.user}}" >我的好友</router-link>
               <router-link :to="{name:'ChatRoom',params:{user: this.user}}" >聊天室</router-link>
             </div>
         </div>
@@ -100,7 +101,7 @@
         }
         let form = {"username": this.user};
         axios
-          .post('http://localhost:8088/api/order/all', form)
+          .post('http://localhost:8888/api/order/all', form)
           .then(response => {
             this.items = response.data;
             this.itemNumber = this.items.length;
@@ -108,7 +109,7 @@
             for(let i = 0; i < this.itemNumber; i++) {
               for(let j = 0; j < this.items[i].orderItems.length; j++) {
                 axios
-                  .post('http://localhost:8088/api/book/isbn/mongo', {"isbn": self.items[i].orderItems[j].book.isbn})
+                  .post('http://localhost:8888/api/book/isbn/mongo', {"isbn": self.items[i].orderItems[j].book.isbn})
                   .then(response => {
                     self.items[i].orderItems[j].book.cover = "data:image/png;base64," + response.data.cover.toString();
                   })
@@ -119,7 +120,7 @@
       handleDelete (id) {
         let form = {"id": id};
         axios
-          .post('http://localhost:8088/api/order/delete', form)
+          .post('http://localhost:8888/api/order/delete', form)
           .then(response => {
             if(response.data) {
               alert("删除此订单成功！");

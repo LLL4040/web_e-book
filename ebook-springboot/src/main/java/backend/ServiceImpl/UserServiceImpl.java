@@ -3,14 +3,14 @@ package backend.ServiceImpl;
 import backend.Dao.UserDao;
 import backend.Entity.User;
 import backend.Service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.LinkedList;
-import java.util.Map;
 import com.google.common.base.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.LinkedList;
+import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -26,9 +26,33 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUserByUsername(String username) {
+    public User findOne(String username) {
         return userDao.findOne(username);
     }
+
+    @Override
+    public LinkedList<User> findUserByUsername(String username) {
+        Optional<User> user = userDao.findByUsername(username);
+        User userFind = user.orNull();
+        LinkedList<User> res = new LinkedList<>();
+        if (userFind != null) {
+            User tmp = new User();
+            tmp.setUsername(userFind.getUsername());
+            tmp.setEmail(userFind.getEmail());
+            res.add(tmp);
+        }
+        return res;
+    }
+
+//    @Override
+//    public List<String> findUserByUsernameContains(String name) {
+//        List<User> userList = userDao.findAllByUsernameContains(name);
+//        List<String> result = new ArrayList<>();
+//        for(User u : userList) {
+//            result.add(u.getUsername());
+//        }
+//        return result;
+//    }
 
     @Override
     public LinkedList<User> findAll(String name, Integer id) {

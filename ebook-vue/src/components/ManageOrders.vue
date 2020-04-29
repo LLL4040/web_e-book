@@ -89,7 +89,7 @@
         }
         let form = {"username": this.user};
         axios
-          .post('http://localhost:8088/api/order/all', form)
+          .post('http://localhost:8888/api/order/all', form)
           .then(response => {
             this.items = response.data;
             this.itemNumber = this.items.length;
@@ -97,7 +97,7 @@
             for(let i = 0; i < this.itemNumber; i++) {
               for(let j = 0; j < this.items[i].orderItems.length; j++) {
                 axios
-                  .post('http://localhost:8088/api/book/isbn/mongo', {"isbn": self.items[i].orderItems[j].book.isbn})
+                  .post('http://localhost:8888/api/book/isbn/mongo', {"isbn": self.items[i].orderItems[j].book.isbn})
                   .then(response => {
                     self.items[i].orderItems[j].book.cover = "data:image/png;base64," + response.data.cover.toString();
                   })

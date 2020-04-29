@@ -86,7 +86,7 @@
         }
         let form = {"username": this.user};
         axios
-          .post('http://localhost:8088/api/order/all', form)
+          .post('http://localhost:8888/api/order/all', form)
           .then(response => {
             this.items = response.data;
             this.itemNumber = this.items.length;

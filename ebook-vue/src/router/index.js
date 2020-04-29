@@ -11,6 +11,7 @@ import Statistics from '../components/Statistics.vue';
 import Hello from '../components/HelloWorld.vue';
 import ManageUsers from "../components/ManageUsers";
 import ChatRoom from "../components/ChatRoom";
+import UserFriends from "../components/UserFriends";
 
 Vue.use(Router);
 
@@ -63,5 +64,9 @@ export default new Router({
     path: '/chatRoom',
     name: 'ChatRoom',
     component: ChatRoom
+  }, {
+    path: '/userFriends',
+    name: 'UserFriends',
+    component: UserFriends
   }]
 });

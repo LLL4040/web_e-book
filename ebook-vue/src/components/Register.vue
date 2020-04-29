@@ -128,7 +128,7 @@
         this.$refs['ruleForm'].validate((valid) => {
           if (valid) {
             axios
-              .post('http://localhost:8088/api/user/register', ruleForm)
+              .post('http://localhost:8888/api/user/register', ruleForm)
               .then(response => {
                 this.msg = response.data;
                 if (this.msg === false) {

@@ -12,6 +12,7 @@
 				<a class="now" href="#">书籍</a>
         <router-link :to="{name:'UserCart',params:{user: this.user}}" >购物车</router-link>
         <router-link :to="{name:'UserOrder',params:{user: this.user}}" >我的订单</router-link>
+        <router-link :to="{name:'UserFriends',params:{user: this.user}}" >我的好友</router-link>
         <router-link :to="{name:'ChatRoom',params:{user: this.user}}" >聊天室</router-link>
 			</div>
 		</div>
@@ -88,14 +89,14 @@
           this.$router.push({name: "Home"});
         }
         axios
-          .get('http://localhost:8088/api/book/all')
+          .get('http://localhost:8888/api/book/all')
           .then(response => {
             this.books = response.data;
             this.bookNumber = this.books.length;
             let self = this;
             for(let i = 0; i < this.bookNumber; i++) {
               axios
-                .post('http://localhost:8088/api/book/isbn/mongo', {"isbn": self.books[i].isbn})
+                .post('http://localhost:8888/api/book/isbn/mongo', {"isbn": self.books[i].isbn})
                 .then(response => {
                   self.books[i].cover = "data:image/png;base64," + response.data.cover.toString();
                 })
@@ -109,7 +110,7 @@
         }
         let form = {"username": this.user, "isbn": row.isbn, "num": 1};
         axios
-          .post('http://localhost:8088/api/cart/insert', form)
+          .post('http://localhost:8888/api/cart/insert', form)
           .then(response => {
             alert("成功加入购物车！");
           })

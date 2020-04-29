@@ -72,7 +72,7 @@
     },
     methods: {
       initWebsocket() {
-        let url = "ws://localhost:8088/websocket";
+        let url = "ws://localhost:8888/websocket";
         this.wsocket = new WebSocket(url);
         this.wsocket.onopen = this.onOpen;
         this.wsocket.onmessage = this.onMessage;

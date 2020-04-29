@@ -12,6 +12,7 @@
               <router-link :to="{name:'UserBooks',params:{user: this.user}}" >书籍</router-link>
               <a class="now" href="#">购物车</a>
               <router-link :to="{name:'UserOrder',params:{user: this.user}}" >我的订单</router-link>
+              <router-link :to="{name:'UserFriends',params:{user: this.user}}" >我的好友</router-link>
               <router-link :to="{name:'ChatRoom',params:{user: this.user}}" >聊天室</router-link>
             </div>
         </div>
@@ -93,13 +94,13 @@
         }
         let form = {"username": this.user};
         axios
-          .post('http://localhost:8088/api/cart/all', form)
+          .post('http://localhost:8888/api/cart/all', form)
           .then(response => {
             this.CartItems = response.data;
             let self = this;
             for(let i = 0; i < this.CartItems.length; i++) {
               axios
-                .post('http://localhost:8088/api/book/isbn/mongo', {"isbn": self.CartItems[i].book.isbn})
+                .post('http://localhost:8888/api/book/isbn/mongo', {"isbn": self.CartItems[i].book.isbn})
                 .then(response => {
                   self.CartItems[i].book.cover = "data:image/png;base64," + response.data.cover.toString();
                 })
@@ -109,7 +110,7 @@
       handleDelete (i, ISBN) {
         let form = {"username": this.user, "isbn": ISBN};
         axios
-          .post('http://localhost:8088/api/cart/delete', form)
+          .post('http://localhost:8888/api/cart/delete', form)
           .then(response => {
             if (response.data === true) {
               alert("删除成功！");
@@ -121,7 +122,7 @@
       handleChange (ISBN, num) {
         let form = {"username": this.user, "isbn": ISBN, "num": num};
         axios
-          .post('http://localhost:8088/api/cart/update', form)
+          .post('http://localhost:8888/api/cart/update', form)
           .then(response => {
             if (response.data === true) {
               console.log("同步成功！");
@@ -135,7 +136,7 @@
       handleSubmit () {
         let form = {"username": this.user};
         axios
-          .post('http://localhost:8088/api/order/insert', form)
+          .post('http://localhost:8888/api/order/insert', form)
           .then(response => {
             if (response.data === true) {
               alert("提交成功！");

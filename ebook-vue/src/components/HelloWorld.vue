@@ -96,7 +96,7 @@ export default {
   },
   mounted () {
     axios
-      .get('http://localhost:8088/api/re')
+      .get('http://localhost:8888/api/re')
       .then(response => (this.msg = response.data))
     }
 };

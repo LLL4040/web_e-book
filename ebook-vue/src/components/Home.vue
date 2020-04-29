@@ -12,6 +12,7 @@
               <router-link :to="{name:'UserBooks',params:{user: this.user}}" >书籍</router-link>
               <router-link :to="{name:'UserCart',params:{user: this.user}}" >购物车</router-link>
               <router-link :to="{name:'UserOrder',params:{user: this.user}}" >我的订单</router-link>
+              <router-link :to="{name:'UserFriends',params:{user: this.user}}" >我的好友</router-link>
               <router-link :to="{name:'ChatRoom',params:{user: this.user}}" >聊天室</router-link>
             </div>
         </div>
@@ -84,7 +85,7 @@
     },
     mounted () {
       axios
-        .get('http://localhost:8088/api/visit/count')
+        .get('http://localhost:8888/api/visit/count')
         .then(response => {
           this.visitors = response.data;
         })
@@ -94,7 +95,7 @@
         this.$refs['ruleForm'].validate((valid) => {
           if (valid) {
             axios
-              .post('http://localhost:8088/api/user/login', ruleForm)
+              .post('http://localhost:8888/api/user/login', ruleForm)
               .then(response => {
                 this.msg = response.data;
                 if (this.msg === 2) {

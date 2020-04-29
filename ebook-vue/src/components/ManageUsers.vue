@@ -8,7 +8,7 @@
             </div>
             <div class="clear"></div>
             <div id="menu">
-              <router-link :to="{name:'Home',params:{user: ''}}" >{{ index }}</router-link>
+              <router-link :to="{name:'Home',params:{user: ''}}" >退出登录</router-link>
               <router-link :to="{name:'ManageBooks',params:{user: this.user}}" >书籍管理</router-link>
               <a class="now" href="#">用户管理</a>
               <router-link :to="{name:'ManageOrders',params:{user: this.user}}" >订单管理</router-link>
@@ -41,7 +41,6 @@
     name: 'manage',
     data () {
       return {
-        index: '退出登录',
         user: '',
         activeIndex: 'manage',
         search: '',
@@ -62,7 +61,7 @@
           this.$router.push({name: "Home"});
         }
         axios
-          .post('http://localhost:8088/api/user/all', {"name": this.user})
+          .post('http://localhost:8888/api/user/all', {"name": this.user})
           .then(response => {
             this.userData = response.data;
             this.userNumber = this.userData.length;
@@ -71,7 +70,7 @@
       handleEnabledClick (username) {
         let form = {"username": username, "status": 0};
         axios
-          .post('http://localhost:8088/api/user/change', form)
+          .post('http://localhost:8888/api/user/change', form)
           .then(response => {
             if(response.data === 1){
               alert("禁用成功！");
@@ -84,7 +83,7 @@
       handleDisabledClick (username) {
         let form = {"username": username, "status": 1};
         axios
-          .post('http://localhost:8088/api/user/change', form)
+          .post('http://localhost:8888/api/user/change', form)
           .then(response => {
             if(response.data === 1){
               alert("解禁成功！");

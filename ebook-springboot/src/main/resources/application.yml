@@ -2,9 +2,6 @@ server:
   port: 8888
 
 spring:
-#  #日志配置-选择一个日志输出环境
-#  profiles:
-#    active: dev
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
@@ -17,6 +14,9 @@ spring:
       host: http://localhost:8983/solr/book_core
       repositories:
         enabled: true
+    neo4j:
+      username: neo4j
+      password: root
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8

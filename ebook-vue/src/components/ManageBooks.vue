@@ -8,7 +8,7 @@
       </div>
       <div class="clear"></div>
       <div id="menu">
-        <router-link :to="{name:'Home',params:{user: ''}}" >{{ index }}</router-link>
+        <router-link :to="{name:'Home',params:{user: ''}}" >退出登录</router-link>
         <a class="now" href="#">书籍管理</a>
         <router-link :to="{name:'ManageUsers',params:{user: this.user}}" >用户管理</router-link>
         <router-link :to="{name:'ManageOrders',params:{user: this.user}}" >订单管理</router-link>
@@ -107,7 +107,6 @@
     name: 'book_manager',
     data () {
       return {
-        index: '退出登录',
         user: '',
         file:'',
         bookNumber: 0,
@@ -143,14 +142,14 @@
           this.$router.push({name: "Home"});
         }
         axios
-          .get('http://localhost:8088/api/book/all')
+          .get('http://localhost:8888/api/book/all')
           .then(response => {
             this.books = response.data;
             this.bookNumber = this.books.length;
             let self = this;
             for(let i = 0; i < this.bookNumber; i++) {
               axios
-                .post('http://localhost:8088/api/book/isbn/mongo', {"isbn": self.books[i].isbn})
+                .post('http://localhost:8888/api/book/isbn/mongo', {"isbn": self.books[i].isbn})
                 .then(response => {
                   self.books[i].cover = "data:image/png;base64," + response.data.cover.toString();
                 })
@@ -158,7 +157,7 @@
           })
       },
       handleSearch () {
-        let url = 'http://localhost:8088/api/book/search/' + this.keyword;
+        let url = 'http://localhost:8888/api/book/search/' + this.keyword;
         axios
           .get(url)
           .then(response => {
@@ -167,7 +166,7 @@
             let self = this;
             for(let i = 0; i < this.bookNumber; i++) {
               axios
-                .post('http://localhost:8088/api/book/isbn/mongo', {"isbn": self.books[i].isbn})
+                .post('http://localhost:8888/api/book/isbn/mongo', {"isbn": self.books[i].isbn})
                 .then(response => {
                   self.books[i].cover = "data:image/png;base64," + response.data.cover.toString();
                 })
@@ -185,7 +184,7 @@
       handleDelete (row) {
         let form = {"isbn": row.isbn};
         axios
-          .post("http://localhost:8088/api/book/delete", form)
+          .post("http://localhost:8888/api/book/delete", form)
           .then(response => {
             if(response) {
               alert("删除成功！");
@@ -209,7 +208,7 @@
         bodyData.set('contentInfo', this.bookForm.contentInfo);
         bodyData.append('cover', imagFile);
         axios({method: 'post',
-            url: 'http://localhost:8088/api/book/add',
+            url: 'http://localhost:8888/api/book/add',
             data: bodyData,
             config: { headers: {'Content-Type': 'multipart/form-data' }}}
             )

@@ -2,6 +2,7 @@ package backend.Controller;
 
 import backend.Entity.User;
 import backend.Service.UserService;
+import com.google.common.base.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +15,9 @@ public class UserController {
     @Autowired
     UserService us;
 
-    @GetMapping("/{name}")
-    public User getUserByName(@PathVariable("name") String username) {
+    @PostMapping("/friend/find")
+    public LinkedList<User> findOne(@RequestBody Map<String, String> map) {
+        String username = map.get("username");
         return us.findUserByUsername(username);
     }
 

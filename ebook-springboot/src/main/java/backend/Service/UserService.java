@@ -8,7 +8,9 @@ import java.util.Map;
 public interface UserService {
     User addUser(User user);
 
-    User findUserByUsername(String username);
+    User findOne(String username);
+
+    LinkedList<User> findUserByUsername(String username);
     LinkedList<User> findAll(String name, Integer id);
 
     boolean deleteUser(String username);
