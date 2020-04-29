@@ -1,5 +1,7 @@
 package backend.Service;
 
+import backend.Entity.Person;
+
 import java.util.List;
 
 public interface FriendService {
@@ -8,7 +10,7 @@ public interface FriendService {
      * @param name
      * @return
      */
-    public List<String> findAll(String name);
+    public List<Person> findAll(String name);
 
     /**
      * 添加好友

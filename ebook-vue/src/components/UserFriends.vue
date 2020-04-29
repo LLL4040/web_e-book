@@ -25,7 +25,6 @@
           </el-row>
           <el-table :data="findUser" border style="width: 100%; margin-top: 10px;">
             <el-table-column align="center" prop="username" label="username"></el-table-column>
-            <el-table-column align="center" prop="email" label="email"></el-table-column>
             <el-table-column align="center" label="操作">
               <template slot-scope="scope">
                 <el-button type="success" size="small" @click="handleAdd(scope.row.username)">添加好友</el-button>
@@ -34,7 +33,6 @@
           </el-table>
           <el-table :data="userData.slice((userCurrentPage - 1) * userPageSize, userCurrentPage * userPageSize)" border style="width: 100%; margin-top: 10px;">
             <el-table-column align="center" prop="username" label="username"></el-table-column>
-            <el-table-column align="center" prop="email" label="email"></el-table-column>
             <el-table-column align="center" label="操作">
               <template slot-scope="scope">
                 <el-button type="danger" size="small" @click="handleDelete(scope.row.username)">删除好友</el-button>
@@ -64,7 +62,7 @@
       }
     },
     mounted () {
-      // this.loadUsers();
+      this.loadUsers();
     },
     methods: {
       loadUsers() {
@@ -74,7 +72,7 @@
           this.$router.push({name: "Home"});
         }
         axios
-          .post('http://localhost:8888/api/user/friend/all', {"name": this.user})
+          .post('http://localhost:8888/api/friend/findAll', {"name": this.user})
           .then(response => {
             this.userData = response.data;
             this.userNumber = this.userData.length;
@@ -98,27 +96,27 @@
           })
       },
       handleAdd (username) {
-        let form = {"username": username, "status": 0};
+        let form = {"username": username};
         axios
-          .post('http://localhost:8888/api/user/friend/add', form)
+          .post('http://localhost:8888/api/friend/add', form)
           .then(response => {
             if(response.data === 1){
-              alert("禁用成功！");
+              alert("添加成功！");
             }else{
-              alert("禁用失败！");
+              alert("添加失败！");
             }
             this.loadUsers();
           })
       },
       handleDelete (username) {
-        let form = {"username": username, "status": 1};
+        let form = {"username": username};
         axios
-          .post('http://localhost:8888/api/user/friend/delete', form)
+          .post('http://localhost:8888/api/friend/delete', form)
           .then(response => {
             if(response.data === 1){
-              alert("解禁成功！");
+              alert("删除成功！");
             }else{
-              alert("解禁失败！");
+              alert("删除失败！");
             }
             this.loadUsers();
           })

@@ -38,7 +38,6 @@ public class UserServiceImpl implements UserService {
         if (userFind != null) {
             User tmp = new User();
             tmp.setUsername(userFind.getUsername());
-            tmp.setEmail(userFind.getEmail());
             res.add(tmp);
         }
         return res;

@@ -19,16 +19,17 @@ public class FriendServiceImpl implements FriendService {
     private UserDao userDao;
 
     @Override
-    public List<String> findAll(String name) {
+    public List<Person> findAll(String name) {
         if(userDao.findOne(name) == null) {
             return new ArrayList<>();
         }
         List<Person> friendList = friendDao.findAll(name);
-        List<String> result = new ArrayList<>();
+        List<Person> res = new ArrayList<>();
         for(Person p : friendList) {
-            result.add(p.getName());
+            Person tmp = new Person(p.getName());
+            res.add(tmp);
         }
-        return result;
+        return res;
     }
 
     @Override

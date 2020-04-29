@@ -1,35 +1,39 @@
 package backend.Controller;
 
+import backend.Entity.Person;
 import backend.Service.FriendService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/friend")
 public class FriendController {
     @Autowired
-    private FriendService friendService;
+    private FriendService fs;
 
-    @RequestMapping(value = "/findAll", method = RequestMethod.GET)
-    @ResponseBody
-    public List<String> getFriendList(String name) {
-        return friendService.findAll(name);
+    @PostMapping("/findAll")
+    public List<Person> findOne(@RequestBody Map<String, String> map) {
+        String username = map.get("username");
+        return fs.findAll(username);
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
-    @ResponseBody
-    public Boolean addFriend(String name, String friend) {
-        return friendService.addFriend(name, friend);
+    @PostMapping("/add")
+    public Boolean addFriend(@RequestBody Map<String, String> map) {
+        String username = map.get("username");
+        String friend = map.get("friend");
+        return fs.addFriend(username, friend);
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.GET)
-    @ResponseBody
-    public Boolean deleteFriend(String name, String friend) {
-        return friendService.deleteFriend(name, friend);
+    @PostMapping("/delete")
+    public Boolean deleteFriend(@RequestBody Map<String, String> map) {
+        String username = map.get("username");
+        String friend = map.get("friend");
+        return fs.deleteFriend(username, friend);
     }
 }
